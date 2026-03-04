@@ -10,6 +10,7 @@ public class SubmitButton : MonoBehaviour
     public void OnClick()
     {
         checklist.GetComponent<Checklist>().CalculateScoreBasedOnAnswers();
+        checklist.GetComponent<Checklist>().ResetList();
     }
 
     //////////////////////////////////////////////////////////////////////////////

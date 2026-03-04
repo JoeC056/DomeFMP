@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: App 1
   m_EditorClassIdentifier: 
   applicationName: App 1
-  taskbarIcon: {fileID: 0}
   desktopIconImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  TaskbarIconImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  TaskbarIconImage: {fileID: 21300000, guid: e4d4256dd7e15014592952f7d5ee7341, type: 3}

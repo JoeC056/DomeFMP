@@ -55,7 +55,6 @@ public class Checklist : MonoBehaviour
                 GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
             }
         }
-        Debug.Log(GameManager.instance.score);
     }
 
     //////////////////////////////////////////////////////////////////////////////
