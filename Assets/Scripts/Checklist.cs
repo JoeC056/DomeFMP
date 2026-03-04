@@ -9,15 +9,23 @@ public class Checklist : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject textParent;
     [SerializeField] private GameObject checkboxesParent;
+    [SerializeField] private GameObject allowEntryCheckbox;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject textPrefab;
     [SerializeField] private GameObject checkboxPrefab;
 
+    [Header("Parameters")]
+    public int scoreForCorrectEntryAllowance;
+    public int penaltyForIncorrectEntryAllowance;
+    public int scoreForCorrectReasonAllowance;
+    public int penaltyForIncorrectReasonAllowance;
 
+    [Header("Data")]
     public List<string> aspectsToCheck;
+    public bool entryShouldBeAllowed;
     public List<bool> correctAnswers;
-    public List<bool> givenAnswers;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -26,9 +34,28 @@ public class Checklist : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    private void Update()
+    public void CalculateScoreBasedOnAnswers()
     {
-        
+        if (entryShouldBeAllowed == allowEntryCheckbox.GetComponent<ChecklistCheckbox>().ticked)
+        {
+            GameManager.instance.score += scoreForCorrectEntryAllowance;
+        }
+        else
+        {
+            GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
+        }    
+        for (int i = 0; i < aspectsToCheck.Count; i++)
+        {
+            if (checkboxesParent.transform.GetChild(i).GetComponent<ChecklistCheckbox>().ticked == correctAnswers[i])
+            {
+                GameManager.instance.score += scoreForCorrectReasonAllowance;
+            }
+            else
+            {
+                GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
+            }
+        }
+        Debug.Log(GameManager.instance.score);
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -50,6 +77,8 @@ public class Checklist : MonoBehaviour
             text.GetComponent<TextMeshProUGUI>().text = aspectToCheck;
             Instantiate(checkboxPrefab,checkboxesParent.transform);
         }
+
+        allowEntryCheckbox.GetComponent<ChecklistCheckbox>().Untick();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -59,6 +88,8 @@ public class Checklist : MonoBehaviour
         {
             child.GetComponent<ChecklistCheckbox>().Untick();
         }
+
+        allowEntryCheckbox.GetComponent<ChecklistCheckbox>().Untick();
     }
 
     //////////////////////////////////////////////////////////////////////////////

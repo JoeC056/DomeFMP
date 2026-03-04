@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     }
     public States stateOfGame;
 
+    public int score;
+
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
