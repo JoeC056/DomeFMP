@@ -1,16 +1,19 @@
 using UnityEngine;
+using TMPro;
 
 //////////////////////////////////////////////////////////////////////////////
 public class SubmitButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject checklist;
+    [SerializeField] private TextMeshProUGUI transcriptTextSpace;
 
     //////////////////////////////////////////////////////////////////////////////
     public void OnClick()
     {
         checklist.GetComponent<Checklist>().CalculateScoreBasedOnAnswers();
         checklist.GetComponent<Checklist>().ResetList();
+        transcriptTextSpace.text = "";
     }
 
     //////////////////////////////////////////////////////////////////////////////

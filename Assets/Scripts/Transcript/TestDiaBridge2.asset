@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
-  m_Name: TestDia
+  m_Name: TestDiaBridge2
   m_EditorClassIdentifier: 
   delayBetweenCharacters: 0.05
   delayBetweenMessages: 1
-  dialogueHidesSubmit: 1
+  dialogueHidesSubmit: 0
   lines:
-  - 'Dan: What''s up'
-  - 'You: Riddle time'
-  - 'Dan: CHOOSE THE RIGHT ANSWER'
-  bridgeAfterDialogue: 1
+  - 'Dan: WHY WOULD YOU PICK THAT'
+  bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
-  bridgeResponse1: Three
-  bridgeResponse2: Four
-  bridgedDialogue1: {fileID: 11400000, guid: 2c076cfc7c7663c4da2d08f00cfa8a14, type: 2}
-  bridgedDialogue2: {fileID: 11400000, guid: e1b51c16f604edd44834455c01fe9512, type: 2}
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}
