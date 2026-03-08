@@ -9,6 +9,7 @@ public class HUD : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        //HUD only enable when exploring the level
         hud.SetActive(GameManager.instance.stateOfGame == GameManager.States.InGame);
     }
 

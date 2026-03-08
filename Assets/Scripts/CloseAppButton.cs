@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class CloseAppButton : MonoBehaviour
 {
+    //Ref to application button closes
     private ApplicationSO application;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        //Assigns value of application
         application = transform.parent.GetComponent<Application>().application;
     }
 

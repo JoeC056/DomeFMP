@@ -27,15 +27,11 @@ public class Checklist : MonoBehaviour
     public List<bool> correctAnswers;
 
 
-    //////////////////////////////////////////////////////////////////////////////
-    private void Awake()
-    {
-        UpdateChecklistContents();
-    }
 
     //////////////////////////////////////////////////////////////////////////////
     public void CalculateScoreBasedOnAnswers()
     {
+        //Gain points if entry allowance correct, lose if incorrect
         if (entryShouldBeAllowed == allowEntryCheckbox.GetComponent<ChecklistCheckbox>().ticked)
         {
             GameManager.instance.score += scoreForCorrectEntryAllowance;
@@ -43,7 +39,8 @@ public class Checklist : MonoBehaviour
         else
         {
             GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
-        }    
+        }
+        //Checks all reasons given against all correct reasons and assigns values respectively 
         for (int i = 0; i < aspectsToCheck.Count; i++)
         {
             if (checkboxesParent.transform.GetChild(i).GetComponent<ChecklistCheckbox>().ticked == correctAnswers[i])
@@ -70,6 +67,7 @@ public class Checklist : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
+        //Assigns text and tickboxes for all aspects to check 
         foreach (string aspectToCheck in aspectsToCheck)
         {
             GameObject text = Instantiate(textPrefab, textParent.transform);
@@ -81,8 +79,37 @@ public class Checklist : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    public void AssignNewChecklistValues(List<string> toCheck, bool entryAllowed,List<bool> answers)
+    {
+        //Assigns values based on given parameters
+        aspectsToCheck = toCheck;
+        entryShouldBeAllowed = entryAllowed;
+        correctAnswers = answers;
+
+        UpdateChecklistContents();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void ClearList()
+    {
+        //Empties contents of checklist and its respective values 
+        foreach (Transform child in textParent.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in checkboxesParent.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        aspectsToCheck = null;
+        correctAnswers = null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
     public void ResetList()
     {
+        //Unticks all values 
         foreach (Transform child in checkboxesParent.transform)
         {
             child.GetComponent<ChecklistCheckbox>().Untick();

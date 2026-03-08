@@ -3,6 +3,13 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////
 public class GameManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Checklist checklistScript;
+    [SerializeField] private CharacterRender characterRenderScript;
+    [SerializeField] private Transcript transcriptScript;
+    [SerializeField] private Documents documentsScript;
+    [SerializeField] private SubmitButton submitButtonScript;
+
     //Instance of GameManager
     public static GameManager instance { get; private set; }
 
@@ -11,11 +18,12 @@ public class GameManager : MonoBehaviour
     {
         InGame,
         UsingComputer,
-        Paused
     }
     public States stateOfGame;
 
+    //Score shared between days
     public int score;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -29,14 +37,19 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        //Mouse is hidden when exploring level 
-        if (stateOfGame == States.InGame) 
+        UpdateDisplayedMouse();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void UpdateDisplayedMouse()
+    {
+        //Hidden when exploring level, visible when using computer or paused
+        if (stateOfGame == States.InGame && Time.timeScale != 0)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -49,4 +62,12 @@ public class GameManager : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    public void Submit()
+    {
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
 }
+
+//////////////////////////////////////////////////////////////////////////////

@@ -11,18 +11,21 @@ public class Transcript : MonoBehaviour
     [SerializeField] private GameObject optionSelectButtonParent;
     [SerializeField] private GameObject submitButton;
 
-    public Dialogue dialogue;
+    //Currently used dialogue
+    private Dialogue dialogue;
 
+    //Content of the dialogue
     private List<string> dialogueLines;
     private List<string> remainingTranscriptDialogue;
     private string remainingLineDialogue = "";
 
+    //Whether waiting to ammend new text or start new line
     private bool waiting;
-
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        //Assigns default values
         remainingTranscriptDialogue = new List<string>();
         optionSelectButtonParent.SetActive(false);
         waiting = true;
@@ -31,11 +34,16 @@ public class Transcript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (dialogue != null)
         {
-            AssignNewTranscriptDialogue();
+            DisplayDialogue();
         }
+    }
 
+    //////////////////////////////////////////////////////////////////////////////////
+    private void DisplayDialogue()
+    {
+        //Appends dialogue to text box if remaining text in line and not waiting 
         if (remainingLineDialogue != "")
         {
             if (!waiting)
@@ -46,6 +54,7 @@ public class Transcript : MonoBehaviour
             }
 
         }
+        //Starts a new line if current one complete
         else if (remainingTranscriptDialogue.Count > 0)
         {
             if (!waiting)
@@ -59,12 +68,14 @@ public class Transcript : MonoBehaviour
                 }
             }
         }
+        //Displays option select if reached end of dialogue and branching is present
         else if (!waiting && remainingTranscriptDialogue.Count <= 0 && dialogue.bridgeAfterDialogue)
         {
             optionSelectButtonParent.SetActive(true);
             optionSelectButtonParent.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue.bridgeResponse1;
             optionSelectButtonParent.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = dialogue.bridgeResponse2;
         }
+        //Ends dialogue if dialogue complete branching not present 
         else if (!dialogue.bridgeAfterDialogue)
         {
             EndDialogue();
@@ -72,18 +83,23 @@ public class Transcript : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void AssignNewTranscriptDialogue()
+    private void AssignNewTranscriptDialogue(Dialogue newDialogue)
     {
+        //Assigns variable values for new dialogue
+        dialogue = newDialogue;
         foreach (string line in dialogue.lines)
         {
             remainingTranscriptDialogue.Add(line);
         }
         remainingLineDialogue = dialogue.lines[0];
-        waiting = false;
+
+        //Hides dialogue button if dialogue requires it 
         if (dialogue.dialogueHidesSubmit)
         {
             submitButton.SetActive(false);
         }
+
+        waiting = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -97,23 +113,24 @@ public class Transcript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     public void BranchDialogue(int branchToGoTo)
     {
+        //Branches dialogue based on pressed button 
         optionSelectButtonParent.SetActive(false);
 
         if (branchToGoTo == 1)
         {
-            dialogue = dialogue.bridgedDialogue1;
+            AssignNewTranscriptDialogue(dialogue.bridgedDialogue1);
         }
         if (branchToGoTo == 2)
         {
-            dialogue = dialogue.bridgedDialogue2;
+            AssignNewTranscriptDialogue(dialogue.bridgedDialogue2);
         }
-        AssignNewTranscriptDialogue();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void EndDialogue()
     {
         waiting = true;
+        optionSelectButtonParent.SetActive(false);
         if (!submitButton.activeSelf)
         { 
             submitButton.SetActive(true);
@@ -121,4 +138,14 @@ public class Transcript : MonoBehaviour
     }
 
     /////////////////////////////////////////////////////////////////////////////////
+    public void ClearDialogue()
+    {
+        EndDialogue();
+        dialogue = null;
+        textSpace.text = "";
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////
 }
+
+/////////////////////////////////////////////////////////////////////////////////

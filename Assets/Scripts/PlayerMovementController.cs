@@ -1,6 +1,4 @@
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 //////////////////////////////////////////////////////////////////////////////
 public class PlayerMovementController : MonoBehaviour
@@ -16,7 +14,7 @@ public class PlayerMovementController : MonoBehaviour
     //Current player and camera rot
     private float cameraRotX;
     private float cameraRotY;
-    private float playerRotY; 
+    private float playerRotY;
 
     //Current player movement input
     private float inputX;
@@ -37,7 +35,7 @@ public class PlayerMovementController : MonoBehaviour
     private void Update()
     {
         //Updates input and rotates player if necessary
-        if (GameManager.instance.stateOfGame == GameManager.States.InGame)
+        if (GameManager.instance.stateOfGame == GameManager.States.InGame && Time.timeScale != 0) //Disabled whilst paused
         {
             GetInput();
             RotateCameraAndPlayer();
@@ -89,3 +87,5 @@ public class PlayerMovementController : MonoBehaviour
 
     //////////////////////////////////////////////////////////////////////////////
 }
+
+//////////////////////////////////////////////////////////////////////////////
