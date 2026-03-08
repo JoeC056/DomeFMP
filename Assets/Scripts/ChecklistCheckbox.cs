@@ -27,6 +27,7 @@ public class ChecklistCheckbox : MonoBehaviour
     public void Untick()
     {
         ticked = false;
+        tickIcon.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////

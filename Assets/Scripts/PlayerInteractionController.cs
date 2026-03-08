@@ -3,19 +3,18 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////
 public class PlayerInteractionController : MonoBehaviour
 {
-    [Header("Components")]
+    [Header("References")]
     [SerializeField] private Camera playerCamera;
 
     [Header("Parameters")]
     [SerializeField] private float interactionRange;
 
     //Reference to hit object when checking for interactable object
-    RaycastHit hit;
+    private RaycastHit hit;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        CheckForInteractableObject();
         GetInput();
     }
 
@@ -23,7 +22,7 @@ public class PlayerInteractionController : MonoBehaviour
     private void GetInput()
     {
         //Interacts with object if it is an interactable object
-        if (Input.GetKeyDown(KeyCode.E) && CheckForInteractableObject() && GameManager.instance.stateOfGame == GameManager.States.InGame)
+        if (Input.GetKeyDown(InputManager.instance.interactKey) && CheckForInteractableObject() && GameManager.instance.stateOfGame == GameManager.States.InGame)
         {
             Interact();
         }
@@ -50,3 +49,5 @@ public class PlayerInteractionController : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
 
 }
+
+//////////////////////////////////////////////////////////////////////////////

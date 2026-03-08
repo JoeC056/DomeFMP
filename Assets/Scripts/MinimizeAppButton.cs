@@ -1,12 +1,15 @@
 using UnityEngine;
 
+//////////////////////////////////////////////////////////////////////////////////
 public class MinimizeAppButton : MonoBehaviour
 {
+    //Ref to application button minimizes
     private ApplicationSO application;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        //Assigns value of application
         application = transform.parent.GetComponent<Application>().application;
     }
 

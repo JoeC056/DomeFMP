@@ -89,7 +89,7 @@ public class ComputerManager : MonoBehaviour
         foreach (ApplicationSO openApp in openApplications)
         {
             GameObject appIcon = Instantiate(emptyTaskbarIconPrefab, taskbar.transform);
-            appIcon.GetComponent<TaskbarIcon>().application = openApp;
+            appIcon.GetComponent<TaskbarIcon>().AssignApplicationRef(openApp);
             appIcon.GetComponent<Image>().sprite = openApp.TaskbarIconImage;
 
         }

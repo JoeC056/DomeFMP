@@ -7,7 +7,7 @@ public class DesktopIcon : MonoBehaviour
     [SerializeField] private ApplicationSO application;
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void OnDoubleClick()
+    public void OnClick()
     {
         //Focuses app if already open, otherwise opens it
         if (!ComputerManager.instance.openApplications.Contains(application))

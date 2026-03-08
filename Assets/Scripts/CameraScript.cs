@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //////////////////////////////////////////////////////////////////////////////
-public class Camera : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject player;
