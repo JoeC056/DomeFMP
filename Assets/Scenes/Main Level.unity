@@ -1470,8 +1470,9 @@ GameObject:
   - component: {fileID: 504478719}
   - component: {fileID: 504478718}
   - component: {fileID: 504478720}
+  - component: {fileID: 504478721}
   m_Layer: 5
-  m_Name: App 2
+  m_Name: Document Viewing Application
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.13456745, b: 0.22416748, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.88235295}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1548,7 +1549,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bab096553427a49a8da97b566e1d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  application: {fileID: 11400000, guid: 08aca5ba67605064aa78ebbcbc08b368, type: 2}
+  application: {fileID: 11400000, guid: e3986bb1b43a7eb4dbda57252b8cdafe, type: 2}
+--- !u!114 &504478721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504478716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454e162833bf3b54d87f5f9edaf916a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  documentSize: {x: 142.5, y: 237.5}
 --- !u!1 &527703182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,7 +1723,7 @@ GameObject:
   - component: {fileID: 566121694}
   - component: {fileID: 566121696}
   m_Layer: 5
-  m_Name: App 1
+  m_Name: Gameplay Application
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4029,8 +4043,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 566121693}
   - {fileID: 504478717}
+  - {fileID: 566121693}
   m_Father: {fileID: 2006649254}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4398,6 +4412,7 @@ MonoBehaviour:
   submitButtonScript: {fileID: 203609496}
   stateOfGame: 0
   score: 0
+  test: {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
 --- !u!1 &1344022292
 GameObject:
   m_ObjectHideFlags: 0
