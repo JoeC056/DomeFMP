@@ -1,0 +1,28 @@
+using NUnit.Framework;
+using UnityEngine;
+using System.Collections.Generic;
+
+[CreateAssetMenu(fileName = "New Messaging Dialogue", menuName = "Messaging Dialogue/New Messaging Dialogue")]
+////////////////////////////////////////////////////////////////////
+public class MessagingDialogueSO : ScriptableObject
+{
+    [Header("Parameters")]
+    public MessagingRecipientSO conversationOwner;
+    public float delayBetweenCharacters;
+    public float delayBetweenMessages;
+    public bool dialogueHidesSubmit;
+
+    [Header("Content")]
+    public List<string> lines;
+
+    [Header("For bridging dialogue")]
+    public bool bridgeAfterDialogue;
+    public bool clearTranscriptUponBridging;
+    public string bridgeResponse1;
+    public string bridgeResponse2;
+    public Dialogue bridgedDialogue1;
+    public Dialogue bridgedDialogue2;
+}
+
+////////////////////////////////////////////////////////////////////
+    

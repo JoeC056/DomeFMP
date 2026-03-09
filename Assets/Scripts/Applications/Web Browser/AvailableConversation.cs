@@ -1,0 +1,23 @@
+using TMPro;
+using UnityEngine;
+
+//////////////////////////////////////////////////////////////////////////////////
+public class AvailableConversation : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI mostRecentMessageText;
+    [SerializeField] private GameObject notificationIcon;
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AssignValues(string name, string mostRecentMessage)
+    {
+        nameText.text = name;
+        mostRecentMessageText.text = mostRecentMessage;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+}
+
+//////////////////////////////////////////////////////////////////////////////////
