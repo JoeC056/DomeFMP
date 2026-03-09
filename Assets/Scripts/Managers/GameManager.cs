@@ -20,14 +20,16 @@ public class GameManager : MonoBehaviour
     {
         InGame,
         UsingComputer,
+        InteractingWithObject,
+        InteractingWithCalendar
     }
     [HideInInspector] public States stateOfGame;
 
     //Score shared between days
     [HideInInspector] public int score;
 
-    public GameObject test;
-    List<GameObject> testList = new List<GameObject>();
+    public int dayNo;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -42,8 +44,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        testList.Add(test);
-        documentsScript.AddNewDocumentsToDisplay(testList);
     }
 
     //////////////////////////////////////////////////////////////////////////////

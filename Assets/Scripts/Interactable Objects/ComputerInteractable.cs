@@ -3,10 +3,35 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////
 public class ComputerInteractable : MonoBehaviour
 {
+    private bool playerUsingComputer;
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        GetInput();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void GetInput()
+    {
+        if (playerUsingComputer && Input.GetKeyDown(InputManager.instance.stopInteractingKey))
+        {
+            StopUsingComputer();
+        }
+    }
+
     //////////////////////////////////////////////////////////////////////////////
     public void UseComputer()
     {
         GameManager.instance.stateOfGame = GameManager.States.UsingComputer;
+        playerUsingComputer = true;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void StopUsingComputer()
+    {
+        GameManager.instance.stateOfGame = GameManager.States.InGame;
+        playerUsingComputer = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////

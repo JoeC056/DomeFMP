@@ -18,6 +18,8 @@ public class MessagingApplication : MonoBehaviour
     public List<MessagingRecipientSO> availableMessagingRecipients;
     public List<MessagingDialogueSO> availableConversations;
 
+    public List<MessagingRecipientSO> recipientsPriorityQueue;
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {

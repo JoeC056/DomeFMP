@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
     [Header("Parameters")]
     public UnityEvent EventOnInteract;
 
+
     //////////////////////////////////////////////////////////////////////////////////
     public void OnInteract()
     {

@@ -8,7 +8,6 @@ public class MessagingDialogueSO : ScriptableObject
 {
     [Header("Parameters")]
     public MessagingRecipientSO conversationOwner;
-    public float delayBetweenCharacters;
     public float delayBetweenMessages;
     public bool dialogueHidesSubmit;
 
