@@ -16,6 +16,12 @@ public class CloseAppButton : MonoBehaviour
     public void CloseApp()
     {
         ComputerManager.instance.CloseApplication(application);
+
+        //Returns to home page of respective applications on close where applicable 
+        if (application.applicationName == "Web Browser")
+        {
+            WebBrowser.instance.HomeButton();
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////

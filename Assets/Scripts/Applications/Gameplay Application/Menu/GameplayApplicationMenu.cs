@@ -8,6 +8,7 @@ public class GameplayApplicationMenu : MonoBehaviour
     [SerializeField] private GameObject minimizeButton;
     [SerializeField] private GameObject closeButton;
     [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject taskbar;
 
     public bool gameplayAvailable;
 

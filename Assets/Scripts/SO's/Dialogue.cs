@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/Dialogue")]
+[CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/New Dialogue")]
 ////////////////////////////////////////////////////////////////////
 public class Dialogue : ScriptableObject
 {

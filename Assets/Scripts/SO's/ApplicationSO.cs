@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Application", menuName = "Application", order = 1)]
+[CreateAssetMenu(fileName = "New Application", menuName = "Application/New Application", order = 1)]
 //////////////////////////////////////////////////////////////////////////////
 public class ApplicationSO : ScriptableObject
 {
