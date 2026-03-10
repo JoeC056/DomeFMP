@@ -1,24 +1,27 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 //////////////////////////////////////////////////////////////////////////////////
-public class Bed : MonoBehaviour
+public class FrontDoor : MonoBehaviour
 {
+    [Header("Parameters")]
+    public UnityEvent EventOnInteract;
+
     private bool canBeInteractedWith;
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void Sleep()
+    public void InteractWithDoor()
     {
         if (canBeInteractedWith)
         {
-            GameManager.instance.ProgressToNextDay();
-            canBeInteractedWith = false;
+            EventOnInteract.Invoke();
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void EnableInteractionAllowance()
+    public void ToggleInteractionAllowance()
     {
-        canBeInteractedWith = true;
+        canBeInteractedWith = !canBeInteractedWith;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

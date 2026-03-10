@@ -1,0 +1,29 @@
+using UnityEngine;
+
+//////////////////////////////////////////////////////////////////////////////
+public class OpenableDoor : MonoBehaviour
+{
+    [Header("References")]
+    [SerializeField] private GameObject doorHingePivot;
+
+    private bool doorOpen;
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void ToggleDoor()
+    {
+        doorOpen = !doorOpen;
+        if (doorOpen)
+        {
+            doorHingePivot.transform.Rotate(0,-90,0);
+        }
+        else
+        {
+            doorHingePivot.transform.Rotate(0, 90, 0);
+        }
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+}
+
+//////////////////////////////////////////////////////////////////////////////

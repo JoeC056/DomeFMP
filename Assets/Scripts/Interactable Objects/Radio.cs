@@ -11,7 +11,7 @@ public class Radio : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textSpace;
 
     [Header("Currently available transmission")]
-    public RadioTransmissionSO currentRadioTransmission;
+    private RadioTransmissionSO currentRadioTransmission;
 
     //Content to display
     private List<string> remainingTransmissionDialogue;
@@ -22,6 +22,7 @@ public class Radio : MonoBehaviour
     private bool waitedForThisLineAlready;
 
     private bool usingRadio;
+    private bool radioAlreadyUsed;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -37,6 +38,10 @@ public class Radio : MonoBehaviour
         if (usingRadio && currentRadioTransmission != null)
         {
             DisplayTransmission();
+        }
+        if (!radioAlreadyUsed && currentRadioTransmission != null)
+        {
+            PlayStaticSound();
         }
     }
 
@@ -58,6 +63,7 @@ public class Radio : MonoBehaviour
             //Assigns values of variables
             usingRadio = true;
             radioUI.SetActive(true);
+            radioAlreadyUsed = true;
             GameManager.instance.stateOfGame = GameManager.States.InteractingWithObject;
 
             AssignTextToDisplay();
@@ -147,6 +153,20 @@ public class Radio : MonoBehaviour
         waiting = true;
         yield return new WaitForSeconds(waitingDuration);
         waiting = false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void PlayStaticSound()
+    {
+        Debug.Log("Bzzzzz");
+    }
+
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void AddNewTransmission(RadioTransmissionSO newTransmission)
+    {
+        currentRadioTransmission = newTransmission;
+        radioAlreadyUsed = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////
