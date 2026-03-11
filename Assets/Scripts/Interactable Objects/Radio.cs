@@ -11,7 +11,7 @@ public class Radio : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textSpace;
 
     [Header("Currently available transmission")]
-    private RadioTransmissionSO currentRadioTransmission;
+    public RadioTransmissionSO currentRadioTransmission;
 
     //Content to display
     private List<string> remainingTransmissionDialogue;
@@ -23,6 +23,7 @@ public class Radio : MonoBehaviour
 
     private bool usingRadio;
     private bool radioAlreadyUsed;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()

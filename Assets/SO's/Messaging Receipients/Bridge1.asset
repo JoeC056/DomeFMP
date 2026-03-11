@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 440333c5586acf44db3ff057db103969, type: 3}
-  m_Name: MessageDia2
+  m_Name: Bridge1
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 52fe0edfa7734764cb7e5d51ecdb7c13, type: 2}
   delayBetweenMessages: 1
   lines:
-  - Cba
+  - I
+  - cant
+  - Help
+  - You
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
   documentAfterMessages: 0
+  documentMessageType: 0
+  document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
