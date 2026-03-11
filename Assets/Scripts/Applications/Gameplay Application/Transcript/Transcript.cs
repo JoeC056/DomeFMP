@@ -15,7 +15,6 @@ public class Transcript : MonoBehaviour
     private Dialogue dialogue;
 
     //Content of the dialogue
-    private List<string> dialogueLines;
     private List<string> remainingTranscriptDialogue;
     private string remainingLineDialogue = "";
 

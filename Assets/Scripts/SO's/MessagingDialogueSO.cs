@@ -7,20 +7,31 @@ using System.Collections.Generic;
 public class MessagingDialogueSO : ScriptableObject
 {
     [Header("Parameters")]
-    public MessagingRecipientSO conversationOwner;
+    public MessagingRecipientSO personSpokenTo;
     public float delayBetweenMessages;
-    public bool dialogueHidesSubmit;
 
     [Header("Content")]
     public List<string> lines;
 
     [Header("For bridging dialogue")]
-    public bool bridgeAfterDialogue;
-    public bool clearTranscriptUponBridging;
+    public bool bridgeAfterMessages;
     public string bridgeResponse1;
     public string bridgeResponse2;
-    public Dialogue bridgedDialogue1;
-    public Dialogue bridgedDialogue2;
+    public MessagingDialogueSO bridgedDialogue1;
+    public MessagingDialogueSO bridgedDialogue2;
+
+    [Header("For Dialogue that contains a Document")]
+    public bool documentAfterMessages;
+    public MessageType documentMessageType;
+    public GameObject document;
+    public bool continueAfterDocument;
+    public MessagingDialogueSO continuedDialogue;
+
+    public enum MessageType
+    {
+        Received,
+        Sent
+    }
 }
 
 ////////////////////////////////////////////////////////////////////
