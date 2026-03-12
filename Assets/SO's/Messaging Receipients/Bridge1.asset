@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: Bridge1
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 52fe0edfa7734764cb7e5d51ecdb7c13, type: 2}
-  delayBetweenMessages: 1
+  delayBetweenMessages: 0.4
   lines:
   - I
   - cant
   - Help
+  - You
+  - You
+  - You
+  - You
+  - You
+  - You
   - You
   bridgeAfterMessages: 0
   bridgeResponse1: 
