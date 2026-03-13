@@ -42,6 +42,9 @@ public class PlayerInteractionController : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Interact()
     {
+        //Halts player movement
+        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+
         //Calls interact function of object being interacted with 
         hit.transform.GetComponent<InteractableObject>().OnInteract();
     }

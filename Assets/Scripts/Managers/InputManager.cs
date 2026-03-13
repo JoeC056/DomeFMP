@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
     [Header("Keybinds")]
     public KeyCode interactKey;
     public KeyCode pauseKey;
+    public KeyCode stopInteractingKey;
 
     //Instance of InputManager
     public static InputManager instance { get; private set; }

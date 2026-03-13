@@ -1,18 +1,16 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
-public class InteractableObject : MonoBehaviour
+public class Message : MonoBehaviour
 {
-    [Header("Parameters")]
-    public UnityEvent EventOnInteract;
-
+    [Header("References")]
+    [SerializeField] private TextMeshProUGUI text;
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void OnInteract()
+    public void SetText(string textToSet)
     {
-        EventOnInteract.Invoke();
+        text.text = textToSet;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

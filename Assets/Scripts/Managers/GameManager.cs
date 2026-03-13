@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,14 +21,24 @@ public class GameManager : MonoBehaviour
     {
         InGame,
         UsingComputer,
+        InteractingWithObject,
+        InteractingWithCalendar
     }
     [HideInInspector] public States stateOfGame;
 
     //Score shared between days
     [HideInInspector] public int score;
 
-    public GameObject test;
-    List<GameObject> testList = new List<GameObject>();
+    public int dayNo;
+
+    //For testing only
+    public GameObject testModel;
+    public Dialogue testDialogue;
+    public List<GameObject> testDocuments;
+    public List<string> testStuffToCheck;
+    public bool testShouldBeAllowed;
+    public List<bool> testAnswers;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -42,14 +53,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        testList.Add(test);
-        documentsScript.AddNewDocumentsToDisplay(testList);
+        //For testing only
+        characterRenderScript.AddNewCharacterRender(testModel, -3600, 3600);
+        documentsScript.AddNewDocumentsToDisplay(testDocuments);
+        checklistScript.AssignNewChecklistValues(testStuffToCheck, testShouldBeAllowed, testAnswers);
+
+
     }
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
         UpdateDisplayedMouse();
+
+        //For testing only
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transcriptScript.AssignNewTranscriptDialogue(testDialogue);
+        }
+
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -71,7 +93,13 @@ public class GameManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void Submit()
     {
+        Debug.Log("Data submitted....");
+    }
 
+    //////////////////////////////////////////////////////////////////////////////
+    public void ProgressToNextDay()
+    {
+        Debug.Log("Next day incoming...");
     }
 
     //////////////////////////////////////////////////////////////////////////////

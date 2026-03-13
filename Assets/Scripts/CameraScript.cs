@@ -6,11 +6,14 @@ public class CameraScript : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject computer;
+    [SerializeField] private GameObject calendar;
 
     [Header("Parameters")]
     [SerializeField] private Vector3 displacementFromPlayer;
     [SerializeField] private Vector3 displacementFromComputer;
+    [SerializeField] private Vector3 displacementFromCalendar;
     [SerializeField] private Vector3 rotationForComputer;
+    [SerializeField] private Vector3 rotationForCalendar;
 
 
     //////////////////////////////////////////////////////////////////////////////
@@ -23,7 +26,7 @@ public class CameraScript : MonoBehaviour
     private void UpdateCameraLocation()
     {
         //Follows player if exploring level, focuses on computer during its use
-        if (GameManager.instance.stateOfGame == GameManager.States.InGame)
+        if (GameManager.instance.stateOfGame == GameManager.States.InGame || GameManager.instance.stateOfGame == GameManager.States.InteractingWithObject)
         {
             transform.position = Vector3.Lerp(transform.position, player.transform.position + displacementFromPlayer, Time.deltaTime * 15);
         }
@@ -31,6 +34,11 @@ public class CameraScript : MonoBehaviour
         {
             transform.position = computer.transform.position + displacementFromComputer;
             transform.rotation = Quaternion.Euler(rotationForComputer);
+        }
+        else if (GameManager.instance.stateOfGame == GameManager.States.InteractingWithCalendar)
+        {
+            transform.position = calendar.transform.position + displacementFromCalendar;
+            transform.rotation = Quaternion.Euler(rotationForCalendar);
         }
     }
 

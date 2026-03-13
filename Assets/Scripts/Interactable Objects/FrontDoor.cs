@@ -1,21 +1,32 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
-public class InteractableObject : MonoBehaviour
+public class FrontDoor : MonoBehaviour
 {
     [Header("Parameters")]
     public UnityEvent EventOnInteract;
 
+    private bool canBeInteractedWith;
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void OnInteract()
+    public void InteractWithDoor()
     {
-        EventOnInteract.Invoke();
+        if (canBeInteractedWith)
+        {
+            EventOnInteract.Invoke();
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void ToggleInteractionAllowance()
+    {
+        canBeInteractedWith = !canBeInteractedWith;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+
+
