@@ -3473,7 +3473,6 @@ Transform:
   - {fileID: 1938598622}
   - {fileID: 1096169929}
   - {fileID: 722030143}
-  - {fileID: 1120289123}
   - {fileID: 1955220430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5845,11 +5844,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119270136}
   m_CullTransparentMesh: 1
---- !u!4 &1120289123 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-  m_PrefabInstance: {fileID: 571049600342218455}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1129118710
 GameObject:
   m_ObjectHideFlags: 0
@@ -6387,6 +6381,18 @@ MonoBehaviour:
   stateOfGame: 0
   score: 0
   dayNo: 0
+  testModel: {fileID: 3413487933729618471, guid: 054c44037d5997549b1ed12b196d71e0, type: 3}
+  testDialogue: {fileID: 11400000, guid: e55472f4bad3a9245ba3bb8817a456de, type: 2}
+  testDocuments:
+  - {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
+  - {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
+  testStuffToCheck:
+  - Check 1
+  - Check 2
+  - Check 3
+  testShouldBeAllowed: 0
+  testAnswers: 000000
+  ready: 0
 --- !u!1 &1327018050
 GameObject:
   m_ObjectHideFlags: 0
@@ -10685,63 +10691,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fcb1bb9fe8e8cc4d87925f3c2ce984b, type: 3}
---- !u!1001 &571049600342218455
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 805898385}
-    m_Modifications:
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.5055165
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.4965067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.8711622
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 4221584311789378939, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8286304960039072005, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
-      propertyPath: m_Name
-      value: Door Hinge Pivot
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 15dd1f081a44c424e90c23055334e9c2, type: 3}
 --- !u!1001 &2574257199920435935
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,7 +25,6 @@ public class Transcript : MonoBehaviour
     private void Awake()
     {
         //Assigns default values
-        remainingTranscriptDialogue = new List<string>();
         optionSelectButtonParent.SetActive(false);
         waiting = true;
     }
@@ -82,10 +81,13 @@ public class Transcript : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void AssignNewTranscriptDialogue(Dialogue newDialogue)
+    public void AssignNewTranscriptDialogue(Dialogue newDialogue)
     {
+        remainingTranscriptDialogue = new List<string>();
+
         //Assigns variable values for new dialogue
         dialogue = newDialogue;
+        Debug.Log(remainingTranscriptDialogue.Count);
         foreach (string line in dialogue.lines)
         {
             remainingTranscriptDialogue.Add(line);
