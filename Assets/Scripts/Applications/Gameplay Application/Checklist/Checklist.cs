@@ -15,43 +15,41 @@ public class Checklist : MonoBehaviour
     [SerializeField] private GameObject textPrefab;
     [SerializeField] private GameObject checkboxPrefab;
 
-    [Header("Parameters")]
-    public int scoreForCorrectEntryAllowance;
-    public int penaltyForIncorrectEntryAllowance;
-    public int scoreForCorrectReasonAllowance;
-    public int penaltyForIncorrectReasonAllowance;
 
     [Header("Data")]
-    public List<string> aspectsToCheck;
-    public bool entryShouldBeAllowed;
-    public List<bool> correctAnswers;
+    private List<string> aspectsToCheck;
+
 
 
 
     //////////////////////////////////////////////////////////////////////////////
-    public void CalculateScoreBasedOnAnswers()
+    public float CalculateScoreToAddBasedOnAnswers(List<bool> correctAnswers, bool entryShouldBeAllowed)
     {
+        float scoreToAdd = 0;
+
         //Gain points if entry allowance correct, lose if incorrect
         if (entryShouldBeAllowed == allowEntryCheckbox.GetComponent<ChecklistCheckbox>().ticked)
         {
-            GameManager.instance.score += scoreForCorrectEntryAllowance;
+            scoreToAdd += GameManager.instance.scoreForCorrectEntryAllowance;
         }
         else
         {
-            GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
+            scoreToAdd -= GameManager.instance.penaltyForIncorrectEntryAllowance;
         }
         //Checks all reasons given against all correct reasons and assigns values respectively 
         for (int i = 0; i < aspectsToCheck.Count; i++)
         {
             if (checkboxesParent.transform.GetChild(i).GetComponent<ChecklistCheckbox>().ticked == correctAnswers[i])
             {
-                GameManager.instance.score += scoreForCorrectReasonAllowance;
+                scoreToAdd += GameManager.instance.scoreForCorrectReasonAllowance;
             }
             else
             {
-                GameManager.instance.score -= penaltyForIncorrectEntryAllowance;
+                scoreToAdd -= GameManager.instance.penaltyForIncorrectReasonAllowance;
             }
         }
+
+        return scoreToAdd;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -79,12 +77,10 @@ public class Checklist : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    public void AssignNewChecklistValues(List<string> toCheck, bool entryAllowed,List<bool> answers)
+    public void AssignNewChecklistValues(List<string> toCheck)
     {
         //Assigns values based on given parameters
         aspectsToCheck = toCheck;
-        entryShouldBeAllowed = entryAllowed;
-        correctAnswers = answers;
 
         UpdateChecklistContents();
     }
@@ -102,8 +98,6 @@ public class Checklist : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
-        aspectsToCheck = null;
-        correctAnswers = null;
     }
 
     //////////////////////////////////////////////////////////////////////////////

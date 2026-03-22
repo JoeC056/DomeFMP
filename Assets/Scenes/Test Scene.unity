@@ -270,7 +270,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: -90
+          m_FloatArgument: 90
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -538,7 +538,7 @@ MonoBehaviour:
   rotationButtons: {fileID: 1129118710}
   characterRenderCamera: {fileID: 761099909}
   renderedCharacterDisplacementFromCamera: {x: 0, y: -0.9, z: 2.25}
-  renderedCharacterDefaultRot: {x: 0, y: 180, z: 0}
+  renderedCharacterDefaultRot: {x: 0, y: 0, z: 0}
 --- !u!1 &118619236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,7 +3737,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 90
+          m_FloatArgument: -90
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -6378,21 +6378,41 @@ MonoBehaviour:
   transcriptScript: {fileID: 1594350263}
   documentsScript: {fileID: 1441744552}
   submitButtonScript: {fileID: 203609496}
+  gameplayApplicationMenuScript: {fileID: 1376458090}
+  delayBetweenEncounters: 1
+  scoreForCorrectEntryAllowance: 2
+  penaltyForIncorrectEntryAllowance: 1
+  scoreForCorrectReasonAllowance: 1
+  penaltyForIncorrectReasonAllowance: 0.5
+  day1ListOfAvailableEncounters:
+  - {fileID: 11400000, guid: 26935e0c7bb92d647ad3d94f5e3c08d8, type: 2}
+  - {fileID: 11400000, guid: 84713629c4c33cd42afc29571e02032d, type: 2}
+  - {fileID: 11400000, guid: a067d34de6b6ae146b41d48d25d0ea1f, type: 2}
+  - {fileID: 11400000, guid: 1aed1cd9ff678154ebf46daadd105b86, type: 2}
+  - {fileID: 11400000, guid: 3f8fa93d2804e7746909191cd6336828, type: 2}
+  day1GameplaySegmentDurationMinutes: 0.01
+  day1AspectsToCheck:
+  - Blue
+  - Evil
+  - Something
+  day1CharacterRenderRotationClamp: {x: -90, y: 90}
+  day2ListOfAvailableEncounters: []
+  day2GameplaySegmentDurationMinutes: 0
+  day2AspectsToCheck: []
+  day2CharacterRenderRotationClamp: {x: 0, y: 0}
+  day3ListOfAvailableEncounters: []
+  day3GameplaySegmentDurationMinutes: 0
+  day3AspectsToCheck: []
+  day3CharacterRenderRotationClamp: {x: 0, y: 0}
+  day4ListOfAvailableEncounters: []
+  day4GameplaySegmentDurationMinutes: 0
+  day4AspectsToCheck: []
+  day4CharacterRenderRotationClamp: {x: 0, y: 0}
   stateOfGame: 0
   score: 0
-  dayNo: 0
-  testModel: {fileID: 3413487933729618471, guid: 054c44037d5997549b1ed12b196d71e0, type: 3}
-  testDialogue: {fileID: 11400000, guid: e55472f4bad3a9245ba3bb8817a456de, type: 2}
-  testDocuments:
-  - {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
-  - {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
-  testStuffToCheck:
-  - Check 1
-  - Check 2
-  - Check 3
-  testShouldBeAllowed: 0
-  testAnswers: 000000
-  ready: 0
+  dayNo: 1
+  gameplayInProgress: 0
+  daysGameplayCompleted: 0
 --- !u!1 &1327018050
 GameObject:
   m_ObjectHideFlags: 0
@@ -6682,7 +6702,6 @@ MonoBehaviour:
   closeButton: {fileID: 501939505}
   startButton: {fileID: 688519931}
   taskbar: {fileID: 2124158428}
-  gameplayAvailable: 1
 --- !u!1 &1387393464
 GameObject:
   m_ObjectHideFlags: 0
@@ -9900,17 +9919,6 @@ MonoBehaviour:
   allowEntryCheckbox: {fileID: 1059662846}
   textPrefab: {fileID: 1524794618946578898, guid: 890015b12750c5d4ea01a89b26ed5f10, type: 3}
   checkboxPrefab: {fileID: 4746688838517381916, guid: 61fa31ea8e92a574195703645a84bc97, type: 3}
-  scoreForCorrectEntryAllowance: 20
-  penaltyForIncorrectEntryAllowance: 10
-  scoreForCorrectReasonAllowance: 10
-  penaltyForIncorrectReasonAllowance: 5
-  aspectsToCheck:
-  - Huge Head
-  - Smelly
-  - Evil
-  - HELP!
-  entryShouldBeAllowed: 1
-  correctAnswers: 01010100
 --- !u!222 &2010134519
 CanvasRenderer:
   m_ObjectHideFlags: 0

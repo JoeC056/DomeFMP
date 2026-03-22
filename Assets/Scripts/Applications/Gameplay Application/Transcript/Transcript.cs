@@ -87,7 +87,6 @@ public class Transcript : MonoBehaviour
 
         //Assigns variable values for new dialogue
         dialogue = newDialogue;
-        Debug.Log(remainingTranscriptDialogue.Count);
         foreach (string line in dialogue.lines)
         {
             remainingTranscriptDialogue.Add(line);
