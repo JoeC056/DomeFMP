@@ -40,7 +40,7 @@ public class GameplayApplicationMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void CheckToDisplayStartButton()
     {
-        if (GameManager.instance.gameplayInProgress || GameManager.instance.daysGameplayCompleted)
+        if (GameManager.instance.gameplayInProgress || GameManager.instance.daysGameplayCompleted || !GameManager.instance.daysGameplayAvailable)
         {
             startButton.SetActive(false);
         }

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D3FMD
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0
+  delayBetweenMessages: 0
+  dialogueHidesSubmit: 0
+  lines:
+  - 'Faction Member: You remember those rumours I was talking about? '
+  - 'Faction Member: The whole shit about the illness being part of some plan, I
+    got some dirt on the whole thing, here.'
+  - (Cult Plan Component Document)
+  - "Faction Member: We\u2019re thinking this entire town and society being cultivated
+    is another part of their plan, the scope of this whole thing seems to be insane. "
+  - 'Faction Member: You might be an even bigger pawn than I initially thought.'
+  - 'Father: Do you want your own family though? One you made yourself?'
+  - "Faction Member:  You able to read a character whatsoever? I can\u2019t stand
+    any of that bullshit that them and everyone else keeps bushing. Even if I did,
+    not a chance you\u2019d find anyone in here  who\u2019d want to be a part of
+    that family, so what\u2019s theres no point in even bothering."
+  - "Faction Member:  Anyways, that\u2019s all I\u2019ve got for now, I\u2019ll get
+    back to you later."
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}

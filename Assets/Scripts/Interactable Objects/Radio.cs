@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 //////////////////////////////////////////////////////////////////////////////
 public class Radio : MonoBehaviour
@@ -24,12 +25,20 @@ public class Radio : MonoBehaviour
     private bool usingRadio;
     private bool radioAlreadyUsed;
 
+    private struct transmissionCompletionEvent
+    {
+        public RadioTransmissionSO respectiveTransmission;
+        public UnityEvent eventOnCompletion;
+    }
+
+    private List<transmissionCompletionEvent> transmissionCompletionEvents;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
         radioUI.SetActive(false);
         remainingTransmissionDialogue = new List<string>();
+        transmissionCompletionEvents = new List<transmissionCompletionEvent>();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -143,6 +152,12 @@ public class Radio : MonoBehaviour
         //Puts down radio upon completing the transmission
         else if (!waiting)
         {
+
+            if (GetRespectiveEventForTransmission() != null)
+            {
+                Debug.Log("Im an event! Im happening!");
+                GetRespectiveEventForTransmission().Invoke();
+            }
             currentRadioTransmission = null;
             PutDownRadio();
         }
@@ -171,6 +186,29 @@ public class Radio : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    public void AddEventOnTransmissionCompletion(RadioTransmissionSO transmission, UnityEvent newEvent)
+    {
+        transmissionCompletionEvent diaCompEvent = new transmissionCompletionEvent();
+        diaCompEvent.respectiveTransmission = transmission;
+        diaCompEvent.eventOnCompletion = newEvent;
+
+        transmissionCompletionEvents.Add(diaCompEvent);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private UnityEvent GetRespectiveEventForTransmission()
+    {
+        foreach (transmissionCompletionEvent compEvent in transmissionCompletionEvents)
+        {
+            if (compEvent.respectiveTransmission == currentRadioTransmission)
+            {
+                return compEvent.eventOnCompletion;
+            }
+        }
+        return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
 }
 
 //////////////////////////////////////////////////////////////////////////////

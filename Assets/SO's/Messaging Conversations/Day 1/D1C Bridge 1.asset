@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440333c5586acf44db3ff057db103969, type: 3}
+  m_Name: D1C Bridge 1
+  m_EditorClassIdentifier: 
+  personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
+  delayBetweenMessages: 1
+  lines:
+  - ': Thought so, just always wanted to speak to you is all. '
+  - "I\u2019m impressed how you were able to raise her so well alone, this is far
+    from a place that rewards being a single parent, especially with the pay you
+    get. "
+  - "My sympathy, I couldn\u2019t imagine how hard that must be on all fronts."
+  bridgeAfterMessages: 1
+  bridgeResponse1: "I\u2019m hardly the reason she\u2019s been able to achieve all
+    that she\u2019s done for herself, but thank you nonetheless."
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 11400000, guid: 7ccc6a6ea793b93499162be823a8b4eb, type: 2}
+  bridgedDialogue2: {fileID: 0}
+  documentAfterMessages: 0
+  documentMessageType: 0
+  document: {fileID: 0}
+  continueAfterDocument: 0
+  continuedDialogue: {fileID: 0}

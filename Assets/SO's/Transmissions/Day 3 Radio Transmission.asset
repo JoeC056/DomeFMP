@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d54e6da169902b4db8e974e80a3fe1a, type: 3}
+  m_Name: Day 3 Radio Transmission
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0.1
+  delayBetweenLines: 2
+  lines:
+  - AN UPDATE ON THE VIRUS
+  - 'Just this morning, we have confirmed a third symptom that may appear as a result
+    of the virus. '
+  - Infected individuals experience discolouration of the chest alongside previously
+    mentioned symptoms.
+  - However, if the discolouration of the chest is seen at the same time as a rash
+    on the arm, then neither of these symptoms are to be considered when determining
+    if an individual is infected.
+  - Any citizens who experience any symptoms that suggest that may be infected must
+    contact us via their computer messaging application immediately.
