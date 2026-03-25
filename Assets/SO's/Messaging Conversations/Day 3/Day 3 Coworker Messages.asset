@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440333c5586acf44db3ff057db103969, type: 3}
+  m_Name: Day 3 Coworker Messages
+  m_EditorClassIdentifier: 
+  personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
+  delayBetweenMessages: 0
+  lines:
+  - Day 3 Coworker
+  bridgeAfterMessages: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}
+  documentAfterMessages: 0
+  documentMessageType: 0
+  document: {fileID: 0}
+  continueAfterDocument: 0
+  continuedDialogue: {fileID: 0}

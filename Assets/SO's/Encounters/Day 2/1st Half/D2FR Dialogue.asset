@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D2FR Dialogue
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0.035
+  delayBetweenMessages: 1
+  dialogueHidesSubmit: 0
+  lines:
+  - You are (CHARACTER NAME) Yes?
+  - 'Father: Umm yes, why is that?'
+  - "Recruiter: I am a member of a faction of people who are suspicious of the government
+    and their actions, comprised of many like you, and our fellow member and founder
+    you would have met yesterday, that feel they remember the events of the government
+    \u201Csaving us\u201D from the other government differently to what we were taught."
+  - 'Recruiter: We need your help, whilst many of us still have access to our computers,
+    outside of messaging the functionality is missing. '
+  - 'Recruiter: We believe the government is planning something greater with their
+    actions, something that will affect everyone within the dome, but exactly how
+    we do not understand.'
+  - 'Recruiter: Only you and your coworkers have access to the internet, and you
+    are the only one who is old enough to remember the events enough to understand
+    our motives.'
+  - 'Recruiter: Would you be willing to help us?'
+  - 'Father: Sure'
+  - 'Recruiter: Thank you, we will be in touch'
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 11400000, guid: 944a1b9463753a543b58dd5aee1abb44, type: 2}
+  bridgedDialogue2: {fileID: 0}

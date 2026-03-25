@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D2FMD
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0.035
+  delayBetweenMessages: 1
+  dialogueHidesSubmit: 0
+  lines:
+  - "Faction Member: \u2026\u2026."
+  - "Faction Member: I heard from the other guy earlier that you\u2019re in"
+  - "Faction Member: Just so you know, I can\u2019t stand people like you, obsessed
+    with family, having it be the only damn thing you care about. "
+  - "Faction Member: Everyone in this fucking town is obsessed with it, you wanna
+    go out or do anything it\u2019s always meeting people, seeing friends."
+  - 'Faction Member:  Government would never dare to think of giving anything nice
+    to someone like me.'
+  - "Faction Member:  But whatever, to get you up to speed, I imagine you\u2019ve
+    heard those rumours going around, about the hiding of symptoms? "
+  - "Faction Member:  That\u2019s all, expect to be contacted later, we\u2019ll have
+    more for you to do."
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}

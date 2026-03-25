@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440333c5586acf44db3ff057db103969, type: 3}
+  m_Name: D0D Bridge 1
+  m_EditorClassIdentifier: 
+  personSpokenTo: {fileID: 11400000, guid: 08a894b9b170bd4408c3738b6b563b07, type: 2}
+  delayBetweenMessages: 2
+  lines:
+  - "I can never work as hard as you do though\u2026"
+  - You do too much for me please, I can always work part time to help pay for university
+  bridgeAfterMessages: 1
+  bridgeResponse1: "You\u2019re selflessness is just like that of your mother\u2019s,
+    I can only imagine how proud she\u2019d be seeing how you turned out. But don\u2019t
+    worry about me, I don\u2019t want to change a thing about my life. Have a good
+    nights rest, I look forward to seeing you when you\u2019re back."
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 11400000, guid: df62f84518a64e5439cfe3a5c092d8fd, type: 2}
+  bridgedDialogue2: {fileID: 0}
+  documentAfterMessages: 0
+  documentMessageType: 0
+  document: {fileID: 0}
+  continueAfterDocument: 0
+  continuedDialogue: {fileID: 0}

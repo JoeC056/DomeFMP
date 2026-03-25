@@ -10,7 +10,6 @@ public class GameplayApplicationMenu : MonoBehaviour
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject taskbar;
 
-    public bool gameplayAvailable;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -22,13 +21,11 @@ public class GameplayApplicationMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     public void StartGameplay()
     {
-        gameplayAvailable = false;
-
         gameplayUI.SetActive(true);
-        CheckToDisplayStartButton();
         minimizeButton.SetActive(false); 
         closeButton.SetActive(false);
-
+        GameManager.instance.StartDaysGameplay(); 
+        CheckToDisplayStartButton();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +40,14 @@ public class GameplayApplicationMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void CheckToDisplayStartButton()
     {
-        startButton.SetActive(gameplayAvailable);
+        if (GameManager.instance.gameplayInProgress || GameManager.instance.daysGameplayCompleted || !GameManager.instance.daysGameplayAvailable)
+        {
+            startButton.SetActive(false);
+        }
+        else
+        {
+            startButton.SetActive(true);
+        }    
     }
 }
 

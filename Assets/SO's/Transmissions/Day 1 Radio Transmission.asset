@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d54e6da169902b4db8e974e80a3fe1a, type: 3}
+  m_Name: Day 1 Radio Transmission
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0.05
+  delayBetweenLines: 2
+  lines:
+  - ALERT TO ALL CITIZENS
+  - As of a few moments ago, we have confirmed the arrival of an otherworldly presence
+    enveloping the surroundings of the dome.
+  - Currently, we do not understand the full scope of its capabilities but have identified
+    that it has the ability to infect exposed individuals with a virus the complications
+    of which we cannot yet identify.
+  - We have however discovered that the virus causes a rash that may appear on either
+    arm of the infected. Citizens who experience this complication must contact us
+    via their computer messaging application immediately.
+  - As of this moment, efforts are in progress to evacuate all citizens to a temporary
+    safe location until this issue is resolved. Information regarding such can be
+    found on your computer messages.
+  - Precautions are in place to prevent any exterior governing figures of greater
+    territories from intervening or proving as a threat to any citizens, so there
+    is no need for unrest among citizens regarding this topic.
+  - In order to fulfil the evacuation, all citizens are instructed to not leave their
+    home without proper authorization.
+  - I REPEAT, CITIZENS MAY NOT LEAVE THEIR HOME WITHOUT PROPER AUTHORIZATION.

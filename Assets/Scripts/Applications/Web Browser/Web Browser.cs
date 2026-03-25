@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -34,6 +35,14 @@ public class WebBrowser : MonoBehaviour
 
     //Instance of WebBrowser
     public static WebBrowser instance { get; private set; }
+
+    private struct onFirstLoadEvent
+    {
+        public WebsiteSO respectiveWebsite;
+        public UnityEvent eventOnLoad;
+    }
+
+    private List<onFirstLoadEvent> onFirstLoadEvents;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -75,7 +84,6 @@ public class WebBrowser : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     public void LoadWebsite(WebsiteSO websiteToLoad)
     {
-
         //First removes previous websites
         if (websiteContentParent.transform.childCount > 0)
         {
@@ -94,6 +102,18 @@ public class WebBrowser : MonoBehaviour
         urlText.text = websiteToLoad.websiteUrl;
         AssignRangeOfScrollbar(websiteToLoad.websiteContent);
 
+        if (GetRespectiveEventForWebsiteLoad(websiteToLoad) != null)
+        {
+            GetRespectiveEventForWebsiteLoad(websiteToLoad).Invoke();
+
+            foreach (onFirstLoadEvent loadEvent in onFirstLoadEvents)
+            {
+                if (loadEvent.respectiveWebsite == websiteToLoad)
+                {
+                    onFirstLoadEvents.Remove(loadEvent);
+                }
+            }
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -147,6 +167,29 @@ public class WebBrowser : MonoBehaviour
     public void UnlockNewWebsite(WebsiteSO websiteToUnlock)
     {
         unlockedWebsites.Add(websiteToUnlock);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AddEventOnWebsiteLoad(WebsiteSO website, UnityEvent newEvent)
+    {
+        onFirstLoadEvent diaCompEvent = new onFirstLoadEvent();
+        diaCompEvent.respectiveWebsite = website;
+        diaCompEvent.eventOnLoad = newEvent;
+
+        onFirstLoadEvents.Add(diaCompEvent);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private UnityEvent GetRespectiveEventForWebsiteLoad(WebsiteSO websiteLoaded)
+    {
+        foreach (onFirstLoadEvent loadEvent in onFirstLoadEvents)
+        {
+            if (loadEvent.respectiveWebsite == websiteLoaded)
+            {
+                return loadEvent.eventOnLoad;
+            }
+        }
+        return null;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

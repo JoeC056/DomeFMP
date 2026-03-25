@@ -43,6 +43,7 @@ public class Documents : MonoBehaviour
         Destroy(currentlyDisplayedDocument);
         currentlyDisplayedDocument = null;
         documentsToDisplay = null;
+        documentsToDisplay = new List<GameObject>();
         CheckToDisplayButtons();
     }
 

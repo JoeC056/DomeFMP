@@ -19,8 +19,8 @@ public class ComputerManager : MonoBehaviour
     public static ComputerManager instance { get; private set; }
 
     //Lists of open apps and apps with open windows
-    public List<ApplicationSO> openApplications;
-    public LinkedList<ApplicationSO> openWindowsStack;
+    [HideInInspector] public List<ApplicationSO> openApplications;
+    [HideInInspector] public LinkedList<ApplicationSO> openWindowsStack;
 
 
     //////////////////////////////////////////////////////////////////////////////////

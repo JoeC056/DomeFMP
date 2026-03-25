@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d54e6da169902b4db8e974e80a3fe1a, type: 3}
+  m_Name: Day 2 Radio Transmission
+  m_EditorClassIdentifier: 
+  delayBetweenCharacters: 0.1
+  delayBetweenLines: 2
+  lines:
+  - AN UPDATE ON THE VIRUS
+  - 'Just this morning, we have confirmed a second symptom that may appear as a result
+    of the virus. '
+  - Infected individuals experience severe back acne alongside the previously disclosed
+    rash on the arm.
+  - Any citizens who experience BOTH symptoms of back acne and a rash on the arm
+    must contact us via their computer messaging application immediately.
+  - Citizens who experience only 1 of 2 known symptoms are expected to not be infected,
+    and will not need to contact anyone regarding this issue.

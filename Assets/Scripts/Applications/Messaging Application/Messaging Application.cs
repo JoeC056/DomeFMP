@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class MessagingApplication : MonoBehaviour
@@ -33,7 +34,7 @@ public class MessagingApplication : MonoBehaviour
 
     //Currently used dialogue
     private MessagingDialogueSO currentDialogue;
-    public AvailableConversation respectiveAvailableConversation;
+    [HideInInspector] public AvailableConversation respectiveAvailableConversation;
     private List<string> remainingDialogueMessages;
 
 
@@ -55,11 +56,22 @@ public class MessagingApplication : MonoBehaviour
     //Most recent value of scrollbar
     private float lastScrollBarValue = 0;
 
+    private struct dialogueCompletionEvent
+    {
+        public MessagingDialogueSO respectiveDialogue;
+        public UnityEvent eventOnCompletion;
+    }
+
+    private List<dialogueCompletionEvent> dialogueCompletionEvents;
+
+    private UnityEvent eventOnDialogueCompletion;
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
         remainingDialogueMessages = new List<string>();
+        dialogueCompletionEvents = new List<dialogueCompletionEvent>(); 
 
         //Sets menu as default view
         UpdateMenuDisplay();
@@ -167,6 +179,15 @@ public class MessagingApplication : MonoBehaviour
 
             waiting = false;
 
+            if (eventOnDialogueCompletion == null)
+            {
+                eventOnDialogueCompletion = GetRespectiveEventForDialogue();
+            }
+            //else
+            //{
+            //    eventOnDialogueCompletion = null;
+            //}
+
             //foreach (Transform child in availableConversationsParent.transform)
             //{
             //    if (child.gameObject.GetComponent<AvailableConversation>().recipientOfThis == currentDialogue.personSpokenTo)
@@ -180,6 +201,8 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void EndDialogue()
     {
+        Debug.Log("Its the end");
+
         //if ((tempMessageHistory.Count == currentDialogue.lines.Count) || (currentDialogue.bridgeAfterMessages && (tempMessageHistory.Count == currentDialogue.lines.Count + 1)) || (currentDialogue.documentAfterMessages && (tempMessageHistory.Count == currentDialogue.lines.Count + 1))) 
 
         //Removes the dialogue from the list of avaiable dialogue
@@ -208,6 +231,12 @@ public class MessagingApplication : MonoBehaviour
         StopAllCoroutines();
         waiting = true;
         inConversation = false;
+
+        if (eventOnDialogueCompletion != null)
+        {
+            eventOnDialogueCompletion.Invoke();
+            eventOnDialogueCompletion = null;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -494,7 +523,48 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
+    public void AddNewMessagingRecipient (MessagingRecipientSO newRecipient)
+    {
+        availableMessagingRecipients.Add(newRecipient);
+        UpdateMenuDisplay();
+    }
 
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AddNewAvailableConversation(MessagingDialogueSO newConversation)
+    {
+        if (!availableMessagingRecipients.Contains(newConversation.personSpokenTo))
+        {
+            AddNewMessagingRecipient(newConversation.personSpokenTo);
+        }
+        availableConversations.Add(newConversation);
+
+        Debug.Log("Ding!");
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AddEventOnDialogueCompletion(MessagingDialogueSO dialogue, UnityEvent newEvent)
+    {
+        dialogueCompletionEvent diaCompEvent = new dialogueCompletionEvent();
+        diaCompEvent.respectiveDialogue = dialogue;
+        diaCompEvent.eventOnCompletion = newEvent;
+
+        dialogueCompletionEvents.Add(diaCompEvent);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private UnityEvent GetRespectiveEventForDialogue()
+    {
+        foreach (dialogueCompletionEvent compEvent in dialogueCompletionEvents)
+        {
+            if (compEvent.respectiveDialogue == currentDialogue)
+            {
+                return compEvent.eventOnCompletion;
+            }
+        }
+        return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
 }
 
 //////////////////////////////////////////////////////////////////////////////////
