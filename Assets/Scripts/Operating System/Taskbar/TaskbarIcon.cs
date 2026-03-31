@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class TaskbarIcon : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Image iconImage;
+
     [Header("Respective Application")]
 
     private ApplicationSO application;
@@ -32,6 +36,12 @@ public class TaskbarIcon : MonoBehaviour
     public void AssignApplicationRef(ApplicationSO appToAssign)
     {
         application = appToAssign;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AssignImage(Sprite imageToAssign)
+    {
+        iconImage.sprite = imageToAssign;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

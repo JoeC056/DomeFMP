@@ -1,10 +1,19 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class DesktopIcon : MonoBehaviour
 {
     [Header("Respective Application")]
     [SerializeField] private ApplicationSO application;
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        GetComponent<Image>().sprite = application.desktopIconImage;
+        GetComponentInChildren<TextMeshProUGUI>().text = application.applicationName;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void OnClick()
