@@ -21,6 +21,7 @@ public class ComputerManager : MonoBehaviour
     [HideInInspector] public List<ApplicationSO> openApplications;
     [HideInInspector] public LinkedList<ApplicationSO> openWindowsStack;
 
+    private bool waited;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -45,7 +46,9 @@ public class ComputerManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+
         UpdateDisplay();
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////

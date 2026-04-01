@@ -21,8 +21,8 @@ MonoBehaviour:
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
-  documentAfterMessages: 0
+  documentAfterMessages: 1
   documentMessageType: 0
-  document: {fileID: 0}
+  document: {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}

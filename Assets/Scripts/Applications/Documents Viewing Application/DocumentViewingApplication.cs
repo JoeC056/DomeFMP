@@ -1,10 +1,15 @@
+using TMPro;
 using UnityEngine;
 
 //////////////////////////////////////////////////////////////////////////////
 public class DocumentViewingApplication : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private TextMeshProUGUI appNameText;
+
     [Header("Parameters")]
     [SerializeField] private Vector2 documentSize;
+
 
     //Instance of DocumentViewingApplication
     public static DocumentViewingApplication instance { get; private set; }
@@ -21,6 +26,7 @@ public class DocumentViewingApplication : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -28,6 +34,7 @@ public class DocumentViewingApplication : MonoBehaviour
     {
         GameObject displayedDocument = Instantiate(newDocument, transform);
         displayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
+        appNameText.text = "Document Viewer (" + displayedDocument.name + ") READ-ONLY";
     }
 
     //////////////////////////////////////////////////////////////////////////////
