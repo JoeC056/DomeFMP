@@ -9,6 +9,7 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] private GameObject taskbar;
     [SerializeField] private GameObject applicationsParent;
     [SerializeField] private GameObject desktopIconsParent;
+    [SerializeField] private DocumentViewingApplication docViewingApp;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject emptyTaskbarIconPrefab;
@@ -21,7 +22,6 @@ public class ComputerManager : MonoBehaviour
     [HideInInspector] public List<ApplicationSO> openApplications;
     [HideInInspector] public LinkedList<ApplicationSO> openWindowsStack;
 
-    private bool waited;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -39,6 +39,7 @@ public class ComputerManager : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        docViewingApp.CreateSingleton();
 
         openWindowsStack = new LinkedList<ApplicationSO>();
     }
@@ -46,9 +47,7 @@ public class ComputerManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-
         UpdateDisplay();
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////

@@ -15,7 +15,7 @@ public class DocumentViewingApplication : MonoBehaviour
     public static DocumentViewingApplication instance { get; private set; }
 
     //////////////////////////////////////////////////////////////////////////////
-    private void Awake()
+    public void CreateSingleton()
     {
         //Ensures singleton nature of instance variable
         if (instance == null)
@@ -26,7 +26,6 @@ public class DocumentViewingApplication : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 
     //////////////////////////////////////////////////////////////////////////////
