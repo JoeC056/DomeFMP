@@ -15,6 +15,7 @@ public class WebBrowser : MonoBehaviour
     [SerializeField] private GameObject websiteContentParent;
     [SerializeField] private GameObject linkButtonsParent;
     [SerializeField] private Scrollbar scrollbar;
+    [SerializeField] private TextMeshProUGUI appNameText;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject linkButton;
@@ -62,6 +63,9 @@ public class WebBrowser : MonoBehaviour
         urlText.text = "";
 
         UpdateHomePage();
+
+        onFirstLoadEvents = new List<onFirstLoadEvent>();
+        appNameText.text = "Web Browser (Home Page)";
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +106,8 @@ public class WebBrowser : MonoBehaviour
         urlText.text = websiteToLoad.websiteUrl;
         AssignRangeOfScrollbar(websiteToLoad.websiteContent);
 
+        appNameText.text = "Web Browser (" + websiteToLoad.websiteName + ")";
+
         if (GetRespectiveEventForWebsiteLoad(websiteToLoad) != null)
         {
             GetRespectiveEventForWebsiteLoad(websiteToLoad).Invoke();
@@ -123,6 +129,7 @@ public class WebBrowser : MonoBehaviour
         homePageUI.SetActive(true);
         webPageUI.SetActive(false);
         urlText.text = "";
+        appNameText.text = "Web Browser (Home Page)";
     }
 
 

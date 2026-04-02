@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class MessagingApplication : MonoBehaviour
@@ -13,7 +13,9 @@ public class MessagingApplication : MonoBehaviour
     [SerializeField] private GameObject conversationUI;
     [SerializeField] private GameObject availableConversationsParent;
     [SerializeField] private GameObject messagesParent;
-    [SerializeField] private Scrollbar scrollbar;
+    [SerializeField] private Scrollbar menuScrollbar;
+    [SerializeField] private Scrollbar conversationScrollbar;
+    [SerializeField] private Image contactProfilePicture;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject availableConversationPrefab;
@@ -22,6 +24,7 @@ public class MessagingApplication : MonoBehaviour
     [SerializeField] private GameObject messageSelectPrefab;
     [SerializeField] private GameObject receivedDocumentMessagePrefab;
     [SerializeField] private GameObject sentDocumentMessagePrefab;
+    [SerializeField] private Sprite defaultProfilePicture;
 
     [Header("Parameters")]
     [SerializeField] private int maxRecipientsPerPage;
@@ -54,7 +57,8 @@ public class MessagingApplication : MonoBehaviour
     private bool waiting;
 
     //Most recent value of scrollbar
-    private float lastScrollBarValue = 0;
+    private float lastMenuScrollBarValue = 0;
+    private float lastConversationScrollBarValue = 0;
 
     private struct dialogueCompletionEvent
     {
@@ -71,7 +75,7 @@ public class MessagingApplication : MonoBehaviour
     private void Awake()
     {
         remainingDialogueMessages = new List<string>();
-        dialogueCompletionEvents = new List<dialogueCompletionEvent>(); 
+        dialogueCompletionEvents = new List<dialogueCompletionEvent>();
 
         //Sets menu as default view
         UpdateMenuDisplay();
@@ -90,10 +94,18 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
+    private void CheckNotificationIconToDisplay()
+    {
+        if (availableConversations.Count > 0)
+        {
+
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
     private void DisplayDialogue()
     {
         bool shouldScrollToBottom = false;
-        scrollbar.gameObject.SetActive(false);
 
         //Starts a new line if current one complete
         if (remainingDialogueMessages.Count > 0)
@@ -119,8 +131,8 @@ public class MessagingApplication : MonoBehaviour
                 option2 = Instantiate(messageSelectPrefab, messagesParent.transform);
                 option1.GetComponent<Message>().SetText(currentDialogue.bridgeResponse1);
                 option2.GetComponent<Message>().SetText(currentDialogue.bridgeResponse2);
-                option1.GetComponent<Button>().onClick.AddListener(() => SelectResponse(1));
-                option2.GetComponent<Button>().onClick.AddListener(() => SelectResponse(2));
+                option1.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(1));
+                option2.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(2));
 
                 shouldScrollToBottom = true;
             }
@@ -157,10 +169,17 @@ public class MessagingApplication : MonoBehaviour
         {
             EndDialogue();
         }
-        if (shouldScrollToBottom && scrollbar.gameObject.activeSelf)
-        {
-            scrollbar.value = 1;
-        }
+        //if (shouldScrollToBottom && conversationScrollbar.enabled)
+        //{
+        //    if (conversationScrollbar.value != 1)
+        //    {
+        //        conversationScrollbar.value = 1;
+        //    }
+        //    else
+        //    {
+        //        ScrollConversation();
+        //    }
+        //}
         AssignRangeOfScrollbarForMessagingUI();
     }
 
@@ -201,7 +220,6 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void EndDialogue()
     {
-        Debug.Log("Its the end");
 
         //if ((tempMessageHistory.Count == currentDialogue.lines.Count) || (currentDialogue.bridgeAfterMessages && (tempMessageHistory.Count == currentDialogue.lines.Count + 1)) || (currentDialogue.documentAfterMessages && (tempMessageHistory.Count == currentDialogue.lines.Count + 1))) 
 
@@ -263,6 +281,18 @@ public class MessagingApplication : MonoBehaviour
         AssignNewTranscriptDialogue(GetAvailableConversationForRecipient(messagingRecipient));
         AppendAllPreviousDialogue(respectiveAvailableConversation.messageHistory);
         tempMessageHistory = new List<GameObject>();
+
+        ResetConversationScrollbar();
+        conversationScrollbar.value = 1;
+        
+        if (messagingRecipient.profilePictureImage != null)
+        {
+            contactProfilePicture.sprite = messagingRecipient.profilePictureImage;
+        }
+        else
+        {
+            contactProfilePicture.sprite = defaultProfilePicture;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -331,6 +361,14 @@ public class MessagingApplication : MonoBehaviour
         foreach (MessagingRecipientSO recipientToAdd in recipientsToAdd)
         {
             GameObject availConvo = Instantiate(availableConversationPrefab, availableConversationsParent.transform);
+            if (recipientToAdd.profilePictureImage != null)
+            {
+                availConvo.GetComponent<AvailableConversation>().SetProfilePicture(recipientToAdd.profilePictureImage);
+            }
+            else
+            {
+                availConvo.GetComponent<AvailableConversation>().SetProfilePicture(defaultProfilePicture);
+            }
             availConvo.GetComponent<AvailableConversation>().AssignValues(recipientToAdd, this, GetAvailableConversationForRecipient(recipientToAdd));
             availConvo.GetComponent<Button>().onClick.AddListener(() => SelectRecipient(recipientToAdd));
         }
@@ -346,7 +384,7 @@ public class MessagingApplication : MonoBehaviour
             menuUI.SetActive(true);
             conversationUI.SetActive(false);
             remainingDialogueMessages.Clear();
-            ResetScrollbar();
+            ResetMenuScrollbar();
         }
     }
 
@@ -366,47 +404,48 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void AssignRangeOfScrollbarForMenu()
     {
-        ResetScrollbar();
+        //ResetMenuScrollbar();
 
         float prefabSize = availableConversationPrefab.GetComponent<RectTransform>().sizeDelta.y;
         float defaultSize = maxRecipientsPerPage * prefabSize;
         float currentSize = prefabSize * availableMessagingRecipients.Count;
 
 
-        //Displays scrollbar only if page large enough to warrant scrolling being required
+        //Sets size of scrollbar according to size of page
         if (currentSize > defaultSize)
         {
-            scrollbar.gameObject.SetActive(true);
+            menuScrollbar.size = (defaultSize / currentSize) * scrollbarSizeScalerValue;
+            menuScrollbar.enabled = true;
         }
         else
         {
-            scrollbar.gameObject.SetActive(false);
+            menuScrollbar.size = 1;
+            menuScrollbar.enabled = false;
         }
 
-        //Scales size of scrollbar to size of page 
-        scrollbar.size = (defaultSize / currentSize) * scrollbarSizeScalerValue;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void AssignRangeOfScrollbarForMessagingUI()
     {
+        //ResetConversationScrollbar();
+
         if (messagesParent.transform.childCount > 0)
         {
             float defaultSize = messagesParent.GetComponent<RectTransform>().sizeDelta.y;
             float currentSize = GetHeightOfMessagesParent();
 
-            //Displays scrollbar only if page large enough to warrant scrolling being required
+            //Sets size of scrollbar according to size of page
             if (currentSize > defaultSize)
             {
-                scrollbar.gameObject.SetActive(true);
+                conversationScrollbar.size = (defaultSize / currentSize) * scrollbarSizeScalerValue;
+                conversationScrollbar.enabled = true;
             }
             else
             {
-                scrollbar.gameObject.SetActive(false);
+                conversationScrollbar.size = 1;
+                conversationScrollbar.enabled = false;
             }
-
-            //Scales size of scrollbar to size of page 
-            scrollbar.size = (defaultSize / currentSize) * scrollbarSizeScalerValue;
         }
     }
 
@@ -427,8 +466,8 @@ public class MessagingApplication : MonoBehaviour
     private void ScrollMenu()
     {
         //Determines amount scrolled
-        float amountScrolled = scrollbar.value - lastScrollBarValue;
-        lastScrollBarValue = scrollbar.value;
+        float amountScrolled = menuScrollbar.value - lastMenuScrollBarValue;
+        lastMenuScrollBarValue = menuScrollbar.value;
 
         float prefabSize = availableConversationPrefab.GetComponent<RectTransform>().sizeDelta.y;
         float defaultSize = maxRecipientsPerPage * prefabSize;
@@ -441,23 +480,33 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void ScrollConversation()
     {
-        GetHeightOfMessagesParent();
-        //Determines amount scrolled
-        float amountScrolled = scrollbar.value - lastScrollBarValue;
-        lastScrollBarValue = scrollbar.value;
+        if (messagesParent.transform.childCount > 0)
+        {
+            GetHeightOfMessagesParent();
 
-        float defaultSize = messagesParent.GetComponent<RectTransform>().sizeDelta.y;
-        float currentSize = GetHeightOfMessagesParent();
+            //Determines amount scrolled
+            float amountScrolled = conversationScrollbar.value - lastConversationScrollBarValue;
+            lastConversationScrollBarValue = conversationScrollbar.value;
 
-        //Moves website contents based on amount scrolled 
-        messagesParent.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, ((currentSize - defaultSize)) * amountScrolled);
+            float defaultSize = messagesParent.GetComponent<RectTransform>().sizeDelta.y;
+            float currentSize = GetHeightOfMessagesParent();
+
+            //Moves website contents based on amount scrolled 
+            messagesParent.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, ((currentSize - defaultSize)) * amountScrolled);
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void ResetScrollbar()
+    private void ResetMenuScrollbar()
     {
-        lastScrollBarValue = 0;
-        scrollbar.value = 0;
+        lastMenuScrollBarValue = 0;
+        menuScrollbar.value = 0;
+    }
+    //////////////////////////////////////////////////////////////////////////////////
+    private void ResetConversationScrollbar()
+    {
+        lastConversationScrollBarValue = 0;
+        conversationScrollbar.value = 0;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -476,32 +525,45 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private float GetHeightOfMessagesParent()
     {
-        GameObject highestElement = null;
-        GameObject lowestElement = null;
-
-        foreach (Transform child in messagesParent.transform)
+        if (messagesParent.transform.childCount >= 3)
         {
-            if (highestElement == null)
+            GameObject highestElement = null;
+            GameObject lowestElement = null;
+
+            foreach (Transform child in messagesParent.transform)
             {
-                highestElement = child.gameObject;
-                lowestElement = child.gameObject;
-            }
-            else
-            {
-                if (child.transform.position.y > highestElement.transform.position.y)
+                if (highestElement == null)
                 {
                     highestElement = child.gameObject;
-                }
-                if (child.transform.position.y < lowestElement.transform.position.y)
-                {
                     lowestElement = child.gameObject;
                 }
+                else
+                {
+                    if (child.transform.position.y > highestElement.transform.position.y)
+                    {
+                        highestElement = child.gameObject;
+                    }
+                    if (child.transform.position.y < lowestElement.transform.position.y)
+                    {
+                        lowestElement = child.gameObject;
+                    }
+                }
             }
+
+            float highestPoint = highestElement.transform.position.y + (highestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
+            float lowestPoint = lowestElement.transform.position.y - (lowestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
+            if((highestPoint - lowestPoint) > 50)
+            {
+                Debug.Log(highestElement.name + highestPoint);
+                Debug.Log(lowestElement.name +  lowestPoint);
+            }
+            return highestPoint - lowestPoint;
+        }
+        else
+        {
+            return 0;
         }
 
-        float highestPoint = highestElement.transform.position.y + (highestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
-        float lowestPoint = lowestElement.transform.position.y - (lowestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
-        return highestPoint - lowestPoint;
 
     }
 
@@ -523,7 +585,7 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    public void AddNewMessagingRecipient (MessagingRecipientSO newRecipient)
+    public void AddNewMessagingRecipient(MessagingRecipientSO newRecipient)
     {
         availableMessagingRecipients.Add(newRecipient);
         UpdateMenuDisplay();

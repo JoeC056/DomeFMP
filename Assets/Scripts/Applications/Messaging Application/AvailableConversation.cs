@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class AvailableConversation : MonoBehaviour
@@ -12,6 +13,7 @@ public class AvailableConversation : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI mostRecentMessageText;
     [SerializeField] private GameObject notificationIcon;
+    [SerializeField] private Image profilePicture;
 
     //Currently used dialogue
     private MessagingDialogueSO currentDialogue;
@@ -66,6 +68,12 @@ public class AvailableConversation : MonoBehaviour
                 notificationIcon.SetActive(true);
             }
         }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void SetProfilePicture(Sprite pictureToSetTo)
+    {
+        profilePicture.sprite = pictureToSetTo;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

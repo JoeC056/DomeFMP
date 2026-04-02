@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class ComputerManager : MonoBehaviour
@@ -10,6 +9,7 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] private GameObject taskbar;
     [SerializeField] private GameObject applicationsParent;
     [SerializeField] private GameObject desktopIconsParent;
+    [SerializeField] private DocumentViewingApplication docViewingApp;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject emptyTaskbarIconPrefab;
@@ -39,6 +39,7 @@ public class ComputerManager : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
+        docViewingApp.CreateSingleton();
 
         openWindowsStack = new LinkedList<ApplicationSO>();
     }
@@ -116,8 +117,7 @@ public class ComputerManager : MonoBehaviour
         {
             GameObject appIcon = Instantiate(emptyTaskbarIconPrefab, taskbar.transform);
             appIcon.GetComponent<TaskbarIcon>().AssignApplicationRef(openApp);
-            appIcon.GetComponent<Image>().sprite = openApp.TaskbarIconImage;
-
+            appIcon.GetComponent<TaskbarIcon>().AssignImage(openApp.TaskbarIconImage);
         }
     }
 
@@ -156,6 +156,24 @@ public class ComputerManager : MonoBehaviour
         //Unfocuses the app, removing it from the stack
         openWindowsStack.Remove(application);
     }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void ReturnToDesktop()
+    {
+        LinkedList<ApplicationSO> openWindows = new LinkedList<ApplicationSO>();
+
+        foreach (ApplicationSO application in openWindowsStack)
+        {
+            openWindows.AddLast(application);
+        }
+
+        foreach (ApplicationSO application in openWindows)
+        {
+            UnfocusApplication(application);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
 
     //////////////////////////////////////////////////////////////////////////////////
 }

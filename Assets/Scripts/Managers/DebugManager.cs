@@ -3,10 +3,13 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////
 public class DebugManager : MonoBehaviour
 {
+    private void Start()
+    {
+        GameManager.instance.stateOfGame = GameManager.States.UsingComputer;
+    }
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        //GameManager.instance.stateOfGame = GameManager.States.UsingComputer;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             switch (GameManager.instance.dayNo) 

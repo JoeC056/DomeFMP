@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Encounter 4
   m_EditorClassIdentifier: 
+  encounterName: Test Name
+  dob: 01/01/1900
+  age: 67
+  sex: Male
+  height: 167
+  weight: 67
   render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
-  documents: []
+  documents:
+  - {fileID: 8399591597048759888, guid: 79b060ea481aca542a87d424f8ca9c97, type: 3}
   dialogue: {fileID: 11400000, guid: bb99dc6700d22c54185561435c7000fe, type: 2}
   correctAnswers: 0101
   entryShouldBeAllowed: 0

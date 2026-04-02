@@ -26,10 +26,17 @@ public class Documents : MonoBehaviour
 
 
     //////////////////////////////////////////////////////////////////////////////
-    public void AddNewDocumentsToDisplay(List<GameObject> newDocuments)
+    public void AddNewDocumentsToDisplay(List<GameObject> newDocuments, EncounterSO ownerOfDocuments)
     {
         //Assigns variable values for new documents
         documentsToDisplay = newDocuments;
+
+        //Updates documents to match respective encounter
+        foreach (GameObject document in documentsToDisplay)
+        {
+            document.GetComponent<GameplayDocument>().UpdateTextForEncounterData(ownerOfDocuments);
+        }
+
         indexOfCurrentlyDisplayedDocument = 0;
         currentlyDisplayedDocument = Instantiate(documentsToDisplay[indexOfCurrentlyDisplayedDocument], transform);
         currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
