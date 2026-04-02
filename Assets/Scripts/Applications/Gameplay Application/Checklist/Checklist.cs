@@ -2,9 +2,10 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.EventSystems;
 
 //////////////////////////////////////////////////////////////////////////////
-public class Checklist : MonoBehaviour
+public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("References")]
     [SerializeField] private GameObject textParent;
@@ -15,12 +16,44 @@ public class Checklist : MonoBehaviour
     [SerializeField] private GameObject textPrefab;
     [SerializeField] private GameObject checkboxPrefab;
 
+    [Header("Parameters")]
+    [SerializeField] private float amountToMoveYToExpandChecklist;
 
     [Header("Data")]
     private List<string> aspectsToCheck;
 
+    //Components
+    private RectTransform rectTransform;
 
+    private bool isExpanded;
 
+    //////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandChecklist);
+        isExpanded = false;
+    }
+    //////////////////////////////////////////////////////////////////////////////
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!isExpanded)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandChecklist);
+            isExpanded = true;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isExpanded)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandChecklist);
+            isExpanded = false;
+        }
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     public float CalculateScoreToAddBasedOnAnswers(List<bool> correctAnswers, bool entryShouldBeAllowed)

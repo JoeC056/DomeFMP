@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBetweenCharacters: 0.035
   delayBetweenMessages: 1
-  dialogueHidesSubmit: 1
+  dialogueHidesSubmit: 0
   lines:
   - 'Father: Information Please'
   - 'Faction Member: !'

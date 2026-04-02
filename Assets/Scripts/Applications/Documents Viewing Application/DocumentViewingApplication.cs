@@ -14,6 +14,8 @@ public class DocumentViewingApplication : MonoBehaviour
     //Instance of DocumentViewingApplication
     public static DocumentViewingApplication instance { get; private set; }
 
+    private GameObject displayedDocument;
+
     //////////////////////////////////////////////////////////////////////////////
     public void CreateSingleton()
     {
@@ -31,9 +33,17 @@ public class DocumentViewingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void UpdateViewedDocument(GameObject newDocument)
     {
-        GameObject displayedDocument = Instantiate(newDocument, transform);
+        if (displayedDocument != null)
+        {
+            Debug.Log("Goodbye");
+            Destroy(displayedDocument);
+            displayedDocument = null;
+        }
+        Debug.Log("Making a new one");
+        displayedDocument = Instantiate(newDocument, transform);
         displayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
         appNameText.text = "Document Viewer (" + displayedDocument.name + ") READ-ONLY";
+        Debug.Log("Made a new one");
     }
 
     //////////////////////////////////////////////////////////////////////////////

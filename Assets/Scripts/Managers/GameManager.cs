@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Documents documentsScript;
     [SerializeField] private SubmitButton submitButtonScript;
     [SerializeField] private GameplayApplicationMenu gameplayApplicationMenuScript;
+    [SerializeField] private TextMeshProUGUI encounterInfoText;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
@@ -262,13 +264,14 @@ public class GameManager : MonoBehaviour
         }
         if (encounter.documents.Count > 0)
         {
-            documentsScript.AddNewDocumentsToDisplay(encounter.documents);
+            documentsScript.AddNewDocumentsToDisplay(encounter.documents, encounter);
         }
 
         checklistScript.ResetList();
 
         currentEncounter = encounter;
         todaysEncounters.Remove(encounter);
+        encounterInfoText.text = encounter.encounterName + "\n" + encounter.height + "cm \n" + encounter.weight + "kg";
     }
 
     //////////////////////////////////////////////////////////////////////////////
