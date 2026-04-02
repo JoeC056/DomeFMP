@@ -15,12 +15,12 @@ public class DocumentMessage : MonoBehaviour
         if (!ComputerManager.instance.openApplications.Contains(docViewingApplication))
         {
             ComputerManager.instance.OpenApplication(docViewingApplication);
-            DocumentViewingApplication.instance.UpdateViewedDocument(respectiveDocument);
+            DocumentViewingApplication.instance.OpenDocument(respectiveDocument);
         }
         else
         {
             ComputerManager.instance.FocusApplication(docViewingApplication);
-            DocumentViewingApplication.instance.UpdateViewedDocument(respectiveDocument);
+            DocumentViewingApplication.instance.OpenDocument(respectiveDocument);
         }
     }
 
