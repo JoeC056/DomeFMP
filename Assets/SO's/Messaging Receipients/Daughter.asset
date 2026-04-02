@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Daughter
   m_EditorClassIdentifier: 
   recipientName: Daughter
+  profilePictureImage: {fileID: 21300000, guid: 08883b5c5e66a0b40863e5af1339c5ef, type: 3}

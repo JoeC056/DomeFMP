@@ -99,7 +99,6 @@ public class WebBrowser : MonoBehaviour
 
         //Scales position of website content with it's size 
         websiteSize = websiteToLoad.websiteContent.GetComponent<RectTransform>().sizeDelta.y;
-        Debug.Log(websiteSize);
         websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,-((websiteSize - defaultPageSize.y)/2));
 
         //Updates contents of webpage from respective link

@@ -15,6 +15,7 @@ public class ScrollbarHandle : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float pixelSize;
+    [SerializeField] private float scrollbarWidth;
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -26,24 +27,24 @@ public class ScrollbarHandle : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void UpdateBordersOfHandle()
     {
-        //Debug.Log(scrollbar.size);
-        //rightBorderSecondLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().sizeDelta.x, pixelSize);
+        //rightBorderSecondLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
+        //leftBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
+        //rightBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
+
+        //pixelSize *= 100;
+
         //rightBorderSecondLayer.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //bottomBorderSecondLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, transform.GetComponent<RectTransform>().sizeDelta.y);
         //bottomBorderSecondLayer.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //topBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, transform.GetComponent<RectTransform>().sizeDelta.y);
         //topBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //leftBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().sizeDelta.x, pixelSize);
         //leftBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //rightBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.GetComponent<RectTransform>().sizeDelta.x, pixelSize);
         //rightBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //bottomBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, transform.GetComponent<RectTransform>().sizeDelta.y);
-        //bottomBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
+        //bottomBorder.transform.GetComponent<RectTransform>().position =
+        //    GetComponent<RectTransform>().position;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
