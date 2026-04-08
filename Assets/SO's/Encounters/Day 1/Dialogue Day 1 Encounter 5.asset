@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: Dialogue Day 1 Encounter 5
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.05
-  delayBetweenMessages: 2
   dialogueHidesSubmit: 0
   lines:
-  - Im encounter 5
+  - "Oh.. You\u2019re the father of Romina, are you not? "
+  - "I\u2019ve just come from the orphanage myself, I\u2019ve been working as her
+    mentor, and oh if she hasn\u2019t been just the best!"
+  - Such a kind, gentle soul, she gets along amazingly with all the kids, and makes
+    them just as happy as she is.
+  - You must have raised her so well, we all appreciate her efforts so much.
+  - "You: That\u2019s\u2026. amazing to hear, thank you so much."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

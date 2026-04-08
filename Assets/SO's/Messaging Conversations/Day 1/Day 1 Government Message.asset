@@ -15,18 +15,18 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: b2bdc4a268c1abc4386e1f154d6bd7e5, type: 2}
   delayBetweenMessages: 1
   lines:
-  - Due to your current position and experience working as a border control agent,
-    you have been appointed with remotely handling the evacuation of citizens.
+  - Due to experience working as a border control agent, you have been appointed
+    with remotely handling citizen evacuations.
   - You are to inspect citizens for known symptoms of the virus and determine whether
-    to send them in for further screening accordingly. Your performance will be monitored,
-    and your pay will be adjusted accordingly, to ensure the evacuation of citizens
-    is done safely by all members of staff.
-  - 'Once all citizens have been safely evacuated, you will be given a notice of
-    when you and other border control agents are to be evacuated, and follow the
-    instructions given accordingly. '
+    to send them in for further screening.
+  - Your performance is monitored, and pay adjusted accordingly, to ensure the evacuation
+    of citizens is done safely by all workers.
+  - Once all citizens are evacuated, you will be given a notice of when you and other
+    border control agents are to be aswell
   - On your computer you may find an application that will be used for this remote
-    border control task. Please read all information present within it and begin
-    your shift as soon as possible.
+    border control task.
+  - Please read all information present within it and begin your shift as soon as
+    possible.
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
@@ -37,3 +37,5 @@ MonoBehaviour:
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 1
+  gameplayUpdate: 0

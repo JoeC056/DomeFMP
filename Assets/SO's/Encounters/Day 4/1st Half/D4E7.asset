@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
+  m_Name: D4E7
+  m_EditorClassIdentifier: 
+  encounterName: 'Sonia Chakarova '
+  dob: 30/05/1979
+  age: 20
+  sex: Female
+  height: 163
+  weight: 53
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: A-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:41
+  timeHeightChecked: 7:42
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
+  - {fileID: 8399591597048759888, guid: 85af6e1b0c94edd479f4797347d840de, type: 3}
+  dialogue: {fileID: 11400000, guid: 11d277c41b65a954cb4971e15af6f7d3, type: 2}
+  correctAnswers: 000000000000
+  entryShouldBeAllowed: 1
+  mandatory: 0
+  minEncountersBeforeAppearance: 0

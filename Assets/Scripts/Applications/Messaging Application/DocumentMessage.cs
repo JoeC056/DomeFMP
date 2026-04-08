@@ -15,6 +15,7 @@ public class DocumentMessage : MonoBehaviour
         if (!ComputerManager.instance.openApplications.Contains(docViewingApplication))
         {
             ComputerManager.instance.OpenApplication(docViewingApplication);
+            Debug.Log("Opening Document");
             DocumentViewingApplication.instance.OpenDocument(respectiveDocument);
         }
         else

@@ -4,24 +4,43 @@ using UnityEngine.Events;
 //////////////////////////////////////////////////////////////////////////////////
 public class FrontDoor : MonoBehaviour
 {
-    [Header("Parameters")]
-    public UnityEvent EventOnInteract;
+    [Header("References")]
+    [SerializeField] private PauseMenu pauseMenuScript;
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject endingChoiceSelectUI;
 
-    private bool canBeInteractedWith;
+
+    private InteractableObject interactableObjectScript;
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        interactableObjectScript = GetComponent<InteractableObject>();
+        interactableObjectScript.interactable = false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        if (!pauseMenuScript.paused)
+        {
+            endingChoiceSelectUI.SetActive(false);
+        }
+    }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void InteractWithDoor()
     {
-        if (canBeInteractedWith)
-        {
-            EventOnInteract.Invoke();
-        }
+        pauseMenuScript.TogglePause();
+        pauseMenuUI.SetActive(false);
+        endingChoiceSelectUI.SetActive(true);
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void ToggleInteractionAllowance()
     {
-        canBeInteractedWith = !canBeInteractedWith;
+        interactableObjectScript.interactable = !interactableObjectScript.interactable;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

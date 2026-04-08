@@ -12,8 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Encounter 1
   m_EditorClassIdentifier: 
-  render: {fileID: 3413487933729618471, guid: 054c44037d5997549b1ed12b196d71e0, type: 3}
-  documents: []
+  encounterName: Elena Ivanova
+  dob: 01/02/1979
+  age: 20
+  sex: Female
+  height: 165
+  weight: 57
+  changeInWeight: 0
+  virusTestResultsShowVirus: 1
+  bloodTestResultsShowVirus: 1
+  bloodType: A+
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 1
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
   dialogue: {fileID: 11400000, guid: f3fe41b20fb0d8e42b491fc7173febd2, type: 2}
   correctAnswers: 0100
   entryShouldBeAllowed: 0

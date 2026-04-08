@@ -12,24 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d54e6da169902b4db8e974e80a3fe1a, type: 3}
   m_Name: Day 1 Radio Transmission
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.05
-  delayBetweenLines: 2
+  mandatory: 1
   lines:
   - ALERT TO ALL CITIZENS
   - As of a few moments ago, we have confirmed the arrival of an otherworldly presence
     enveloping the surroundings of the dome.
-  - Currently, we do not understand the full scope of its capabilities but have identified
-    that it has the ability to infect exposed individuals with a virus the complications
-    of which we cannot yet identify.
-  - We have however discovered that the virus causes a rash that may appear on either
-    arm of the infected. Citizens who experience this complication must contact us
-    via their computer messaging application immediately.
+  - "We are yet to understand it\u2019s full capabilities, but have identified it
+    contains a virus exposed individuals may be affected by."
+  - The only currently known complication of this virus is a rash on either arm.
+    Citizens who experience this complication must contact us via their computer
+    messaging application immediately.
   - As of this moment, efforts are in progress to evacuate all citizens to a temporary
-    safe location until this issue is resolved. Information regarding such can be
-    found on your computer messages.
-  - Precautions are in place to prevent any exterior governing figures of greater
-    territories from intervening or proving as a threat to any citizens, so there
-    is no need for unrest among citizens regarding this topic.
-  - In order to fulfil the evacuation, all citizens are instructed to not leave their
-    home without proper authorization.
+    safe location until this issue is resolved, alongside precautions in place to
+    prevent exterior interference from governing figures of greater territories.
+  - Information regarding such can be found on your computer messages.
+  - To fulfil the evacuation, all citizens are instructed to not leave their home
+    without proper authorization.
   - I REPEAT, CITIZENS MAY NOT LEAVE THEIR HOME WITHOUT PROPER AUTHORIZATION.

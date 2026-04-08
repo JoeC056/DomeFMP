@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E10 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "I\u2019m kinda surprised, despite escalations things still seem\u2026. so under
+    control and organized."
+  - 'I mean, half the people have been evacuated no?  '
+  - "I guess that\u2019s all thanks to everyone\u2019s efforts, yours included"
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

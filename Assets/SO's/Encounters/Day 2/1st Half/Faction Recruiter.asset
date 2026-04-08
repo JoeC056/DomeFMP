@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Faction Recruiter
   m_EditorClassIdentifier: 
+  encounterName: Kaloyan Todorov
+  dob: 
+  age: 0
+  sex: 
+  height: 177
+  weight: 68
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: 
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
   render: {fileID: 0}
   documents: []
   dialogue: {fileID: 11400000, guid: a6f515697c430004aaa344378005764f, type: 2}

@@ -12,8 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Day 2 Encounter 4
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Diana Zlatanova
+  dob: 04/06/1965
+  age: 34
+  sex: Female
+  height: 163
+  weight: 54
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: O-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 1
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
   dialogue: {fileID: 11400000, guid: e7efc39f25319e5449a091a75b8a7838, type: 2}
   correctAnswers: 00000100
   entryShouldBeAllowed: 0

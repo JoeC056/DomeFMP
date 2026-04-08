@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E8 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - That should be everything.
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

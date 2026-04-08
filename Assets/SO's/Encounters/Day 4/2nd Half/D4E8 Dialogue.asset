@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D4E8 Dialogue
+  m_EditorClassIdentifier: 
+  dialogueHidesSubmit: 0
+  lines:
+  - H-hi mister!..... I think this should be everything you uh, need!
+  - 'You: You ok? You seem, stressed.'
+  - "Oh I\u2019m just\u2026 a bit scared, ever since my mum went through a few days
+    ago, I haven\u2019t even been able to contact her."
+  - "I really hope she\u2019s ok, shouldn\u2019t they have computers, or something
+    over there? Can\u2019t she just send me one message?"
+  - "I miss her\u2026.. I just, want to be with her again."
+  - "You: Once you pass through, I\u2019m sure she\u2019ll be waiting for you right
+    at the gates. Don\u2019t worry, you\u2019ll be ok."
+  - "T-thank you mister, you\u2019re very kind"
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}

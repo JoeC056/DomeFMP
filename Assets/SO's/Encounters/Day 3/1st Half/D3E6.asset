@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E6
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Viktoria Stoichkova
+  dob: 16/11/1979
+  age: 20
+  sex: Female
+  height: 160
+  weight: 53
+  changeInWeight: -0.5
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: AB+
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:39
+  timeHeightChecked: 7:40
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 1
+  chestDiscolouration: 1
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: 0881da450c334424a9580e19a372b08b, type: 2}
   correctAnswers: 0001010000
   entryShouldBeAllowed: 1

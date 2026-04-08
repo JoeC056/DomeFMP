@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E6 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - Y-yes my documents, here.
+  - "I\u2019m sorry, I\u2019ve just come down from working at the orphanage, and
+    the stress there among the children is kinda getting to me\u2026."
+  - "But, there\u2019s this lovely girl we\u2019ve had in for university placements,
+    and she\u2019s just been amazing with calming their nerves, helping them out,
+    making them feel safe."
+  - 'Just seeing it has helped me aswell, that and how smooth and easy this whole
+    evacuation process has been. '
+  - "So\u2026 yeah, thanks for your efforts, aswell."
+  - 'You: No problem, glad to hear your doing better.'
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

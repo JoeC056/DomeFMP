@@ -12,31 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: Dialogue Day 1 Faction Member
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.035
-  delayBetweenMessages: 1
-  dialogueHidesSubmit: 0
+  dialogueHidesSubmit: 1
   lines:
-  - 'Father: Information Please'
-  - 'Faction Member: !'
-  - "Faction Member: You\u2026 You\u2019re the father of that daughter of that everyone
-    just LOVES so much, aren\u2019t you?"
-  - "Faction Member: And you\u2019re sitting here wilfully helping this shitty, disgusting
-    government in their plan like some clueless fucking pawn."
-  - "Father: I-I\u2019m sorry I don\u2019t quite understand what you\u2019re say-"
-  - "Faction Member: I just can\u2019t stand you clueless, ignorant pieces of shit.
-    You\u2019re MY age, aren\u2019t you? "
-  - "Faction Member: You remember that day\u2026. maybe not fully, but well enough. "
-  - "Faction Member: All that bullshit they teach you about \u201COh we saved you
-    from the big bad evil government who took away your parents\u201D that\u2019s
-    not the FULL truth, IS IT? "
-  - 'Faction Member: THEY DID SOMETHING THAT DAY, SOMETHING YOU SHOULD NOT TRUST
-    THEM FOR, AND YOU FUCKING KNOW IT.'
-  - 'Father: ...'
-  - 'Faction Member: Whatever, nothing I say will get through your insufferably mindless
-    head anyway. Enjoy your fate, slave.'
+  - "Hey\u2026 You"
+  - "You\u2019re the father of that town favourite \u201Coh so beloved\u201D daughter,
+    aren\u2019t you?"
+  - "You\u2019re the same as me, yet you\u2019re sit here diligently carrying out
+    every last bidding of those government fucks like some pathetic, clueless pawn."
+  - "You: I-I\u2019m sorry I don\u2019t quite understand what you\u2019re say-"
+  - "Yeah, fancy that isn\u2019t it? You would never say shit about them, would you? 
+    After all, what have they ever done to you?"
+  - "We\u2019re the same age\u2026 you remember that day\u2026. maybe not fully,
+    but well enough. "
+  - "That day where they \u201Csaved us from the other government who kidnapped our
+    parents\u201D, you remember life before it, don\u2019t you? YOU KNOW THAT ISN\u2019T
+    THE FULL TRUTH, DON\u2019T YOU? SOMETHING ELSE HAPPENED, DIDN\u2019T IT?"
+  - "DEEP DOWN, YOU DON\u2019T TRUST THEM EITHER, DO YOU!?!?"
+  - 'You: ...'
+  - "\u2026. Fuck it, pointless trying to get through to one of you brainwashed slaves."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 0}
+  noOfMessagesBeforeGivingDocument: 0

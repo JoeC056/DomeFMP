@@ -10,6 +10,11 @@ public class Radio : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject radioUI;
     [SerializeField] private TextMeshProUGUI textSpace;
+    [SerializeField] private GameObject radioNotificationText;
+
+    [Header("Parameters")]
+    [SerializeField] private float delayBetweenCharacters;
+    [SerializeField] private float delayBetweenLines;
 
     [Header("Currently available transmission")]
     public RadioTransmissionSO currentRadioTransmission;
@@ -33,9 +38,14 @@ public class Radio : MonoBehaviour
 
     private List<transmissionCompletionEvent> transmissionCompletionEvents;
 
+    private InteractableObject interactableObjectScript;
+
+
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        interactableObjectScript = GetComponent<InteractableObject>();
+
         radioUI.SetActive(false);
         remainingTransmissionDialogue = new List<string>();
         transmissionCompletionEvents = new List<transmissionCompletionEvent>();
@@ -45,13 +55,27 @@ public class Radio : MonoBehaviour
     private void Update()
     {
         GetInput();
+        interactableObjectScript.interactable = (currentRadioTransmission != null);
+
         if (usingRadio && currentRadioTransmission != null)
         {
             DisplayTransmission();
         }
-        if (!radioAlreadyUsed && currentRadioTransmission != null)
+        if (currentRadioTransmission != null)
         {
-            PlayStaticSound();
+            if (currentRadioTransmission.mandatory || !radioAlreadyUsed && GameManager.instance.stateOfGame == GameManager.States.InGame)
+            {
+                radioNotificationText.SetActive(true);
+            }
+            else
+            {
+                radioNotificationText.SetActive(false);
+            }
+            //PlayStaticSound();
+        }
+        else
+        {
+            radioNotificationText.SetActive(false);
         }
     }
 
@@ -68,16 +92,15 @@ public class Radio : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void PickupRadio()
     {
-        if (currentRadioTransmission != null)
-        {
-            //Assigns values of variables
-            usingRadio = true;
-            radioUI.SetActive(true);
-            radioAlreadyUsed = true;
-            GameManager.instance.stateOfGame = GameManager.States.InteractingWithObject;
 
-            AssignTextToDisplay();
-        }
+        //Assigns values of variables
+        usingRadio = true;
+        radioUI.SetActive(true);
+        radioAlreadyUsed = true;
+        GameManager.instance.stateOfGame = GameManager.States.InteractingWithObject;
+
+        AssignTextToDisplay();
+
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -122,7 +145,7 @@ public class Radio : MonoBehaviour
                 remainingLineDialogue = remainingLineDialogue.Substring(1);
                 if (remainingLineDialogue != "")
                 {
-                    StartCoroutine(Wait(currentRadioTransmission.delayBetweenCharacters));
+                    StartCoroutine(Wait(delayBetweenCharacters));
                 }
             }
 
@@ -130,7 +153,7 @@ public class Radio : MonoBehaviour
         //Waits between lines if line already complete 
         else if (!waitedForThisLineAlready && !(remainingTransmissionDialogue.Count == 0))
         {
-            StartCoroutine(Wait(currentRadioTransmission.delayBetweenLines));
+            StartCoroutine(Wait(delayBetweenLines));
             waitedForThisLineAlready = true;
         }
 
@@ -155,7 +178,6 @@ public class Radio : MonoBehaviour
 
             if (GetRespectiveEventForTransmission() != null)
             {
-                Debug.Log("Im an event! Im happening!");
                 GetRespectiveEventForTransmission().Invoke();
             }
             currentRadioTransmission = null;

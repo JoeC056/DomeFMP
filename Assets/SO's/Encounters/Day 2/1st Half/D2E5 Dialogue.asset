@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E5 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "There\u2019s been some shady looking people going around lately, have you noticed?"
+  - "Or maybe, I\u2019m just overreacting\u2026 The government have got things all
+    under good control like usual\u2026."
+  - "It\u2019s probably nothing\u2026. Maybe just people I haven\u2019t met before."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 0}
+  noOfMessagesBeforeGivingDocument: 0

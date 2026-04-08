@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //////////////////////////////////////////////////////////////////////////////
 public class PauseMenu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject playerHUD;
 
-    private bool paused;
+    public bool paused;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -25,17 +27,18 @@ public class PauseMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void GetInput()
     {
-        if (Input.GetKeyDown(InputManager.instance.pauseKey))
+        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence))
         {
             TogglePause();
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    private void TogglePause()
+    public void TogglePause()
     {
         paused = !paused;
         pauseUI.SetActive(paused);
+        playerHUD.SetActive(!paused);
 
         //Checks whether to freeze time based on paused or not
         if (paused)
@@ -49,6 +52,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
 }
 
 //////////////////////////////////////////////////////////////////////////////

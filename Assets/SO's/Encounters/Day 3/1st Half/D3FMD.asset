@@ -12,27 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3FMD
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
-  dialogueHidesSubmit: 0
+  dialogueHidesSubmit: 1
   lines:
-  - 'Faction Member: You remember those rumours I was talking about? '
-  - 'Faction Member: The whole shit about the illness being part of some plan, I
-    got some dirt on the whole thing, here.'
-  - (Cult Plan Component Document)
-  - "Faction Member: We\u2019re thinking this entire town and society being cultivated
-    is another part of their plan, the scope of this whole thing seems to be insane. "
-  - 'Faction Member: You might be an even bigger pawn than I initially thought.'
-  - 'Father: Do you want your own family though? One you made yourself?'
-  - "Faction Member:  You able to read a character whatsoever? I can\u2019t stand
-    any of that bullshit that them and everyone else keeps bushing. Even if I did,
-    not a chance you\u2019d find anyone in here  who\u2019d want to be a part of
-    that family, so what\u2019s theres no point in even bothering."
-  - "Faction Member:  Anyways, that\u2019s all I\u2019ve got for now, I\u2019ll get
-    back to you later."
+  - 'You remember those rumours I was talking about? '
+  - The whole shit about the illness being part of some plan, I got some dirt on
+    the whole thing.
+  - "Managed to brute force onto a government website through some exploit on the
+    messages, couldn\u2019t get to the home page to view the rest of the site though."
+  - "We\u2019re thinking this entire town and way of life they\u2019ve created is
+    another part of their plan, built up under the noses of every clueless fool living
+    here."
+  - "Pretty good chance they never even bothered looking for our \u201Ckidnapped
+    parents\u201D, and it\u2019s real fucking rich of them to constantly go on about
+    \u201Ccreating our own family\u201D, shaming anyone who doesn\u2019t have one
+    when they won\u2019t even bring back the ones we deserved, and lost."
+  - 'You: I see. But, do you want your own family? One you created by yourself?'
+  - "I\u2019m not trying to look like another fucking slave to all that shit they
+    feed you, there\u2019s plenty of those lining the streets already. Even if I
+    did, not a chance you\u2019d find anyone in here who\u2019d want to be a part
+    of that family,  just a whole waste of time to even consider."
+  - "Anyways, that\u2019s all I\u2019ve got for now, I\u2019ll get back to you later."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 8399591597048759888, guid: a3c3cb5b4e9f2f145a50712db3a004c5, type: 3}
+  noOfMessagesBeforeGivingDocument: 3

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E2 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "To think I\u2019d actually be here at the immigration offices!"
+  - "God, I don\u2019t think I\u2019ve ever met anyone who\u2019s actually been able
+    to leave before, this is so cool!"
+  - "I\u2019m sure you\u2019re getting a lot more people than usual right?"
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

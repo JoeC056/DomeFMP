@@ -7,7 +7,8 @@ public class OpenableDoor : MonoBehaviour
     [SerializeField] private GameObject doorHingePivot;
 
     [Header("Parameters")]
-    [SerializeField] private float dir;
+    [SerializeField] private float startRot;
+    [SerializeField] private float openRot;
 
     private bool doorOpen;
 
@@ -17,11 +18,11 @@ public class OpenableDoor : MonoBehaviour
         doorOpen = !doorOpen;
         if (doorOpen)
         {
-            doorHingePivot.transform.Rotate(0,-90 * dir,0);
+            doorHingePivot.transform.rotation = Quaternion.Euler(0,openRot,0);
         }
         else
         {
-            doorHingePivot.transform.Rotate(0, 90 * dir, 0);
+            doorHingePivot.transform.rotation = Quaternion.Euler(0, startRot, 0);
         }
 
     }

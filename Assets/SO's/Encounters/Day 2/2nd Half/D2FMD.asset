@@ -12,25 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2FMD
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.035
-  delayBetweenMessages: 1
-  dialogueHidesSubmit: 0
+  dialogueHidesSubmit: 1
   lines:
-  - "Faction Member: \u2026\u2026."
-  - "Faction Member: I heard from the other guy earlier that you\u2019re in"
-  - "Faction Member: Just so you know, I can\u2019t stand people like you, obsessed
-    with family, having it be the only damn thing you care about. "
-  - "Faction Member: Everyone in this fucking town is obsessed with it, you wanna
-    go out or do anything it\u2019s always meeting people, seeing friends."
-  - 'Faction Member:  Government would never dare to think of giving anything nice
-    to someone like me.'
-  - "Faction Member:  But whatever, to get you up to speed, I imagine you\u2019ve
-    heard those rumours going around, about the hiding of symptoms? "
-  - "Faction Member:  That\u2019s all, expect to be contacted later, we\u2019ll have
-    more for you to do."
+  - "\u2026\u2026."
+  - "Heard from the other guy earlier that you\u2019re in."
+  - "Just so you know, I can\u2019t stand people like you, only thing you care about
+    is your little \u201Cfamily\u201D  and all the adjacent bullshit."
+  - "Everyone in this fucking town is obsessed with it, you wanna go out or do anything
+    ? It\u2019s always meeting people, seeing friends, finding a partner."
+  - Someone like me? Government gives nothing, no place, no purpose, no anything.
+  - ":  But whatever, you\u2019re willing to cooperate so you\u2019re better than
+    most at least"
+  - 'You: Oh, thank you. I hope I can be of good help.'
+  - Yeah, sure, great.
+  - "Anyways, to get you up to speed, I imagine you\u2019ve heard those rumours going
+    around, about the hiding of symptoms? "
+  - "Yeah, we\u2019ve got no hard proof yet, but I\u2019ll tell you one thing, it\u2019s
+    way worse than you think. "
+  - "All these bullshit decisions and announcements that they\u2019re making are
+    part of their greater plan, and it\u2019s not one that\u2019s benefitting anyone
+    living in this dome. They\u2019re hiding much more about all this than just symptoms."
+  - "That\u2019s all, expect messages later, we\u2019ll have things for you to do."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 0}
+  noOfMessagesBeforeGivingDocument: 0

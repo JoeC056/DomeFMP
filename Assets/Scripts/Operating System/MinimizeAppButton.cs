@@ -3,6 +3,9 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////////
 public class MinimizeAppButton : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transcript transcript;
+
     //Ref to application button minimizes
     private ApplicationSO application;
 
@@ -16,6 +19,14 @@ public class MinimizeAppButton : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     public void MinimizeApp()
     {
+        if (application.applicationName == "Document Viewing Application")
+        {
+            if (transcript.waitingToStopLookingAtDocument)
+            {
+                transcript.waitingToStopLookingAtDocument = false;
+            }
+        }
+
         ComputerManager.instance.UnfocusApplication(application);
     }
 

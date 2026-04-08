@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E3
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Anastasia Pavlova
+  dob: 04/06/1966
+  age: 33
+  sex: Female
+  height: 163
+  weight: 57
+  changeInWeight: -6
+  virusTestResultsShowVirus: 1
+  bloodTestResultsShowVirus: 1
+  bloodType: AB-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:33
+  timeHeightChecked: 7:34
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 1
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: 6fc03a536d91c8d45b4a1fb4b7181206, type: 2}
   correctAnswers: 0000010100
   entryShouldBeAllowed: 0

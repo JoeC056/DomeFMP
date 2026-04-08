@@ -13,22 +13,27 @@ MonoBehaviour:
   m_Name: Day 0 Daughter Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 08a894b9b170bd4408c3738b6b563b07, type: 2}
-  delayBetweenMessages: 2
+  delayBetweenMessages: 1
   lines:
-  - "Hi Dad!!! Sorry I couldn\u2019t make it home today, I need to stay away for
-    my university placements for the day. "
-  - "On the bright side, I\u2019ve been able to learn so much working at the orphanage
-    and being able to speak to everyone else working there, it\u2019s the best! "
-  - But how was your day at work?
-  bridgeAfterMessages: 1
-  bridgeResponse1: "Uneventful as unusual, but it\u2019s great to hear you\u2019re
-    still trying your best with university,  I\u2019m always proud seeing how far
-    you\u2019ve come."
+  - "Hi Dad! Sorry I\u2019m not home today, I\u2019m having to stay away for the
+    night for my university placements."
+  - 'Getting hands on experience working at the orphanage is so much fun though! '
+  - "Putting a smile on everyone\u2019s face is the best feeling, so it\u2019s not
+    all bad. Albeit a bit lonely\u2026"
+  - "But I hope work is going well for you, and I\u2019m always thankful for how
+    much you support me."
+  - "And just know that for all the effort you put in, I\u2019m doing my best to
+    put twice as much in."
+  - Have a good night, see you tomorrow!
+  bridgeAfterMessages: 0
+  bridgeResponse1: 
   bridgeResponse2: 
-  bridgedDialogue1: {fileID: 11400000, guid: 475f5ed37090210418a655c910283eda, type: 2}
+  bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
   documentAfterMessages: 0
   documentMessageType: 0
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 1
+  gameplayUpdate: 0

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -5,6 +6,7 @@ public class PlayerInteractionController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private TextMeshProUGUI textOnInteractHover;
 
     [Header("Parameters")]
     [SerializeField] private float interactionRange;
@@ -15,6 +17,17 @@ public class PlayerInteractionController : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        if (CheckForInteractableObject())
+        {
+            if (hit.transform.gameObject.GetComponent<InteractableObject>().textOnInteractionHover != "")
+            {
+                textOnInteractHover.text = "[E] " + hit.transform.gameObject.GetComponent<InteractableObject>().textOnInteractionHover;
+            }
+        }
+        else
+        {
+            textOnInteractHover.text = "";
+        }
         GetInput();
     }
 
@@ -32,9 +45,16 @@ public class PlayerInteractionController : MonoBehaviour
     private bool CheckForInteractableObject()
     {
         //Returns true if interactable object in range
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactionRange))
+        Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactionRange);
+        if (hit.transform != null)
         {
-            return true;
+            if (hit.transform.GetComponent<InteractableObject>() != null)
+            {
+                if (hit.transform.GetComponent<InteractableObject>().interactable)
+                {
+                    return true;
+                }
+            }
         }
         return false;
     }

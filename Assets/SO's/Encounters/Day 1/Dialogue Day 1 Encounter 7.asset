@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: Dialogue Day 1 Encounter 7
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.05
-  delayBetweenMessages: 2
   dialogueHidesSubmit: 0
   lines:
-  - Im encounter 7
+  - "Wasn\u2019t even too bad of a line to get tested or for this."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

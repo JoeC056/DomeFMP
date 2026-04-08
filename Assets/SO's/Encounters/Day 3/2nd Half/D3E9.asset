@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E9
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Martin Hristov
+  dob: 04/12/1966
+  age: 33
+  sex: Male
+  height: 167
+  weight: 60
+  changeInWeight: -0.5
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: A+
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:45
+  timeHeightChecked: 7:46
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: 515ca2fc6d084cd40881784a64ada30d, type: 2}
   correctAnswers: 0000000000
   entryShouldBeAllowed: 1

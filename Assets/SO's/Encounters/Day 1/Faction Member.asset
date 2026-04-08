@@ -12,10 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Faction Member
   m_EditorClassIdentifier: 
+  encounterName: Nikolai Stoyanov
+  dob: 
+  age: 0
+  sex: 
+  height: 163
+  weight: 50
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: 
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
   render: {fileID: 0}
   documents: []
   dialogue: {fileID: 11400000, guid: bcdd54f13695ea143b62efffa234ff95, type: 2}
   correctAnswers: 0000
-  entryShouldBeAllowed: 1
+  entryShouldBeAllowed: 0
   mandatory: 1
   minEncountersBeforeAppearance: 5

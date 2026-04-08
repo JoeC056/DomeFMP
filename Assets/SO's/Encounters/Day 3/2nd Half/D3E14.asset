@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E14
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Viktor Mihaylov
+  dob: 26/11/1981
+  age: 18
+  sex: Male
+  height: 179
+  weight: 66
+  changeInWeight: -9
+  virusTestResultsShowVirus: 1
+  bloodTestResultsShowVirus: 1
+  bloodType: A-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:56
+  timeHeightChecked: 7:57
+  alcoholIntoxication: 0
+  rash: 1
+  backAcne: 1
+  chestDiscolouration: 1
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: 19ebbbc5a8f305d40ba5d0de6d0786c6, type: 2}
   correctAnswers: 0101010100
   entryShouldBeAllowed: 0

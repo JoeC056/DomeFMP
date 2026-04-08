@@ -16,7 +16,7 @@ MonoBehaviour:
   delayBetweenMessages: 1
   lines:
   - Hey, you remember those rumours I mentioned yesterday?
-  - I got shown something interesting to do with it
+  - I got shown something interesting to do with it,m I'll send you a scan.
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
@@ -24,6 +24,6 @@ MonoBehaviour:
   bridgedDialogue2: {fileID: 0}
   documentAfterMessages: 1
   documentMessageType: 0
-  document: {fileID: 8399591597048759888, guid: 2457d69233c206249b6c29e37061863d, type: 3}
+  document: {fileID: 8399591597048759888, guid: a9cbca1d2f07b9f40b619774fdb9c60b, type: 3}
   continueAfterDocument: 1
   continuedDialogue: {fileID: 11400000, guid: 2c54d28e427bcbe4d96a14186041eb69, type: 2}

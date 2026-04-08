@@ -12,8 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Encounter 3
   m_EditorClassIdentifier: 
+  encounterName: Maria Dimitrova
+  dob: 22/09/1965
+  age: 34
+  sex: Female
+  height: 159
+  weight: 53
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: AB+
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 1
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
   render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
-  documents: []
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
   dialogue: {fileID: 11400000, guid: bbf75a1b5165fc24c991f070ca51b2e1, type: 2}
   correctAnswers: 0101
   entryShouldBeAllowed: 0

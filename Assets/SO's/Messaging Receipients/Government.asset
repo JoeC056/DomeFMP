@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Government
   m_EditorClassIdentifier: 
   recipientName: Government
+  profilePictureImage: {fileID: 21300000, guid: c8be37eadfb9a5640a8d85a8edd73461, type: 3}

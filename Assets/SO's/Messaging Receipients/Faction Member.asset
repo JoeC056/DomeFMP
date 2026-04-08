@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56abab79abb2ba45b70c35d44ba0c62, type: 3}
   m_Name: Faction Member
   m_EditorClassIdentifier: 
-  recipientName: Faction Member
+  recipientName: Nikolai
+  profilePictureImage: {fileID: 0}

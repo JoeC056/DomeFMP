@@ -27,10 +27,11 @@ public class CharacterRender : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    public void AddNewCharacterRender(GameObject newCharacterRender, float clampLowerBound, float clampUpperBound)
+    public void AddNewCharacterRender(GameObject newCharacterRender, float clampLowerBound, float clampUpperBound, EncounterSO respectiveEncounter)
     {
         //Instantiates new character render 
         renderedCharacter = Instantiate(newCharacterRender, characterRenderCamera.transform.position + renderedCharacterDisplacementFromCamera, Quaternion.Euler(renderedCharacterDefaultRot), characterRenderCamera.transform);
+        renderedCharacter.GetComponent<CharacterModel>().AssignVisibleSymptoms(respectiveEncounter);
         rotationClampUpperBound = clampUpperBound;
         rotationClampLowerBound = clampLowerBound;
         CheckToDisplayRotationButtons();
@@ -48,11 +49,8 @@ public class CharacterRender : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void RotateRender(float amountToRotateBy)
     {
-        //Clamps new rotation within given bounds
-        float newYRotation = Mathf.Clamp(renderedCharacter.transform.eulerAngles.y + amountToRotateBy,rotationClampLowerBound,rotationClampUpperBound);
-
-        //Updates rotation 
-        renderedCharacter.transform.rotation = Quaternion.Euler(renderedCharacter.transform.rotation.eulerAngles.x, newYRotation, renderedCharacter.transform.eulerAngles.z);
+        renderedCharacter.transform.Rotate(0, amountToRotateBy, 0);
+        ////Updates rotation 
     }
 
     //////////////////////////////////////////////////////////////////////////////

@@ -5,6 +5,15 @@ public class HUD : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject hud;
+    [SerializeField] private GameObject ending1UI;
+    [SerializeField] private GameObject ending2UI;
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        ending1UI.SetActive(false);
+        ending2UI.SetActive(false);
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()

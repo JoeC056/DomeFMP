@@ -15,14 +15,14 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
   delayBetweenMessages: 1
   lines:
-  - ': Thought so, just always wanted to speak to you is all. '
-  - "I\u2019m impressed how you were able to raise her so well alone, this is far
-    from a place that rewards being a single parent, especially with the pay you
-    get. "
-  - "My sympathy, I couldn\u2019t imagine how hard that must be on all fronts."
+  - "You too man, my wife works at the orphanage I heard she\u2019s been volunteering
+    at."
+  - "All I hear is her praise, good on you man. It\u2019s tough raising a kid alone
+    like that, the lower pay really sucks. "
+  - "And my condolences for your wife, losing her so early into your daughter\u2019s
+    life, I could never imagine something so awful."
   bridgeAfterMessages: 1
-  bridgeResponse1: "I\u2019m hardly the reason she\u2019s been able to achieve all
-    that she\u2019s done for herself, but thank you nonetheless."
+  bridgeResponse1: Thank you, it means a lot.
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 11400000, guid: 7ccc6a6ea793b93499162be823a8b4eb, type: 2}
   bridgedDialogue2: {fileID: 0}
@@ -31,3 +31,5 @@ MonoBehaviour:
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 0
+  gameplayUpdate: 0

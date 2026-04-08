@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: Dialogue Day 1 Encounter 4
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.05
-  delayBetweenMessages: 2
   dialogueHidesSubmit: 0
   lines:
-  - Im encounter 4
+  - You surprised? At how unafraid I am?
+  - "There\u2019s nothing to worry about man! You\u2019re here sorting us out, we\u2019re
+    all getting tested, safely evac\u2019ed."
+  - This illness has nothing on us!
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

@@ -8,7 +8,6 @@ public class MessagingDialogueSO : ScriptableObject
 {
     [Header("Parameters")]
     public MessagingRecipientSO personSpokenTo;
-    public float delayBetweenMessages;
 
     [Header("Content")]
     public List<string> lines;
@@ -26,6 +25,10 @@ public class MessagingDialogueSO : ScriptableObject
     public GameObject document;
     public bool continueAfterDocument;
     public MessagingDialogueSO continuedDialogue;
+
+    [Header("Mandatory Encounters")]
+    public bool mandatory;
+    public bool gameplayUpdate;
 
     public enum MessageType
     {

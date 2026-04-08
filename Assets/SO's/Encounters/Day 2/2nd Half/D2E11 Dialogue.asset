@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E11 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "Rash and back acne you\u2019re checking me for right?"
+  - "Don\u2019t you think these symptoms seem a bit, well, strange?"
+  - "Like, I\u2019m no doctor, but I really can\u2019t imagine the correlation there,
+    and those are the only symptoms we know about?"
+  - "Now it just sounds like I\u2019m speculating\u2026no,  if it was really something
+    \u201Cbad and awful they were hiding\u201D we wouldn\u2019t be getting evacuated
+    like this."
+  - "They\u2019re doing their best for our safety, just the same as you are."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

@@ -15,12 +15,12 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: fffd5ca6d861ad44982ff43836da8b39, type: 2}
   delayBetweenMessages: 0
   lines:
-  - "Got something you can take a look at, we\u2019ve had access to it before this
-    virus shit so I have no  want a report back on what you find."
-  - (DOME DEVELOPMENT INFORMATION WEBSITE)
-  - "Differs from what we were all taught, doesn\u2019t it?. \u201CWe built the dome
-    to protect you from the other \u201Cevil\u201D government\u201D"
-  - Feels like this entire society is built on lies
+  - "Got something you can look at, we\u2019ve had access to it before this whole
+    virus shit started so I don\u2019t need any reports back."
+  - Believe my guy from earlier showed you a document from it aswell.
+  - (Website Available In Your Web Browser)
+  - "Differs from what they fed us in school doesn\u2019t it? Wonder if anything
+    we learnt there had an ounce of truth at this point."
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
@@ -31,3 +31,5 @@ MonoBehaviour:
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 1
+  gameplayUpdate: 0

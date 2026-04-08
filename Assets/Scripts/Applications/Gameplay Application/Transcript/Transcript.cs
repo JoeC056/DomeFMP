@@ -11,6 +11,11 @@ public class Transcript : MonoBehaviour
     [SerializeField] private GameObject optionSelectButtonParent;
     [SerializeField] private GameObject submitButton;
 
+    [Header("Parameters")]
+    [SerializeField] private float delayBetweenCharacters;
+    [SerializeField] private float delayBetweenMessages;
+    [SerializeField] private float delayBeforeClearingTextForOverflow;
+
     //Currently used dialogue
     private Dialogue dialogue;
 
@@ -20,6 +25,10 @@ public class Transcript : MonoBehaviour
 
     //Whether waiting to ammend new text or start new line
     private bool waiting;
+
+    [HideInInspector] public bool waitingToStopLookingAtDocument;
+    private bool documentAlreadyViewed;
+    private int messagesPlayed;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -32,7 +41,7 @@ public class Transcript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        if (dialogue != null)
+        if (dialogue != null && !waitingToStopLookingAtDocument && !waiting)
         {
             DisplayDialogue();
         }
@@ -44,11 +53,17 @@ public class Transcript : MonoBehaviour
         //Appends dialogue to text box if remaining text in line and not waiting 
         if (remainingLineDialogue != "")
         {
+            if (textSpace.isTextOverflowing && !(textSpace.text == "") && !waiting)
+            {
+                Debug.Log("Overflow spotted");
+                StartCoroutine(ClearTextForOverflow());
+                remainingLineDialogue = remainingTranscriptDialogue[0];
+            }
             if (!waiting)
             {
                 textSpace.text += remainingLineDialogue[0];
                 remainingLineDialogue = remainingLineDialogue.Substring(1);
-                StartCoroutine(Wait(dialogue.delayBetweenCharacters));
+                StartCoroutine(Wait(delayBetweenCharacters));
             }
 
         }
@@ -57,14 +72,32 @@ public class Transcript : MonoBehaviour
         {
             if (!waiting)
             {
-                textSpace.text += "\n";
-                StartCoroutine(Wait(dialogue.delayBetweenMessages));
-                remainingTranscriptDialogue.Remove(remainingTranscriptDialogue[0]);
-                if (remainingTranscriptDialogue.Count > 0)
+
+                if (textSpace.isTextOverflowing)
                 {
-                    remainingLineDialogue = remainingTranscriptDialogue[0];
+                    StopAllCoroutines();
+                    StartCoroutine(ClearTextForOverflow());
                 }
+                else
+                {
+                    textSpace.text += "\n\n";
+                    StartCoroutine(Wait(delayBetweenMessages));
+                    remainingTranscriptDialogue.Remove(remainingTranscriptDialogue[0]);
+                    messagesPlayed++;
+                    if (dialogue.documentToGive != null && (messagesPlayed >= dialogue.noOfMessagesBeforeGivingDocument) && !documentAlreadyViewed)
+                    {
+                        Documents.instance.AddNewDocumentToDisplay(dialogue.documentToGive);
+                        waitingToStopLookingAtDocument = true;
+                        documentAlreadyViewed = true;
+                    }
+                    if (remainingTranscriptDialogue.Count > 0)
+                    {
+                        remainingLineDialogue = remainingTranscriptDialogue[0];
+                    }
+                }
+
             }
+
         }
         //Displays option select if reached end of dialogue and branching is present
         else if (!waiting && remainingTranscriptDialogue.Count <= 0 && dialogue.bridgeAfterDialogue)
@@ -87,11 +120,13 @@ public class Transcript : MonoBehaviour
 
         //Assigns variable values for new dialogue
         dialogue = newDialogue;
+        remainingTranscriptDialogue.Add("You: Information Please");
+
         foreach (string line in dialogue.lines)
         {
             remainingTranscriptDialogue.Add(line);
         }
-        remainingLineDialogue = dialogue.lines[0];
+        remainingLineDialogue = remainingTranscriptDialogue[0];
 
         //Hides dialogue button if dialogue requires it 
         if (dialogue.dialogueHidesSubmit)
@@ -100,6 +135,8 @@ public class Transcript : MonoBehaviour
         }
 
         waiting = false;
+        messagesPlayed = 0;
+        documentAlreadyViewed = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -129,10 +166,11 @@ public class Transcript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void EndDialogue()
     {
+        Debug.Log("Over");
         waiting = true;
         optionSelectButtonParent.SetActive(false);
         if (!submitButton.activeSelf)
-        { 
+        {
             submitButton.SetActive(true);
         }
     }
@@ -146,6 +184,17 @@ public class Transcript : MonoBehaviour
     }
 
     /////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator ClearTextForOverflow()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(delayBeforeClearingTextForOverflow);
+        textSpace.text = "";
+        Debug.Log("First im " + waiting);
+        waiting = false;
+        Debug.Log("Then im " + waiting);
+    }
+
 }
 
 /////////////////////////////////////////////////////////////////////////////////
+
