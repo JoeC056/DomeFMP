@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D4FMD
+  m_EditorClassIdentifier: 
+  dialogueHidesSubmit: 1
+  lines:
+  - You got the info from the website ready?
+  - "You: Oh, yes. I wrote down what I found on it. I\u2019ll send over a scan"
+  - "\u2026"
+  - "All those outsiders falling for their bullshit just as much as everyone here\u2026.
+    had they had even an ounce of ability to see through someone maybe we would\u2019ve
+    had some real help by now."
+  - "But the majority of it isn\u2019t surprising\u2026 just more fucking lies and
+    deception on every front."
+  - "\u2026.. Good work, either way. I\u2019ve got some more info to share."
+  - Confirms all those rumours I was going on about yesterday, probably links with
+    the spy investigation aswell.
+  - "Speaking of, he wants a word with you today. You\u2019ll see him at some point,
+    name will be like Ivan or something? pretty tall guy, and he\u2019ll be all friendly,
+    talkative, generic nobody kind of attitude everyone you\u2019ll encounter has."
+  - "Codeword FACTION and he\u2019ll drop the act give you the real him."
+  - 'You: Alright, thanks'
+  - "\u2026."
+  - "\u2026. Say"
+  - "\u2026. We were, in the same class at school, right? You were that friendless
+    kid, like 3rd or 4th row."
+  - "You: Huh? Oh, yeah. I was thinking of the same, weren\u2019t you the one at
+    the far back, that would always push everyone away?"
+  - "Well\u2026 maybe if one of those dumb fucking teachers actually tried helping
+    me I wouldn\u2019t have had to."
+  - "You: Well\u2026 maybe if one of those dumb fucking teachers actually tried helping
+    me I wouldn\u2019t have had to."
+  - "Why didn\u2019t THEY talk to ME about it? They were perfectly fine helping everyone
+    else weren\u2019t they?"
+  - "Whatever, just look out for the spy. This\u2019ll be through soon enough, and
+    I can finally show the world how disgusting this government really is."
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 8399591597048759888, guid: 4fe9c99e28226514aa2ed73f2866cc46, type: 3}
+  noOfMessagesBeforeGivingDocument: 7

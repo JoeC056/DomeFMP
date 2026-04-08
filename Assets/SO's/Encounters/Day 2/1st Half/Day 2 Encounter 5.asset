@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Day 2 Encounter 5
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Desislavia Radeva
+  dob: 07/08/1983
+  age: 16
+  sex: Female
+  height: 154
+  weight: 47
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: A-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 1
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 1
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: 39ff200b03a6bc24da32547eb18b0cda, type: 3}
   dialogue: {fileID: 11400000, guid: cce129f565c6fc542af57576341635a1, type: 2}
   correctAnswers: 00010000
   entryShouldBeAllowed: 1

@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Day 2 Encounter 8
   m_EditorClassIdentifier: 
-  render: {fileID: 3413487933729618471, guid: 054c44037d5997549b1ed12b196d71e0, type: 3}
-  documents: []
+  encounterName: Radka Yaneva
+  dob: 09/12/1980
+  age: 19
+  sex: Female
+  height: 160
+  weight: 53
+  changeInWeight: 0
+  virusTestResultsShowVirus: 1
+  bloodTestResultsShowVirus: 1
+  bloodType: O+
+  receivedVaccine1: 0
+  receivedVaccine2: 1
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: 39ff200b03a6bc24da32547eb18b0cda, type: 3}
   dialogue: {fileID: 11400000, guid: 08ea4aa44f995e14f8f4e35a0005a690, type: 2}
   correctAnswers: 0000000101
   entryShouldBeAllowed: 0

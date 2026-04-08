@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E9 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "There\u2019s that new symptom you gotta check me for right? Stuff on my chest
+    or whatever."
+  - "But, it not counting if I\u2019ve got the back acne aswell? Like what kind of
+    sense does that make!?"
+  - Is it indicative of some other kind of illness? But then what illness even causes
+    that? Is there another illness we need to be worrying about?
+  - "Maybe an outsider\u2019s got into the government\u2026 messing up their decisions,
+    god I hope I\u2019m just overreacting\u2026 "
+  - 
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

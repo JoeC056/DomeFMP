@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E6 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "What\u2019s up with all these weird people around?"
+  - "I swear some of them I\u2019ve never even seen before\u2026"
+  - "Won\u2019t they do something about them? Half the people are evacuated by now,
+    surely there\u2019s less on their plate\u2026"
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

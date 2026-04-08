@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9eea5dcc87b426468754b6e0958619d, type: 3}
+  m_Name: VirusInfo
+  m_EditorClassIdentifier: 
+  websiteName: Virus Info
+  websiteUrl: Govsite.com/Virus
+  websiteContent: {fileID: 8399591597048759888, guid: 9e7db3d6bb120894781f0130047d4700, type: 3}

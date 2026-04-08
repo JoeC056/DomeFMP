@@ -81,3 +81,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textDuration: 5
+  sirenSoundText: {fileID: 0}

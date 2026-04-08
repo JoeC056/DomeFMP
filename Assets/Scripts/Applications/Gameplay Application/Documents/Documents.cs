@@ -16,19 +16,50 @@ public class Documents : MonoBehaviour
     private GameObject currentlyDisplayedDocument;
     private int indexOfCurrentlyDisplayedDocument;
 
+    //Instance of GameManager
+    public static Documents instance { get; private set; }
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
         documentsToDisplay = new List<GameObject>();
         CheckToDisplayButtons();
+
+        //Ensures singleton nature of instance variable
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void AddNewDocumentToDisplay(GameObject newDocument)
+    {
+        //Assigns variable values for new documents
+        documentsToDisplay.Clear();
+        documentsToDisplay.Add(newDocument);
+
+
+        indexOfCurrentlyDisplayedDocument = 0;
+        currentlyDisplayedDocument = Instantiate(documentsToDisplay[indexOfCurrentlyDisplayedDocument], transform);
+        Vector2 sizeDelta = currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta;
+        currentlyDisplayedDocument.transform.localScale = new Vector3(documentSize.x / sizeDelta.x, documentSize.y / sizeDelta.y, 1);
+        CheckToDisplayButtons();
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     public void AddNewDocumentsToDisplay(List<GameObject> newDocuments, EncounterSO ownerOfDocuments)
     {
         //Assigns variable values for new documents
+        documentsToDisplay.Clear();
         documentsToDisplay = newDocuments;
 
         //Updates documents to match respective encounter
@@ -39,7 +70,8 @@ public class Documents : MonoBehaviour
 
         indexOfCurrentlyDisplayedDocument = 0;
         currentlyDisplayedDocument = Instantiate(documentsToDisplay[indexOfCurrentlyDisplayedDocument], transform);
-        currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
+        Vector2 sizeDelta = currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta;
+        currentlyDisplayedDocument.transform.localScale = new Vector3(documentSize.x / sizeDelta.x, documentSize.y / sizeDelta.y, 1);
         CheckToDisplayButtons();
     }
 
@@ -70,8 +102,13 @@ public class Documents : MonoBehaviour
             indexOfCurrentlyDisplayedDocument = Math.Clamp(indexOfCurrentlyDisplayedDocument + amountToIncrementListBy, 0, documentsToDisplay.Count - 1);
             Destroy(currentlyDisplayedDocument);
             currentlyDisplayedDocument = null;
-            currentlyDisplayedDocument = Instantiate(documentsToDisplay[indexOfCurrentlyDisplayedDocument], transform.position, Quaternion.Euler(Vector3.zero), transform);
-            currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
+            currentlyDisplayedDocument = Instantiate(documentsToDisplay[indexOfCurrentlyDisplayedDocument],transform);
+
+            Vector2 sizeDelta = currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta;
+            currentlyDisplayedDocument.transform.localScale = new Vector3(documentSize.x / sizeDelta.x, documentSize.y / sizeDelta.y, 1);
+            //currentlyDisplayedDocument.GetComponent<RectTransform>().sizeDelta = documentSize;
+
+            Debug.Log(indexOfCurrentlyDisplayedDocument);
         }
     }
 

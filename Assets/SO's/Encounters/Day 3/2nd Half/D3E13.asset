@@ -12,10 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E13
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Velislav Marinov
+  dob: 16/08/1967
+  age: 32
+  sex: Male
+  height: 181
+  weight: 68
+  changeInWeight: -0.5
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: O+
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:53
+  timeHeightChecked: 7:54
+  alcoholIntoxication: 0
+  rash: 1
+  backAcne: 1
+  chestDiscolouration: 1
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: fd483c266ffc33841b9a029583d449ea, type: 2}
   correctAnswers: 0101010000
-  entryShouldBeAllowed: 0
+  entryShouldBeAllowed: 1
   mandatory: 0
   minEncountersBeforeAppearance: 0

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
+  m_Name: D4FME
+  m_EditorClassIdentifier: 
+  encounterName: Nikolai Stoyanov
+  dob: 
+  age: 0
+  sex: 
+  height: 163
+  weight: 50
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: 
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 0}
+  documents: []
+  dialogue: {fileID: 11400000, guid: a9fa4a40c46d4c74d9d75bc16f3fa513, type: 2}
+  correctAnswers: 
+  entryShouldBeAllowed: 0
+  mandatory: 1
+  minEncountersBeforeAppearance: 5

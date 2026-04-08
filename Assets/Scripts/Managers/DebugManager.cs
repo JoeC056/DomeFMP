@@ -5,7 +5,7 @@ public class DebugManager : MonoBehaviour
 {
     private void Start()
     {
-        GameManager.instance.stateOfGame = GameManager.States.UsingComputer;
+        //GameManager.instance.stateOfGame = GameManager.States.UsingComputer;
     }
     //////////////////////////////////////////////////////////////////////////////
     private void Update()

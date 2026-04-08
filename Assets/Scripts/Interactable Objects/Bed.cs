@@ -3,22 +3,29 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////////
 public class Bed : MonoBehaviour
 {
-    private bool canBeInteractedWith;
+    private InteractableObject interactableObjectScript;
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        interactableObjectScript = GetComponent<InteractableObject>();
+        interactableObjectScript.interactable = false;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void Sleep()
     {
-        if (canBeInteractedWith)
+        if (interactableObjectScript.interactable)
         {
             GameManager.instance.ProgressToNextDay();
-            canBeInteractedWith = false;
+            interactableObjectScript.interactable = false;
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void EnableInteractionAllowance()
     {
-        canBeInteractedWith = true;
+        interactableObjectScript.interactable = true;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

@@ -58,6 +58,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4576701720103742503}
     m_Modifications:
+    - target: {fileID: 694372793025609722, guid: 13d2434438e0bb246bba58f087bcfaca, type: 3}
+      propertyPath: m_fontSize
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 694372793025609722, guid: 13d2434438e0bb246bba58f087bcfaca, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.035
+      objectReference: {fileID: 0}
     - target: {fileID: 3117778079873113843, guid: 13d2434438e0bb246bba58f087bcfaca, type: 3}
       propertyPath: m_Name
       value: Sent Document Message
@@ -128,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582008967174167969, guid: 13d2434438e0bb246bba58f087bcfaca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.118
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4582008967174167969, guid: 13d2434438e0bb246bba58f087bcfaca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

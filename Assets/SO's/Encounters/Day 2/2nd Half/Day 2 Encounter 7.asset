@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Day 2 Encounter 7
   m_EditorClassIdentifier: 
-  render: {fileID: 3413487933729618471, guid: 054c44037d5997549b1ed12b196d71e0, type: 3}
-  documents: []
+  encounterName: Stefan Nikolov
+  dob: 28/11/1966
+  age: 33
+  sex: Male
+  height: 175
+  weight: 66
+  changeInWeight: 0
+  virusTestResultsShowVirus: 1
+  bloodTestResultsShowVirus: 1
+  bloodType: AB-
+  receivedVaccine1: 1
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 1
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: 39ff200b03a6bc24da32547eb18b0cda, type: 3}
   dialogue: {fileID: 11400000, guid: 92c2d772d74bb994babcd89a21759901, type: 2}
   correctAnswers: 0001000001
   entryShouldBeAllowed: 0

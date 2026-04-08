@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E12 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - Seen some weird looking guys around today investigating stuff and just searching
+    around.
+  - "Why\u2019s nothing being done about them?"
+  - "I guess they\u2019re not a real problem if that\u2019s the case, there\u2019s
+    more important things to focus on right now anyways."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E1 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "All my family went through on the first day\u2026. So why have I had to wait
+    until now?"
+  - "I hope they\u2019re ok\u2026 I mean, what if they were just more at risk?"
+  - "Yeah, that\u2019s probably it, right? They just prioritized anyone at greater
+    risk, yeah, that makes sense."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

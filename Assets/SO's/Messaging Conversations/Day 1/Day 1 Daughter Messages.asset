@@ -15,20 +15,27 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: 08a894b9b170bd4408c3738b6b563b07, type: 2}
   delayBetweenMessages: 1
   lines:
-  - "Hi Dad, I\u2019m assuming you saw that radio transmission and know what\u2019s
-    going on but, I can\u2019t leave the place I\u2019m staying at for my placements
-    until I\u2019m evacuated, which I\u2019m apparently quite low priority on\u2026."
-  - "What\u2019s happening with you? Are you going today, tomorrow, later, will I
-    see you soon?"
-  bridgeAfterMessages: 1
-  bridgeResponse1: "I\u2019m being stationed on border control for evacuating citizens,
-    but remotely. Need to look out for symptoms, check to allow people through, all
-    stuff like that."
+  - "I assume you\u2019ve heard the radio broadcast already, but I wanted to let
+    you know that I\u2019m having to stay down here until my evac."
+  - "It looks like I\u2019m quite low priority on the list so I\u2019ll be still
+    be here for quite a few days at least"
+  - Oh and I did hear from one of wives of your coworkers at the orphanage about
+    the whole evacuation helping thing.
+  - Good luck with it! It sounds stressful, but  helping everyone stay safe from
+    this whole thing must be a good motivator!
+  - "It\u2019s good to see the government handling this in a way that\u2019s best
+    for keeping everyone as safe and confident as possible."
+  - "I don\u2019t have much time to talk anymore unfortunately, but do your best,
+    and I look forward to seeing you when this is all over!!"
+  bridgeAfterMessages: 0
+  bridgeResponse1: 
   bridgeResponse2: 
-  bridgedDialogue1: {fileID: 11400000, guid: e54b1fa585370af48ba8a57742ef1318, type: 2}
+  bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
   documentAfterMessages: 0
   documentMessageType: 0
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 0
+  gameplayUpdate: 0

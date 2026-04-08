@@ -15,11 +15,11 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
   delayBetweenMessages: 1
   lines:
-  - "Hi there, I don\u2019t believe we\u2019ve talked properly before, but I\u2019ve
-    been working alongside you a few years now. You\u2019re the father of (that daughter),
-    right?"
+  - "Hey man, don\u2019t think we\u2019ve talk before. I\u2019ve been working here
+    a few years now."
+  - "You\u2019re Romina\u2019s father, yeah?"
   bridgeAfterMessages: 1
-  bridgeResponse1: "Yes, why\u2019s that?"
+  bridgeResponse1: 'Yes, good to meet you '
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 11400000, guid: dddb231b4d2204b4f95fb0f3fe5cde59, type: 2}
   bridgedDialogue2: {fileID: 0}
@@ -28,3 +28,5 @@ MonoBehaviour:
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 1
+  gameplayUpdate: 0

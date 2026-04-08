@@ -6,9 +6,7 @@ using System.Collections.Generic;
 ////////////////////////////////////////////////////////////////////
 public class RadioTransmissionSO : ScriptableObject
 {
-    [Header("Parameters")]
-    public float delayBetweenCharacters;
-    public float delayBetweenLines;
+    public bool mandatory;
 
     [Header("Content")]
     public List<string> lines;

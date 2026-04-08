@@ -13,16 +13,25 @@ MonoBehaviour:
   m_Name: Day 3 Coworker Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
-  delayBetweenMessages: 0
   lines:
-  - Day 3 Coworker
+  - "Hey there, sorry I couldn\u2019t talk last night, I was spending it chatting
+    to the boss over messages. "
+  - "It\u2019s not often I get time to talk with friends nowadays, very little reason
+    for me to do so with the family and all!"
+  - But anyways, main thing I came to say, that same boss put me on to some crazy
+    evidence about those rumours the other day.
+  - Websites, documents the lot
+  - "I\u2019ve got one that seems immediately relevant for today, so I\u2019ll send
+    that over now"
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
-  documentAfterMessages: 0
+  documentAfterMessages: 1
   documentMessageType: 0
-  document: {fileID: 0}
-  continueAfterDocument: 0
-  continuedDialogue: {fileID: 0}
+  document: {fileID: 8399591597048759888, guid: e6792cf76b6ee254bad55e94694eccce, type: 3}
+  continueAfterDocument: 1
+  continuedDialogue: {fileID: 11400000, guid: 267cfa042357e1243bff0828c82fe5ee, type: 2}
+  mandatory: 0
+  gameplayUpdate: 0

@@ -314,6 +314,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textOnInteractionHover: View Calendar
 --- !u!114 &1974889349609160440
 MonoBehaviour:
   m_ObjectHideFlags: 0

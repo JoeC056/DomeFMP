@@ -16,18 +16,18 @@ MonoBehaviour:
   delayBetweenMessages: 1
   lines:
   - "Ah, that\u2019s a shame, I just had my wife and daughter go through this morning."
-  - "Lot of weight of my shoulders knowing their ok\u2026 "
-  - "It\u2019s all that\u2019s been weighing on my mind recently, but it\u2019s been
-    pushing me through work at the very least."
-  - "Awfully generic of me isn\u2019t it? Haha! Feels like everyone in this town
-    only cares about family at times, can\u2019t say I oppose that though."
-  bridgeAfterMessages: 1
-  bridgeResponse1: Haha, well thanks for the information, have a good day at work
+  - "Had me worried sick, it was the only thing on my mind lately, but it\u2019s
+    been pushing me through work at the very least."
+  - Well, have a good shift, and catch you later.
+  bridgeAfterMessages: 0
+  bridgeResponse1: 
   bridgeResponse2: 
-  bridgedDialogue1: {fileID: 11400000, guid: 3b3e0b2e849a0e34c865d9de79409d39, type: 2}
+  bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
   documentAfterMessages: 0
   documentMessageType: 0
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 0
+  gameplayUpdate: 0

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
+  m_Name: D4E1 Dialogue
+  m_EditorClassIdentifier: 
+  dialogueHidesSubmit: 0
+  lines:
+  - "H\u2026. heyy man! D-documents,uh, yeah I got them riiiiiiight\u2026.. here!"
+  - "You give \u2018em a goooood look through, like a REALLL good look through, yeah?"
+  - "Buuut I\u2019ll tell you ONE thing ok\u2026. just one thing, ONE thing. All
+    this shit makes NO sense man, I\u2019m telling you."
+  - "NONE of these signs of this illness thingy add up, wheres the link between ANY
+    of those \u201Csymptoms or whatever\u201D"
+  - And it came from those oogly boogly green aliens from the stars?
+  - "Those don\u2019t exist man! I tell you what, I thiiiink\u2026 They\u2019re making
+    something up! Everything is a liiiieeeee! "
+  - "Soooo in conclusion\u2026.. THEY\u2019RE THE REAL ALIENS!!!"
+  - "So you\u2019re working for aliens, man. That\u2019s fucckked up! You gotta stop
+    man\u2026.. "
+  bridgeAfterDialogue: 0
+  clearTranscriptUponBridging: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}

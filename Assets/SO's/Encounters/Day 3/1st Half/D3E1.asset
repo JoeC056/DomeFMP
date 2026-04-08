@@ -12,8 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: D3E1
   m_EditorClassIdentifier: 
-  render: {fileID: 0}
-  documents: []
+  encounterName: Bogdan Kamenov
+  dob: 24/08/1964
+  age: 35
+  sex: Male
+  height: 177
+  weight: 65
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: A-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 7:29
+  timeHeightChecked: 7:30
+  alcoholIntoxication: 0
+  rash: 1
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
+  documents:
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
+  - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   dialogue: {fileID: 11400000, guid: 2b3d8200974d55443b9208aa1d1fe5c5, type: 2}
   correctAnswers: 0100000001
   entryShouldBeAllowed: 0

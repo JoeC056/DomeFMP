@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Documents documentsScript;
     [SerializeField] private SubmitButton submitButtonScript;
     [SerializeField] private GameplayApplicationMenu gameplayApplicationMenuScript;
+    [SerializeField] private MessagingApplication messagingApplication;
     [SerializeField] private TextMeshProUGUI encounterInfoText;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Notes notes;
+    [SerializeField] private TextMeshProUGUI endOfDayRatingText;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
@@ -58,10 +62,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> day4AspectsToCheck;
     [SerializeField] private Vector2 day4CharacterRenderRotationClamp;
 
-    [Header("Day 2 2nd Half Gameplay")]
+    [Header("Day 4 2nd Half Gameplay")]
     [SerializeField] private List<EncounterSO> day4SecondHalfListOfAvailableEncounters;
     [SerializeField] private List<string> day4SecondHalfAspectsToCheck;
     [SerializeField] private Vector2 day4SecondHalfCharacterRenderRotationClamp;
+
+    [Header("Midway through day update messages")]
+    [SerializeField] private MessagingDialogueSO day2Half2Update;
+    [SerializeField] private MessagingDialogueSO day3Half2Update;
+    [SerializeField] private MessagingDialogueSO day4Half2Update;
+
+    [Header("Spawn points for each day")]
+    [SerializeField] private Vector3 bedSpawnPoint;
 
 
     //Instance of GameManager
@@ -73,7 +85,8 @@ public class GameManager : MonoBehaviour
         InGame,
         UsingComputer,
         InteractingWithObject,
-        InteractingWithCalendar
+        InteractingWithCalendar,
+        WatchingEndingSequence
     }
     [HideInInspector] public States stateOfGame;
     [HideInInspector] public bool gameplayInProgress;
@@ -91,13 +104,14 @@ public class GameManager : MonoBehaviour
 
     //Variables kept over the course of multiple days
     [HideInInspector] public float score;
+    private float maxScoreForDay;
     [HideInInspector] public int dayNo;
 
 
     //Event to be called on completion of day's gameplay 
     private UnityEvent eventOnDaysCompletion;
 
-    private bool secondHalfStarted;
+    [HideInInspector] public bool secondHalfStarted;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -111,7 +125,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        notes.CreateSingleton();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -158,7 +172,6 @@ public class GameManager : MonoBehaviour
             if (todaysEncounters.Count <= 0)
             {
                 EndDaysGameplay();
-                gameplayApplicationMenuScript.ConcludeGameplay();
             }
 
             //Checks whether there are remaining mandatory encounters to be had, and how far away they are
@@ -179,7 +192,6 @@ public class GameManager : MonoBehaviour
             else if (CheckForTimerExpired() && !CheckForRemainingMandatoryEncounters(todaysEncounters) && !currentEncounter.mandatory)
             {
                 EndDaysGameplay();
-                gameplayApplicationMenuScript.ConcludeGameplay();
             }
             //If more encounters to be had
             else
@@ -193,6 +205,8 @@ public class GameManager : MonoBehaviour
     private void AddScore()
     {
         score += checklistScript.CalculateScoreToAddBasedOnAnswers(currentEncounter.correctAnswers, currentEncounter.entryShouldBeAllowed);
+        maxScoreForDay += scoreForCorrectEntryAllowance + (scoreForCorrectReasonAllowance * todaysAspectsToCheck.Count);
+        endOfDayRatingText.text = ((score / maxScoreForDay)*100) + "%";
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -206,9 +220,17 @@ public class GameManager : MonoBehaviour
     {
         //Updates respective variables for new day
         daysGameplayAvailable = false;
+        daysGameplayCompleted = false;
         dayNo++;
         DaysProgressionManager.instance.daysProgressIndex = 0;
-        
+
+        Notes.instance.ResetSubNotes();
+        messagingApplication.ClearAvailableConversations();
+        AssignSpawnPointForDay();
+
+        score = 0;
+        maxScoreForDay = 0;
+
         //Progesses through first event of given day 
         switch (dayNo)
         {
@@ -228,6 +250,12 @@ public class GameManager : MonoBehaviour
                 DaysProgressionManager.instance.ProgressDay5();
                 break;
         }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void AssignSpawnPointForDay()
+    {
+        player.transform.position = bedSpawnPoint;
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -256,7 +284,7 @@ public class GameManager : MonoBehaviour
     {
         if (encounter.render != null)
         {
-            characterRenderScript.AddNewCharacterRender(encounter.render, todaysCharacterRenderRotationClamp.x, todaysCharacterRenderRotationClamp.y);
+            characterRenderScript.AddNewCharacterRender(encounter.render, todaysCharacterRenderRotationClamp.x, todaysCharacterRenderRotationClamp.y, encounter);
         }
         if (encounter.dialogue != null)
         {
@@ -264,14 +292,19 @@ public class GameManager : MonoBehaviour
         }
         if (encounter.documents.Count > 0)
         {
-            documentsScript.AddNewDocumentsToDisplay(encounter.documents, encounter);
+            List<GameObject> documents = new List<GameObject>();
+            foreach (GameObject document in encounter.documents)
+            {
+                documents.Add(document);
+            }
+            documentsScript.AddNewDocumentsToDisplay(documents, encounter);
         }
 
         checklistScript.ResetList();
 
         currentEncounter = encounter;
         todaysEncounters.Remove(encounter);
-        encounterInfoText.text = encounter.encounterName + "\n" + encounter.height + "cm \n" + encounter.weight + "kg";
+        encounterInfoText.text = encounter.encounterName + "\n" + encounter.height + "cm \n" + (encounter.weight + encounter.changeInWeight) + "kg";
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -340,12 +373,16 @@ public class GameManager : MonoBehaviour
         transcriptScript.ClearDialogue();
         documentsScript.RemoveCurrentDocuments();
         checklistScript.ResetList();
+        encounterInfoText.text = "";
     }
 
     //////////////////////////////////////////////////////////////////////////////
     private IEnumerator StartNewEncounterAfterDelay(float duration)
     {
-        AddScore();
+        if (!currentEncounter.mandatory)
+        {
+            AddScore();
+        }
         ClearUI();
         currentEncounter = null;
         yield return new WaitForSeconds(duration);
@@ -376,9 +413,11 @@ public class GameManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void EndDaysGameplay()
     {
+        ClearUI();
+
         if (dayNo >= 2 && !secondHalfStarted)
         {
-            ProgressToSecondHalf();
+            StartCoroutine(ProgressToSecondHalf());
         }
         else
         {
@@ -386,21 +425,37 @@ public class GameManager : MonoBehaviour
             gameplayInProgress = false;
             daysGameplayCompleted = true;
             eventOnDaysCompletion.Invoke();
+            gameplayApplicationMenuScript.ConcludeGameplay();
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    private void ProgressToSecondHalf()
+    private IEnumerator ProgressToSecondHalf()
     {
         secondHalfStarted = true;
 
         AssignGameplayValuesForDay();
         RandomizeEncounters();
 
+        yield return new WaitForSeconds(delayBetweenEncounters);
+
         checklistScript.ClearList();
         checklistScript.AssignNewChecklistValues(todaysAspectsToCheck);
 
         AssignValuesFromSO(todaysEncounters[0]);
+
+        if (dayNo == 2)
+        {
+            messagingApplication.AddNewAvailableConversation(day2Half2Update);
+        }
+        else if (dayNo == 3)
+        {
+            messagingApplication.AddNewAvailableConversation(day3Half2Update);
+        }
+        else if (dayNo == 4)
+        {
+            messagingApplication.AddNewAvailableConversation(day4Half2Update);
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////

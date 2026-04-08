@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E7 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "Ah, you\u2019re Aleksandar right? I believe we went to school together!"
+  - "My son was just recently at the orphanage visiting his friend when this whole
+    thing sorted, and he\u2019s been recently stressed being away from us\u2026."
+  - "But I heard your daughter\u2019s been working there and she\u2019s been helping
+    him with his worries so much, he\u2019s just constantly being messaging me about
+    all the things she\u2019s been teaching and doing with him."
+  - "You always did seem so quiet and gentle, it\u2019s no surprise she turned out
+    the way she did."
+  - You must be so proud
+  - 'You: Thank you, I am of course, yes.'
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

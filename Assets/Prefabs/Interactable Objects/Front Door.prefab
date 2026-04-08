@@ -137,6 +137,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  textOnInteractionHover: Choose Ending
 --- !u!114 &1464518790093989829
 MonoBehaviour:
   m_ObjectHideFlags: 0

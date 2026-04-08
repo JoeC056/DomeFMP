@@ -15,7 +15,11 @@ public class TaskbarIcon : MonoBehaviour
     public void OnClick()
     { 
         //If currently focused window == this app, unfocus. Otherwise, focus app
-        if (ComputerManager.instance.openWindowsStack.Count > 0)
+        if (application.applicationName == "Gameplay Application" && GameManager.instance.gameplayInProgress)
+        {
+            //Doesnt work
+        }
+        else if (ComputerManager.instance.openWindowsStack.Count > 0)
         {
             if (ComputerManager.instance.openWindowsStack.First.Value == application)
             {

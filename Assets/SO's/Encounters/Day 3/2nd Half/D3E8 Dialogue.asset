@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D3E8 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "I\u2019m seeing more and more of those shady people walking around I\u2019m
+    always hearing about\u2026."
+  - "And there was definitely one, I know everyone in this town yet, I\u2019ve never
+    seen him before, and he seemed to know everyone?"
+  - "Its kinda freaking me out\u2026."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

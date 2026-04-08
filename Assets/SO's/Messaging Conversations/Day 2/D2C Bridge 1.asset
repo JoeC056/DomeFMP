@@ -15,9 +15,9 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
   delayBetweenMessages: 1
   lines:
-  - "Weird isn\u2019t it?"
+  - Could always be fake I guess, but a pretty well made one if it is.
   bridgeAfterMessages: 1
-  bridgeResponse1: Yeah
+  bridgeResponse1: Sounds likely to be a fake
   bridgeResponse2: 
   bridgedDialogue1: {fileID: 11400000, guid: 9c07c89106ce6cc46b13a96c227d277f, type: 2}
   bridgedDialogue2: {fileID: 0}

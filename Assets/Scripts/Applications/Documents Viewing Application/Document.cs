@@ -12,12 +12,12 @@ public class Document : MonoBehaviour
         if (!ComputerManager.instance.openApplications.Contains(docViewingApplication))
         {
             ComputerManager.instance.OpenApplication(docViewingApplication);
-            DocumentViewingApplication.instance.UpdateViewedDocument(this.gameObject);
+            DocumentViewingApplication.instance.OpenDocument(this.gameObject);
         }
         else
         {
             ComputerManager.instance.FocusApplication(docViewingApplication);
-            DocumentViewingApplication.instance.UpdateViewedDocument(this.gameObject);
+            DocumentViewingApplication.instance.OpenDocument(this.gameObject);
         }
     }
 

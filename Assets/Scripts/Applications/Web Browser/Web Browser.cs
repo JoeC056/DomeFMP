@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -48,6 +47,18 @@ public class WebBrowser : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        //Disables website view by default
+        webPageUI.SetActive(false);
+        urlText.text = "";
+
+        UpdateHomePage();
+
+        appNameText.text = "Web Browser (Home Page)";
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void CreateSingleton()
+    {
         //Ensures singleton nature of instance variable
         if (instance == null)
         {
@@ -58,27 +69,31 @@ public class WebBrowser : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //Disables website view by default
-        webPageUI.SetActive(false);
-        urlText.text = "";
-
-        UpdateHomePage();
-
         onFirstLoadEvents = new List<onFirstLoadEvent>();
-        appNameText.text = "Web Browser (Home Page)";
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void UpdateHomePage()
     {
+        List<WebsiteSO> websitesToAdd = new List<WebsiteSO>();
+
+        foreach (WebsiteSO website in unlockedWebsites)
+        {
+            websitesToAdd.Add(website);
+        }
+
+
         //First removes previous buttons
         foreach (Transform child in linkButtonsParent.transform)
         {
-            Destroy(child);
+            if (unlockedWebsites.Contains(child.GetComponent<LinkButton>().websiteLinkedTo))
+            {
+                websitesToAdd.Remove(child.GetComponent<LinkButton>().websiteLinkedTo);
+            }
         }
 
         //Adds buttons for each available website 
-        foreach (WebsiteSO website in unlockedWebsites)
+        foreach (WebsiteSO website in websitesToAdd)
         {
             GameObject link = Instantiate(linkButton, linkButtonsParent.transform);
             link.GetComponent<LinkButton>().AssignWebsiteLinkedTo(website);
@@ -99,7 +114,7 @@ public class WebBrowser : MonoBehaviour
 
         //Scales position of website content with it's size 
         websiteSize = websiteToLoad.websiteContent.GetComponent<RectTransform>().sizeDelta.y;
-        websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,-((websiteSize - defaultPageSize.y)/2));
+        websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2));
 
         //Updates contents of webpage from respective link
         Instantiate(websiteToLoad.websiteContent, websiteContentParent.transform);
@@ -110,15 +125,20 @@ public class WebBrowser : MonoBehaviour
 
         if (GetRespectiveEventForWebsiteLoad(websiteToLoad) != null)
         {
+            Debug.Log("Event loaded");
             GetRespectiveEventForWebsiteLoad(websiteToLoad).Invoke();
+
+            onFirstLoadEvent loadEventToRemove = new onFirstLoadEvent();
 
             foreach (onFirstLoadEvent loadEvent in onFirstLoadEvents)
             {
                 if (loadEvent.respectiveWebsite == websiteToLoad)
                 {
-                    onFirstLoadEvents.Remove(loadEvent);
+                    loadEventToRemove = loadEvent;
                 }
             }
+
+            onFirstLoadEvents.Remove(loadEventToRemove);
         }
     }
 
@@ -164,7 +184,7 @@ public class WebBrowser : MonoBehaviour
     {
         //Determines amount scrolled
         float amountScrolled = scrollbar.value - lastScrollBarValue;
-        lastScrollBarValue = scrollbar.value;   
+        lastScrollBarValue = scrollbar.value;
 
         //Moves website contents based on amount scrolled 
         websiteContentParent.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, (websiteSize - defaultPageSize.y) * amountScrolled);
@@ -174,6 +194,7 @@ public class WebBrowser : MonoBehaviour
     public void UnlockNewWebsite(WebsiteSO websiteToUnlock)
     {
         unlockedWebsites.Add(websiteToUnlock);
+        UpdateHomePage();
     }
 
     //////////////////////////////////////////////////////////////////////////////////

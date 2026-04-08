@@ -12,30 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2FR Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.035
-  delayBetweenMessages: 1
-  dialogueHidesSubmit: 0
+  dialogueHidesSubmit: 1
   lines:
-  - You are (CHARACTER NAME) Yes?
-  - 'Father: Umm yes, why is that?'
-  - "Recruiter: I am a member of a faction of people who are suspicious of the government
-    and their actions, comprised of many like you, and our fellow member and founder
-    you would have met yesterday, that feel they remember the events of the government
-    \u201Csaving us\u201D from the other government differently to what we were taught."
-  - 'Recruiter: We need your help, whilst many of us still have access to our computers,
-    outside of messaging the functionality is missing. '
-  - 'Recruiter: We believe the government is planning something greater with their
-    actions, something that will affect everyone within the dome, but exactly how
-    we do not understand.'
-  - 'Recruiter: Only you and your coworkers have access to the internet, and you
-    are the only one who is old enough to remember the events enough to understand
-    our motives.'
-  - 'Recruiter: Would you be willing to help us?'
-  - 'Father: Sure'
-  - 'Recruiter: Thank you, we will be in touch'
+  - You are Aleksandar yes?
+  - 'You: Hmm? Oh umm, yes.'
+  - "Good to meet you. I\u2019m a member of a faction of people who believe there
+    is a greater identity to the government than what is presented to us. I believe
+    you should\u2019ve encountered our leader yesterday."
+  - "We are all people of similar age, what we believe as the only people old enough
+    to somewhat recall life before and the day of when we were \u201Csaved\u201D
+    by this government."
+  - "But it doesn\u2019t truly feel like we were \u201Csaved\u201D does it? There
+    was more to that day than they may describe, you have that feeling too, don\u2019t
+    you?"
+  - "You: : I\u2026.. Yes, I think I do. But, they\u2019ve never done any wrong to
+    any of us so is there really a need to conspire like this?"
+  - "If you know they are not to be trusted then it should be quite believable that
+    they may have a greater plan to this \u201Cevacuation\u201D ongoing. "
+  - Here, please look this over.
+  - "We were taught this dome was built to protect us from \u201Cother governments\u201D
+    no? It is clear there is much place that the government wishes to hide from us."
+  - Whatever this plan is, it is almost certain it would greatly impact not just
+    you, but also your daughter.
+  - And we need your help. All of us have lost access to our internet functionality,
+    being left only for you and your coworkers, you being the only one suitable to
+    work alongside us. Would you be willing?
+  - "You: Yes\u2026 I\u2019ll help you so long as it does not put my daughter in
+    any danger."
+  - Thank you, we will ensure that is the case. We will be in touch later.
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 
   bridgeResponse2: 
-  bridgedDialogue1: {fileID: 11400000, guid: 944a1b9463753a543b58dd5aee1abb44, type: 2}
+  bridgedDialogue1: {fileID: 0}
   bridgedDialogue2: {fileID: 0}
+  documentToGive: {fileID: 8399591597048759888, guid: 6389999f6d86bca478484be815e91c87, type: 3}
+  noOfMessagesBeforeGivingDocument: 9

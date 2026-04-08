@@ -3,6 +3,10 @@ using UnityEngine;
 //////////////////////////////////////////////////////////////////////////////
 public class ComputerInteractable : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private MessagingApplication messagingApplication;
+    [SerializeField] private WebBrowser webBrowser;
+
     private bool playerUsingComputer;
 
     //////////////////////////////////////////////////////////////////////////////
@@ -14,7 +18,7 @@ public class ComputerInteractable : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void GetInput()
     {
-        if (playerUsingComputer && Input.GetKeyDown(InputManager.instance.stopInteractingKey))
+        if (playerUsingComputer && Input.GetKeyDown(InputManager.instance.stopInteractingKey) && !GameManager.instance.gameplayInProgress && !messagingApplication.inConversation)
         {
             StopUsingComputer();
         }
@@ -31,7 +35,11 @@ public class ComputerInteractable : MonoBehaviour
     private void StopUsingComputer()
     {
         GameManager.instance.stateOfGame = GameManager.States.InGame;
+        messagingApplication.ReturnToMenu();
+        webBrowser.HomeButton();
+
         playerUsingComputer = false;
+
     }
 
     //////////////////////////////////////////////////////////////////////////////

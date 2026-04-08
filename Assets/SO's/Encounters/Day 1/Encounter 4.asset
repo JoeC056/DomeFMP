@@ -12,15 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c396d93b4e78e1b49a0151164c73e9e7, type: 3}
   m_Name: Encounter 4
   m_EditorClassIdentifier: 
-  encounterName: Test Name
-  dob: 01/01/1900
-  age: 67
+  encounterName: Georgi Pitrov
+  dob: 24/06/1964
+  age: 34
   sex: Male
-  height: 167
-  weight: 67
-  render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
+  height: 181
+  weight: 68
+  changeInWeight: 0
+  virusTestResultsShowVirus: 0
+  bloodTestResultsShowVirus: 0
+  bloodType: O-
+  receivedVaccine1: 0
+  receivedVaccine2: 0
+  receivedVaccine3: 0
+  timeWeightChecked: 
+  timeHeightChecked: 
+  alcoholIntoxication: 0
+  rash: 0
+  backAcne: 0
+  chestDiscolouration: 0
+  patterenedChestDiscolouration: 0
+  render: {fileID: 3413487933729618471, guid: dc94d0b49621cc54bb54baa1304e6483, type: 3}
   documents:
-  - {fileID: 8399591597048759888, guid: 79b060ea481aca542a87d424f8ca9c97, type: 3}
+  - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
   dialogue: {fileID: 11400000, guid: bb99dc6700d22c54185561435c7000fe, type: 2}
   correctAnswers: 0101
   entryShouldBeAllowed: 0

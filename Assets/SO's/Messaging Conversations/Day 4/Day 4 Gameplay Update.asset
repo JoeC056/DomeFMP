@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 440333c5586acf44db3ff057db103969, type: 3}
+  m_Name: Day 4 Gameplay Update
+  m_EditorClassIdentifier: 
+  personSpokenTo: {fileID: 11400000, guid: b2bdc4a268c1abc4386e1f154d6bd7e5, type: 2}
+  delayBetweenMessages: 0
+  lines:
+  - URGENT ALERT.  WE HAVE A CRUCIAL UPDATE ON THE VIRUS
+  - The arrival of young children passing through has now begun
+  - These children must have their own unique speech test document, are to be rejected
+    if they have the wrong one.
+  - Please continue to reject any infected individuals, considering these new findings.
+  bridgeAfterMessages: 0
+  bridgeResponse1: 
+  bridgeResponse2: 
+  bridgedDialogue1: {fileID: 0}
+  bridgedDialogue2: {fileID: 0}
+  documentAfterMessages: 0
+  documentMessageType: 0
+  document: {fileID: 0}
+  continueAfterDocument: 0
+  continuedDialogue: {fileID: 0}
+  mandatory: 1
+  gameplayUpdate: 1

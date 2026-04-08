@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -16,6 +17,11 @@ public class MessagingApplication : MonoBehaviour
     [SerializeField] private Scrollbar menuScrollbar;
     [SerializeField] private Scrollbar conversationScrollbar;
     [SerializeField] private Image contactProfilePicture;
+    [SerializeField] private GameObject gameplayUpdateMessageIcon;
+    [SerializeField] private GameObject notificationIcon;
+    [SerializeField] private GameObject mandatoryIcon;
+    [SerializeField] private GameObject notificationText;
+    [SerializeField] private TextMeshProUGUI contactNameText;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject availableConversationPrefab;
@@ -29,6 +35,8 @@ public class MessagingApplication : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private int maxRecipientsPerPage;
     [SerializeField] private float scrollbarSizeScalerValue;
+    [SerializeField] private float notificationTextDuration;
+    [SerializeField] private float delayBetweenMessages;
 
     [Header("Available Conversation Data")]
     public List<MessagingRecipientSO> availableMessagingRecipients;
@@ -51,7 +59,7 @@ public class MessagingApplication : MonoBehaviour
     private GameObject option1;
     private GameObject option2;
     private bool documentAlreadyDisplayed;
-    private bool inConversation;
+    public bool inConversation;
 
     //Whether waiting to ammend new text or start new line
     private bool waiting;
@@ -70,6 +78,10 @@ public class MessagingApplication : MonoBehaviour
 
     private UnityEvent eventOnDialogueCompletion;
 
+    //For the flash of the mandatory message icon
+    private bool goingToGreen;
+    private float currentIndex;
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -82,31 +94,100 @@ public class MessagingApplication : MonoBehaviour
         ReturnToMenu();
         ToggleVisibility();
 
+        notificationText.SetActive(false);
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        CheckNotificationIconsToDisplay();
+
         if (currentDialogue != null)
         {
             DisplayDialogue();
         }
+
+        UpdateConversationScrollPosition();
     }
 
+
     //////////////////////////////////////////////////////////////////////////////////
-    private void CheckNotificationIconToDisplay()
+    private void CheckNotificationIconsToDisplay()
     {
         if (availableConversations.Count > 0)
         {
+            bool mandatoryConversationPresent = false;
+            bool gameplayUpdateConversationPresent = false;
 
+            foreach (MessagingDialogueSO conversation in availableConversations)
+            {
+                if (conversation.mandatory)
+                {
+                    mandatoryConversationPresent = true;
+                }
+                if (conversation.gameplayUpdate && !messagingAppUI.activeSelf)
+                {
+                    gameplayUpdateConversationPresent = true;
+                }
+
+            }
+
+            gameplayUpdateMessageIcon.SetActive(gameplayUpdateConversationPresent);
+
+            if (mandatoryConversationPresent || gameplayUpdateConversationPresent)
+            {
+                mandatoryIcon.SetActive(true);
+                notificationIcon.SetActive(false);
+            }
+            else
+            {
+                mandatoryIcon.SetActive(false);
+                notificationIcon.SetActive(true);
+            }
         }
+        else
+        {
+            mandatoryIcon.SetActive(false);
+            notificationIcon.SetActive(false);
+            gameplayUpdateMessageIcon.SetActive(false);
+        }
+
+        if (mandatoryIcon.activeSelf)
+        {
+            FlashMandatoryIcon();
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void FlashMandatoryIcon()
+    {
+        if (goingToGreen)
+        {
+            currentIndex -= Time.deltaTime * 100;
+            if (currentIndex <= 0)
+            {
+                currentIndex = 0;
+                goingToGreen = false;
+            }
+        }
+        else
+        {
+            currentIndex += Time.deltaTime * 100;
+            if (currentIndex >= 123)
+            {
+                currentIndex = 123;
+                goingToGreen = true;
+            }
+        }
+
+        mandatoryIcon.GetComponent<Image>().color = new Color((0 + currentIndex) / 255, (255 - currentIndex) / 255, (0 + currentIndex) / 255, 1);
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void DisplayDialogue()
     {
-        bool shouldScrollToBottom = false;
-
         //Starts a new line if current one complete
         if (remainingDialogueMessages.Count > 0)
         {
@@ -115,10 +196,8 @@ public class MessagingApplication : MonoBehaviour
                 GameObject message = Instantiate(receivingMessagePrefab, messagesParent.transform);
                 message.GetComponent<Message>().SetText(remainingDialogueMessages[0]);
                 tempMessageHistory.Add(message);
-                StartCoroutine(Wait(currentDialogue.delayBetweenMessages));
+                StartCoroutine(Wait(delayBetweenMessages));
                 remainingDialogueMessages.Remove(remainingDialogueMessages[0]);
-
-                shouldScrollToBottom = true;
             }
         }
         //Displays option select if reached end of dialogue and branching is present
@@ -127,14 +206,19 @@ public class MessagingApplication : MonoBehaviour
             if (option1 == null && option2 == null)
             {
                 inConversation = true;
-                option1 = Instantiate(messageSelectPrefab, messagesParent.transform);
-                option2 = Instantiate(messageSelectPrefab, messagesParent.transform);
-                option1.GetComponent<Message>().SetText(currentDialogue.bridgeResponse1);
-                option2.GetComponent<Message>().SetText(currentDialogue.bridgeResponse2);
-                option1.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(1));
-                option2.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(2));
+                if (currentDialogue.bridgeResponse1 != "")
+                {
+                    option1 = Instantiate(messageSelectPrefab, messagesParent.transform);
+                    option1.GetComponent<Message>().SetText(currentDialogue.bridgeResponse1);
+                    option1.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(1));
+                }
 
-                shouldScrollToBottom = true;
+                if (currentDialogue.bridgeResponse2 != "")
+                {
+                    option2 = Instantiate(messageSelectPrefab, messagesParent.transform);
+                    option2.GetComponent<Message>().SetText(currentDialogue.bridgeResponse2);
+                    option2.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(2));
+                }
             }
         }
         //Displays the document to be sent after completing all messages if applicable
@@ -146,40 +230,28 @@ public class MessagingApplication : MonoBehaviour
                 GameObject message = Instantiate(receivedDocumentMessagePrefab, messagesParent.transform);
                 message.GetComponentInChildren<DocumentMessage>().respectiveDocument = currentDialogue.document;
                 message.GetComponent<Message>().SetText(currentDialogue.document.name);
-
-                shouldScrollToBottom = true;
+                tempMessageHistory.Add(message);
             }
             else if (currentDialogue.documentMessageType == MessagingDialogueSO.MessageType.Sent)
             {
                 GameObject message = Instantiate(sentDocumentMessagePrefab, messagesParent.transform);
                 message.GetComponentInChildren<DocumentMessage>().respectiveDocument = currentDialogue.document;
                 message.GetComponent<Message>().SetText(currentDialogue.document.name);
+                tempMessageHistory.Add(message);
 
-                shouldScrollToBottom = true;
             }
             documentAlreadyDisplayed = true;
         }
         //Continues after the documents completion if required
         else if (currentDialogue.documentAfterMessages && documentAlreadyDisplayed && currentDialogue.continueAfterDocument)
         {
-            AssignNewTranscriptDialogue(currentDialogue.bridgedDialogue1);
+            BridgeDialogue(currentDialogue.continuedDialogue);
         }
         //Ends dialogue if dialogue complete branching not present 
         else if (!currentDialogue.bridgeAfterMessages && ((currentDialogue.documentAfterMessages && documentAlreadyDisplayed) || (!currentDialogue.documentAfterMessages)))
         {
             EndDialogue();
         }
-        //if (shouldScrollToBottom && conversationScrollbar.enabled)
-        //{
-        //    if (conversationScrollbar.value != 1)
-        //    {
-        //        conversationScrollbar.value = 1;
-        //    }
-        //    else
-        //    {
-        //        ScrollConversation();
-        //    }
-        //}
         AssignRangeOfScrollbarForMessagingUI();
     }
 
@@ -190,6 +262,7 @@ public class MessagingApplication : MonoBehaviour
         if (newDialogue != currentDialogue)
         {
             currentDialogue = newDialogue;
+
             foreach (string line in currentDialogue.lines)
             {
                 remainingDialogueMessages.Add(line);
@@ -207,13 +280,13 @@ public class MessagingApplication : MonoBehaviour
             //    eventOnDialogueCompletion = null;
             //}
 
-            //foreach (Transform child in availableConversationsParent.transform)
-            //{
-            //    if (child.gameObject.GetComponent<AvailableConversation>().recipientOfThis == currentDialogue.personSpokenTo)
-            //    {
-            //        AppendAllPreviousDialogue(child.gameObject.GetComponent<AvailableConversation>().messageHistory);
-            //    }
-            //}
+            foreach (Transform child in availableConversationsParent.transform)
+            {
+                if (child.gameObject.GetComponent<AvailableConversation>().respectiveRecipient == currentDialogue.personSpokenTo)
+                {
+                    AppendAllPreviousDialogue(child.gameObject.GetComponent<AvailableConversation>().messageHistoryMessageTypes, child.gameObject.GetComponent<AvailableConversation>().messageHistoryMessageContents, child.gameObject.GetComponent<AvailableConversation>().messageDocumentsHistory);
+                }
+            }
         }
     }
 
@@ -240,7 +313,13 @@ public class MessagingApplication : MonoBehaviour
 
         foreach (GameObject message in tempMessageHistory)
         {
-            respectiveAvailableConversation.messageHistory.Add(message);
+            Debug.Log(respectiveAvailableConversation.GetComponent<AvailableConversation>().respectiveRecipient);
+            respectiveAvailableConversation.messageHistoryMessageTypes.Add(message.name);
+            respectiveAvailableConversation.messageHistoryMessageContents.Add(message.GetComponentInChildren<TextMeshProUGUI>().text);
+            if (message.GetComponentInChildren<DocumentMessage>() != null)
+            {
+                respectiveAvailableConversation.messageDocumentsHistory.Add(message.GetComponentInChildren<DocumentMessage>().respectiveDocument);
+            }
         }
 
 
@@ -258,33 +337,107 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void AppendAllPreviousDialogue(List<GameObject> history)
+    private void AppendAllPreviousDialogue(List<string> messageTypes, List<string> messageContents, List<GameObject> documents)
     {
         foreach (Transform child in messagesParent.transform)
         {
             Destroy(child.gameObject);
         }
-        foreach (GameObject message in history)
+        int index = 0;
+
+        for (int i = 0; i < messageTypes.Count; i++)
         {
-            GameObject previousMessage = Instantiate(message, messagesParent.transform);
-            previousMessage.GetComponentInChildren<Image>().enabled = true;
-            previousMessage.GetComponentInChildren<Message>().enabled = true;
+            GameObject previousMessage = null;
+            Debug.Log(messageTypes[i] + " " + receivedDocumentMessagePrefab.name);
+
+            if (messageTypes[i].Contains(receivingMessagePrefab.name))
+            {
+                previousMessage = Instantiate(receivingMessagePrefab, messagesParent.transform);
+            }
+            else if (messageTypes[i].Contains(sentMessagePrefab.name))
+            {
+                previousMessage = Instantiate(sentMessagePrefab, messagesParent.transform);
+            }
+            else if (messageTypes[i].Contains(receivedDocumentMessagePrefab.name))
+            {
+                previousMessage = Instantiate(receivedDocumentMessagePrefab, messagesParent.transform);
+                previousMessage.GetComponentInChildren<DocumentMessage>().respectiveDocument = documents[index];
+                index++;
+            }
+            else if (messageTypes[i].Contains(sentDocumentMessagePrefab.name))
+            {
+                previousMessage = Instantiate(sentDocumentMessagePrefab, messagesParent.transform);
+                previousMessage.GetComponentInChildren<DocumentMessage>().respectiveDocument = documents[index];
+                index++;
+            }
+            previousMessage.GetComponent<Message>().SetText(messageContents[i]);
         }
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void BridgeDialogue(MessagingDialogueSO dialogueToBridgeTo)
+    {
+        inConversation = true;
+
+        //Removes the previous dialogue from the list of avaiable dialogue
+        List<MessagingDialogueSO> toDelete = new List<MessagingDialogueSO>();
+        foreach (MessagingDialogueSO availConvo in availableConversations)
+        {
+            if (availConvo.personSpokenTo == currentDialogue.personSpokenTo)
+            {
+                toDelete.Add(availConvo);
+            }
+        }
+        foreach (MessagingDialogueSO deleteableThing in toDelete)
+        {
+            availableConversations.Remove(deleteableThing);
+
+        }
+
+
+        currentDialogue = dialogueToBridgeTo;
+
+        foreach (string line in currentDialogue.lines)
+        {
+            remainingDialogueMessages.Add(line);
+        }
+        documentAlreadyDisplayed = false;
+
+        waiting = false;
+
+        if (eventOnDialogueCompletion == null)
+        {
+            eventOnDialogueCompletion = GetRespectiveEventForDialogue();
+        }
+        //else
+        //{
+        //    eventOnDialogueCompletion = null;
+        //}
+
 
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void SelectRecipient(MessagingRecipientSO messagingRecipient)
     {
+        foreach (Transform child in availableConversationsParent.transform)
+        {
+            if (child.GetComponent<AvailableConversation>().respectiveRecipient == messagingRecipient)
+            {
+                respectiveAvailableConversation = child.GetComponent<AvailableConversation>();
+            }
+        }
         menuUI.SetActive(false);
         conversationUI.SetActive(true);
         AssignNewTranscriptDialogue(GetAvailableConversationForRecipient(messagingRecipient));
-        AppendAllPreviousDialogue(respectiveAvailableConversation.messageHistory);
+        AppendAllPreviousDialogue(respectiveAvailableConversation.gameObject.GetComponent<AvailableConversation>().messageHistoryMessageTypes, respectiveAvailableConversation.gameObject.GetComponent<AvailableConversation>().messageHistoryMessageContents, respectiveAvailableConversation.gameObject.GetComponent<AvailableConversation>().messageDocumentsHistory);
         tempMessageHistory = new List<GameObject>();
+
 
         ResetConversationScrollbar();
         conversationScrollbar.value = 1;
-        
+
         if (messagingRecipient.profilePictureImage != null)
         {
             contactProfilePicture.sprite = messagingRecipient.profilePictureImage;
@@ -293,6 +446,8 @@ public class MessagingApplication : MonoBehaviour
         {
             contactProfilePicture.sprite = defaultProfilePicture;
         }
+
+        contactNameText.text = messagingRecipient.recipientName;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -310,14 +465,14 @@ public class MessagingApplication : MonoBehaviour
             GameObject message = Instantiate(sentMessagePrefab, messagesParent.transform);
             message.GetComponent<Message>().SetText(currentDialogue.bridgeResponse1);
             tempMessageHistory.Add(message);
-            AssignNewTranscriptDialogue(currentDialogue.bridgedDialogue1);
+            BridgeDialogue(currentDialogue.bridgedDialogue1);
         }
         if (branchToGoTo == 2)
         {
             GameObject message = Instantiate(sentMessagePrefab, messagesParent.transform);
             message.GetComponent<Message>().SetText(currentDialogue.bridgeResponse2);
             tempMessageHistory.Add(message);
-            AssignNewTranscriptDialogue(currentDialogue.bridgedDialogue2);
+            BridgeDialogue(currentDialogue.bridgedDialogue2);
         }
     }
 
@@ -335,29 +490,19 @@ public class MessagingApplication : MonoBehaviour
             menuUI.GetComponent<RectTransform>().sizeDelta = new Vector2(menuUI.GetComponent<RectTransform>().sizeDelta.x, defaultUISpaceSize);
         }
 
-
-
-        //Removes any currently present available conversations in the menu that no longer have recipients
-        foreach (Transform child in availableConversationsParent.transform)
+        List<MessagingRecipientSO> recipientsToAdd = new List<MessagingRecipientSO>();
+        foreach (MessagingRecipientSO recipient in availableMessagingRecipients)
         {
-            if (!availableMessagingRecipients.Contains(child.gameObject.GetComponent<AvailableConversation>().recipientOfThis))
-            {
-                Destroy(child);
-            }
+            recipientsToAdd.Add(recipient);
         }
 
-        //Identifies all new recipients that must be added to the menu
-        List<MessagingRecipientSO> recipientsToAdd;
-        recipientsToAdd = availableMessagingRecipients;
         foreach (Transform child in availableConversationsParent.transform)
         {
-            if (recipientsToAdd.Contains(child.gameObject.GetComponent<AvailableConversation>().recipientOfThis))
+            if (availableMessagingRecipients.Contains(child.gameObject.GetComponent<AvailableConversation>().respectiveRecipient))
             {
-                recipientsToAdd.Remove(child.gameObject.GetComponent<AvailableConversation>().recipientOfThis);
+                recipientsToAdd.Remove(child.gameObject.GetComponent<AvailableConversation>().respectiveRecipient);
             }
         }
-
-        //Adds said recipients to the menu
         foreach (MessagingRecipientSO recipientToAdd in recipientsToAdd)
         {
             GameObject availConvo = Instantiate(availableConversationPrefab, availableConversationsParent.transform);
@@ -373,6 +518,9 @@ public class MessagingApplication : MonoBehaviour
             availConvo.GetComponent<Button>().onClick.AddListener(() => SelectRecipient(recipientToAdd));
         }
 
+
+        //Reorders the recipients in the menu 
+
         AssignRangeOfScrollbarForMenu();
     }
 
@@ -381,6 +529,7 @@ public class MessagingApplication : MonoBehaviour
     {
         if (!inConversation)
         {
+            currentDialogue = null;
             menuUI.SetActive(true);
             conversationUI.SetActive(false);
             remainingDialogueMessages.Clear();
@@ -456,10 +605,6 @@ public class MessagingApplication : MonoBehaviour
         {
             ScrollMenu();
         }
-        else
-        {
-            ScrollConversation();
-        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -478,23 +623,16 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void ScrollConversation()
+    private void UpdateConversationScrollPosition()
     {
-        if (messagesParent.transform.childCount > 0)
-        {
-            GetHeightOfMessagesParent();
+        float defaultSize = messagesParent.GetComponent<RectTransform>().sizeDelta.y;
+        float currentSize = GetHeightOfMessagesParent();
 
-            //Determines amount scrolled
-            float amountScrolled = conversationScrollbar.value - lastConversationScrollBarValue;
-            lastConversationScrollBarValue = conversationScrollbar.value;
+        //Moves website contents based on amount scrolled 
+        messagesParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, ((currentSize - defaultSize)) * conversationScrollbar.value);
 
-            float defaultSize = messagesParent.GetComponent<RectTransform>().sizeDelta.y;
-            float currentSize = GetHeightOfMessagesParent();
-
-            //Moves website contents based on amount scrolled 
-            messagesParent.GetComponent<RectTransform>().anchoredPosition += new Vector2(0, ((currentSize - defaultSize)) * amountScrolled);
-        }
     }
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void ResetMenuScrollbar()
@@ -525,7 +663,7 @@ public class MessagingApplication : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private float GetHeightOfMessagesParent()
     {
-        if (messagesParent.transform.childCount >= 3)
+        if (messagesParent.transform.childCount > 3)
         {
             GameObject highestElement = null;
             GameObject lowestElement = null;
@@ -539,32 +677,25 @@ public class MessagingApplication : MonoBehaviour
                 }
                 else
                 {
-                    if (child.transform.position.y > highestElement.transform.position.y)
+                    if (child.GetComponent<RectTransform>().anchoredPosition.y > highestElement.GetComponent<RectTransform>().anchoredPosition.y)
                     {
                         highestElement = child.gameObject;
                     }
-                    if (child.transform.position.y < lowestElement.transform.position.y)
+                    if (child.GetComponent<RectTransform>().anchoredPosition.y < lowestElement.GetComponent<RectTransform>().anchoredPosition.y)
                     {
                         lowestElement = child.gameObject;
                     }
                 }
             }
 
-            float highestPoint = highestElement.transform.position.y + (highestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
-            float lowestPoint = lowestElement.transform.position.y - (lowestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
-            if((highestPoint - lowestPoint) > 50)
-            {
-                Debug.Log(highestElement.name + highestPoint);
-                Debug.Log(lowestElement.name +  lowestPoint);
-            }
+            float highestPoint = highestElement.GetComponent<RectTransform>().anchoredPosition.y + (highestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
+            float lowestPoint = lowestElement.GetComponent<RectTransform>().anchoredPosition.y - (lowestElement.GetComponent<RectTransform>().sizeDelta.y / 2);
             return highestPoint - lowestPoint;
         }
         else
         {
-            return 0;
+            return 1;
         }
-
-
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -600,7 +731,7 @@ public class MessagingApplication : MonoBehaviour
         }
         availableConversations.Add(newConversation);
 
-        Debug.Log("Ding!");
+        StartCoroutine(PlayNotificationSound());
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -624,6 +755,20 @@ public class MessagingApplication : MonoBehaviour
             }
         }
         return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void ClearAvailableConversations()
+    {
+        availableConversations.Clear();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator PlayNotificationSound()
+    {
+        notificationText.SetActive(true);
+        yield return new WaitForSeconds(notificationTextDuration);
+        notificationText.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////////

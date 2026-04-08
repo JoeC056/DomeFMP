@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e03a19f8e5e124dad137a0f14696cc, type: 3}
   m_Name: D2E2 Dialogue
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0
-  delayBetweenMessages: 0
   dialogueHidesSubmit: 0
-  lines: []
+  lines:
+  - "I\u2019d always hoped for an opportunity to be able to travel to the outside,
+    but I guess I never caught the government\u2019s eye\u2026. "
+  - "I guess there are all those horrible people out there, so maybe it\u2019s for
+    the better. "
+  - Still kind of surreal actually being at the immigration booths!
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

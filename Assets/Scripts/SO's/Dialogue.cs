@@ -7,8 +7,6 @@ using System.Collections.Generic;
 public class Dialogue : ScriptableObject
 {
     [Header("Parameters")]
-    public float delayBetweenCharacters;
-    public float delayBetweenMessages;
     public bool dialogueHidesSubmit;
 
     [Header("Content")]
@@ -21,6 +19,10 @@ public class Dialogue : ScriptableObject
     public string bridgeResponse2;
     public Dialogue bridgedDialogue1;
     public Dialogue bridgedDialogue2;
+
+    [Header("For Dialogue with Documents")]
+    public GameObject documentToGive;
+    public int noOfMessagesBeforeGivingDocument;
 }
 
 ////////////////////////////////////////////////////////////////////
