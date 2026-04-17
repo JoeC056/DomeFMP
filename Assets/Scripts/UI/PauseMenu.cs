@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private SettingsMenu settingsMenu;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject playerHUD;
 
@@ -27,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void GetInput()
     {
-        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence))
+        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence) && !settingsMenu.inSubMenu)
         {
             TogglePause();
         }

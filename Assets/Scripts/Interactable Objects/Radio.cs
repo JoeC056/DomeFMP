@@ -10,11 +10,13 @@ public class Radio : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject radioUI;
     [SerializeField] private TextMeshProUGUI textSpace;
-    [SerializeField] private GameObject radioNotificationText;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenCharacters;
     [SerializeField] private float delayBetweenLines;
+
+    [Header("Sound Data")]
+    [SerializeField] private AudioClip staticSound;
 
     [Header("Currently available transmission")]
     public RadioTransmissionSO currentRadioTransmission;
@@ -40,11 +42,14 @@ public class Radio : MonoBehaviour
 
     private InteractableObject interactableObjectScript;
 
+    private AudioSource audioSource;
+
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
         interactableObjectScript = GetComponent<InteractableObject>();
+        audioSource = GetComponent<AudioSource>();
 
         radioUI.SetActive(false);
         remainingTransmissionDialogue = new List<string>();
@@ -57,6 +62,8 @@ public class Radio : MonoBehaviour
         GetInput();
         interactableObjectScript.interactable = (currentRadioTransmission != null);
 
+        bool shouldPlayStatic;
+
         if (usingRadio && currentRadioTransmission != null)
         {
             DisplayTransmission();
@@ -65,18 +72,19 @@ public class Radio : MonoBehaviour
         {
             if (currentRadioTransmission.mandatory || !radioAlreadyUsed && GameManager.instance.stateOfGame == GameManager.States.InGame)
             {
-                radioNotificationText.SetActive(true);
+                shouldPlayStatic = true;
             }
             else
             {
-                radioNotificationText.SetActive(false);
+                shouldPlayStatic = false;
             }
-            //PlayStaticSound();
         }
         else
         {
-            radioNotificationText.SetActive(false);
+            shouldPlayStatic = false;
         }
+
+        CheckSoundToPlay(shouldPlayStatic);
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -194,9 +202,23 @@ public class Radio : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    private void PlayStaticSound()
+    private void CheckSoundToPlay(bool playStatic)
     {
-        Debug.Log("Bzzzzz");
+        if (playStatic && !usingRadio)
+        {
+            if (audioSource.clip != staticSound)
+            {
+                audioSource.clip = staticSound;
+                audioSource.Play();
+                audioSource.loop = true;
+            }
+        }
+        else
+        {
+            audioSource.clip = null;
+            audioSource.Stop();
+            audioSource.loop = false;
+        }
     }
 
 
