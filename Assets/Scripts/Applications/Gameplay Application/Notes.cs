@@ -24,10 +24,13 @@ public class Notes : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private string day4SubNotes;
 
     [Header("Parameters")]
+    [SerializeField] private float amountToMoveYToPeekNotes;
     [SerializeField] private float amountToMoveYToExpandNotes;
 
 
     private RectTransform rectTransform;
+
+    private bool isPeeking;
     private bool isExpanded;
 
     //Instance of notes 
@@ -38,7 +41,7 @@ public class Notes : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandNotes);
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -56,22 +59,46 @@ public class Notes : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    public void OnPointerEnter(PointerEventData eventData)
+    public void ToggleExpand()
     {
-        if (!isExpanded)
+        if (isExpanded)
         {
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandNotes);
+            isExpanded = false;
+        }
+        else
+        {
+            if (isPeeking)
+            {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandNotes + amountToMoveYToPeekNotes);
+                isPeeking = false;
+            }
+            else
+            {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandNotes);
+            }
+
             isExpanded = true;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!isPeeking && !isExpanded)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToPeekNotes);
+            isPeeking = true;
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isExpanded)
+        if (isPeeking && !isExpanded)
         {
-            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandNotes);
-            isExpanded = false;
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToPeekNotes);
+            isPeeking = false;
         }
     }
 

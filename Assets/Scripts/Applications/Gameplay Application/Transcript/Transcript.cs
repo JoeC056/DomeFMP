@@ -30,9 +30,22 @@ public class Transcript : MonoBehaviour
     private bool documentAlreadyViewed;
     private int messagesPlayed;
 
+    //Instance of transcript
+    public static Transcript instance;
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
+        //Ensures singleton nature of instance variable
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         //Assigns default values
         optionSelectButtonParent.SetActive(false);
         waiting = true;
@@ -166,7 +179,6 @@ public class Transcript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void EndDialogue()
     {
-        Debug.Log("Over");
         waiting = true;
         optionSelectButtonParent.SetActive(false);
         if (!submitButton.activeSelf)

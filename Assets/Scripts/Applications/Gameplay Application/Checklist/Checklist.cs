@@ -17,6 +17,7 @@ public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private GameObject checkboxPrefab;
 
     [Header("Parameters")]
+    [SerializeField] private float amountToMoveYToPeekChecklist;
     [SerializeField] private float amountToMoveYToExpandChecklist;
 
     [Header("Data")]
@@ -25,7 +26,8 @@ public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     //Components
     private RectTransform rectTransform;
 
-    private bool isExpanded;
+    private bool isExpanded = false;
+    private bool isPeeking = false;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -33,28 +35,51 @@ public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         rectTransform = GetComponent<RectTransform>();
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandChecklist);
-        isExpanded = false;
     }
+
     //////////////////////////////////////////////////////////////////////////////
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isExpanded)
+        if (!isPeeking && !isExpanded)
         {
-            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandChecklist);
-            isExpanded = true;
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToPeekChecklist);
+            isPeeking = true;
         }
     }
 
     //////////////////////////////////////////////////////////////////////////////
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (isPeeking && !isExpanded)
+        {
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToPeekChecklist);
+            isPeeking = false;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void ToggleExpansion()
+    {
         if (isExpanded)
         {
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - amountToMoveYToExpandChecklist);
             isExpanded = false;
         }
-    }
+        else
+        {
+            if (isPeeking)
+            {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandChecklist - amountToMoveYToPeekChecklist);
+                isPeeking = false;
+            }
+            else
+            {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + amountToMoveYToExpandChecklist);
+            }
 
+            isExpanded = true;
+        }
+    }
     //////////////////////////////////////////////////////////////////////////////
     public float CalculateScoreToAddBasedOnAnswers(List<bool> correctAnswers, bool entryShouldBeAllowed)
     {
