@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject homeMenu;
     [SerializeField] private GameObject gameSettingsSubmenu;
     [SerializeField] private GameObject audioSettingsSubmenu;
     [SerializeField] private GameObject videoSettingsSubmenu;
@@ -29,6 +30,10 @@ public class SettingsMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && inSubMenu)
         {
             ExitSubmenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Back();
         }
     }
 
@@ -76,7 +81,8 @@ public class SettingsMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void Back()
     {
-
+        homeMenu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////

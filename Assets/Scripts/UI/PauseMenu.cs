@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
     [Header("References")]
     [SerializeField] private SettingsMenu settingsMenu;
     [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject homeUI;
+    [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject playerHUD;
 
     public bool paused;
@@ -15,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         //Disables pause menu at game start
+        settingsUI.SetActive(false);
         pauseUI.SetActive(false);
         paused = false;
     }
@@ -28,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void GetInput()
     {
-        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence) && !settingsMenu.inSubMenu)
+        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence) && !settingsMenu.inSubMenu && !settingsUI.activeSelf)
         {
             TogglePause();
         }
@@ -56,6 +59,13 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+    public void Settings()
+    {
+        homeUI.SetActive(false);
+        settingsUI.SetActive(true);
     }
 
     ///////////////////////////////////////////////////////////////////////////////

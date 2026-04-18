@@ -14,7 +14,7 @@ public class Sensitivity : MonoBehaviour
     private void Start()
     {
         inputField.text = SettingsManager.instance.Sensitivity.ToString();
-        scrollbar.value = SettingsManager.instance.Sensitivity;
+        scrollbar.value = SettingsManager.instance.Sensitivity /5;
     }
 
 
