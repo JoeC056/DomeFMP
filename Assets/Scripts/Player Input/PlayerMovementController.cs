@@ -9,7 +9,6 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float mouseSensitivity;
 
     //Current player and camera rot
     private float cameraRotX;
@@ -72,9 +71,9 @@ public class PlayerMovementController : MonoBehaviour
     private void RotateCameraAndPlayer()
     {
         //Updates new values for rotation of player and camera based on input
-        cameraRotX += mouseInputY * mouseSensitivity;
-        cameraRotY += mouseInputX * mouseSensitivity;
-        playerRotY += mouseInputX * mouseSensitivity;
+        cameraRotX += mouseInputY * SettingsManager.instance.Sensitivity;
+        cameraRotY += mouseInputX * SettingsManager.instance.Sensitivity;
+        playerRotY += mouseInputX * SettingsManager.instance.Sensitivity;
 
         //Clamps camera rot
         cameraRotX = Mathf.Clamp(cameraRotX, -90, 90);

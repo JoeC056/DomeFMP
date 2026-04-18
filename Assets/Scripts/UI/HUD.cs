@@ -5,6 +5,7 @@ public class HUD : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject hud;
+    [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject ending1UI;
     [SerializeField] private GameObject ending2UI;
 
@@ -20,6 +21,11 @@ public class HUD : MonoBehaviour
     {
         //HUD only enable when exploring the level
         hud.SetActive(GameManager.instance.stateOfGame == GameManager.States.InGame);
+
+        if (hud.activeSelf)
+        {
+            crosshair.SetActive(SettingsManager.instance.crosshairEnabled);
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////

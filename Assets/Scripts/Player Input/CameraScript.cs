@@ -9,6 +9,7 @@ public class CameraScript : MonoBehaviour
     [SerializeField] private GameObject calendar;
 
     [Header("Parameters")]
+    [SerializeField] private float fovWhenUsingComputer;
     [SerializeField] private Vector3 displacementFromPlayer;
     [SerializeField] private Vector3 displacementFromComputer;
     [SerializeField] private Vector3 displacementFromCalendar;
@@ -20,6 +21,7 @@ public class CameraScript : MonoBehaviour
     private void Update()
     {
         UpdateCameraLocation();
+        UpdateCameraFov();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -39,6 +41,19 @@ public class CameraScript : MonoBehaviour
         {
             transform.position = calendar.transform.position + displacementFromCalendar;
             transform.rotation = Quaternion.Euler(rotationForCalendar);
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void UpdateCameraFov()
+    {
+        if (GameManager.instance.stateOfGame == GameManager.States.UsingComputer)
+        {
+            GetComponent<Camera>().fieldOfView = fovWhenUsingComputer;
+        }
+        else
+        {
+            GetComponent<Camera>().fieldOfView = SettingsManager.instance.FieldOfView;
         }
     }
 
