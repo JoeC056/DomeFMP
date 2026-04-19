@@ -30,6 +30,7 @@ public class MessagingApplication : MonoBehaviour
     [SerializeField] private GameObject messageSelectPrefab;
     [SerializeField] private GameObject receivedDocumentMessagePrefab;
     [SerializeField] private GameObject sentDocumentMessagePrefab;
+    [SerializeField] private GameObject typingIconPrefab;
     [SerializeField] private Sprite defaultProfilePicture;
 
     [Header("Parameters")]
@@ -81,6 +82,8 @@ public class MessagingApplication : MonoBehaviour
     //For the flash of the mandatory message icon
     private bool goingToGreen;
     private float currentIndex;
+
+    private GameObject currentTypingIcon;
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -193,16 +196,33 @@ public class MessagingApplication : MonoBehaviour
         {
             if (!waiting)
             {
+                if (currentTypingIcon != null)
+                {
+                    Destroy(currentTypingIcon);
+                    currentTypingIcon = null;
+                }
+
                 GameObject message = Instantiate(receivingMessagePrefab, messagesParent.transform);
                 message.GetComponent<Message>().SetText(remainingDialogueMessages[0]);
                 tempMessageHistory.Add(message);
                 StartCoroutine(Wait(delayBetweenMessages));
                 remainingDialogueMessages.Remove(remainingDialogueMessages[0]);
+
+                if (remainingDialogueMessages.Count > 0)
+                {
+                    currentTypingIcon = Instantiate(typingIconPrefab, messagesParent.transform);
+                }
             }
         }
         //Displays option select if reached end of dialogue and branching is present
         else if (!waiting && remainingDialogueMessages.Count <= 0 && currentDialogue.bridgeAfterMessages)
         {
+            if (currentTypingIcon != null)
+            {
+                Destroy(currentTypingIcon);
+                currentTypingIcon = null;
+            }
+
             if (option1 == null && option2 == null)
             {
                 inConversation = true;
@@ -224,6 +244,12 @@ public class MessagingApplication : MonoBehaviour
         //Displays the document to be sent after completing all messages if applicable
         else if (!waiting && remainingDialogueMessages.Count <= 0 && currentDialogue.documentAfterMessages && !documentAlreadyDisplayed)
         {
+            if (currentTypingIcon != null)
+            {
+                Destroy(currentTypingIcon);
+                currentTypingIcon = null;
+            }
+
             //Instantiate document
             if (currentDialogue.documentMessageType == MessagingDialogueSO.MessageType.Received)
             {
@@ -245,11 +271,23 @@ public class MessagingApplication : MonoBehaviour
         //Continues after the documents completion if required
         else if (currentDialogue.documentAfterMessages && documentAlreadyDisplayed && currentDialogue.continueAfterDocument)
         {
+            if (currentTypingIcon != null)
+            {
+                Destroy(currentTypingIcon);
+                currentTypingIcon = null;
+            }
+
             BridgeDialogue(currentDialogue.continuedDialogue);
         }
         //Ends dialogue if dialogue complete branching not present 
         else if (!currentDialogue.bridgeAfterMessages && ((currentDialogue.documentAfterMessages && documentAlreadyDisplayed) || (!currentDialogue.documentAfterMessages)))
         {
+            if (currentTypingIcon != null)
+            {
+                Destroy(currentTypingIcon);
+                currentTypingIcon = null;
+            }
+
             EndDialogue();
         }
         AssignRangeOfScrollbarForMessagingUI();
@@ -322,7 +360,10 @@ public class MessagingApplication : MonoBehaviour
             }
         }
 
-
+        if (currentDialogue.gameplayUpdate)
+        {
+            GameManager.instance.StartSecondHalf();
+        }
 
         currentDialogue = null;
         StopAllCoroutines();

@@ -14,6 +14,7 @@ public class GameplayDocument : MonoBehaviour
 
     [HideInInspector] public EncounterSO respectiveEncounter;
 
+
     //////////////////////////////////////////////////////////////////////////////
     public void UpdateTextForEncounterData(EncounterSO encounter)
     {

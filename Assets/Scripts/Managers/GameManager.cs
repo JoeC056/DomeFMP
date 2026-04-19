@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Notes notes;
     [SerializeField] private TextMeshProUGUI endOfDayRatingText;
+    [SerializeField] private ComputerInteractable computerInteractable;
+    [SerializeField] private IncorrectAnswersNotice incorrectAnswersNotice;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
@@ -204,7 +206,7 @@ public class GameManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void AddScore()
     {
-        score += checklistScript.CalculateScoreToAddBasedOnAnswers(currentEncounter.correctAnswers, currentEncounter.entryShouldBeAllowed);
+        score += checklistScript.CalculateScoreToAddBasedOnAnswers(todaysAspectsToCheck,currentEncounter.correctAnswers, currentEncounter.entryShouldBeAllowed);
         maxScoreForDay += scoreForCorrectEntryAllowance + (scoreForCorrectReasonAllowance * todaysAspectsToCheck.Count);
         endOfDayRatingText.text = ((score / maxScoreForDay)*100) + "%";
     }
@@ -227,9 +229,11 @@ public class GameManager : MonoBehaviour
         Notes.instance.ResetSubNotes();
         messagingApplication.ClearAvailableConversations();
         AssignSpawnPointForDay();
+        computerInteractable.TurnOffComputer();
 
         score = 0;
         maxScoreForDay = 0;
+        incorrectAnswersNotice.HideNotice();
 
         //Progesses through first event of given day 
         switch (dayNo)
@@ -417,7 +421,7 @@ public class GameManager : MonoBehaviour
 
         if (dayNo >= 2 && !secondHalfStarted)
         {
-            StartCoroutine(ProgressToSecondHalf());
+            ProgressToSecondHalf(); //StartCoroutine(ProgressToSecondHalf())
         }
         else
         {
@@ -430,19 +434,13 @@ public class GameManager : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
-    private IEnumerator ProgressToSecondHalf()
+    private void ProgressToSecondHalf()
     {
         secondHalfStarted = true;
 
         AssignGameplayValuesForDay();
         RandomizeEncounters();
 
-        yield return new WaitForSeconds(delayBetweenEncounters);
-
-        checklistScript.ClearList();
-        checklistScript.AssignNewChecklistValues(todaysAspectsToCheck);
-
-        AssignValuesFromSO(todaysEncounters[0]);
 
         if (dayNo == 2)
         {
@@ -456,6 +454,24 @@ public class GameManager : MonoBehaviour
         {
             messagingApplication.AddNewAvailableConversation(day4Half2Update);
         }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    public void StartSecondHalf()
+    {
+        StartCoroutine(CommenceSecondHalf());
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private IEnumerator CommenceSecondHalf()
+    {
+        yield return new WaitForSeconds(delayBetweenEncounters);
+
+        incorrectAnswersNotice.HideNotice();
+        checklistScript.ClearList();
+        checklistScript.AssignNewChecklistValues(todaysAspectsToCheck);
+
+        AssignValuesFromSO(todaysEncounters[0]);
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -503,15 +519,15 @@ public class GameManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void RandomizeList<T>(IList<T> list)
     {
-        System.Random rng = new System.Random();
-        int n = list.Count;
-        while (n > 1)
+        System.Random rnGenerator = new System.Random();
+        int count = list.Count;
+        while (count > 1)
         {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            count--;
+            int nextVal = rnGenerator.Next(count + 1);
+            T value = list[nextVal];
+            list[nextVal] = list[count];
+            list[count] = value;
         }
     }
 

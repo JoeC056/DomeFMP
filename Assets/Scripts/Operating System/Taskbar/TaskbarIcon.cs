@@ -34,6 +34,14 @@ public class TaskbarIcon : MonoBehaviour
         {
             ComputerManager.instance.FocusApplication(application);
         }
+
+        if (application.applicationName == "Document Viewing Application")
+        {
+            if (Transcript.instance.waitingToStopLookingAtDocument)
+            {
+                Transcript.instance.waitingToStopLookingAtDocument = false;
+            }
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////

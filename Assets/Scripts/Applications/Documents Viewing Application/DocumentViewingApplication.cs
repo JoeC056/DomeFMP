@@ -78,7 +78,10 @@ public class DocumentViewingApplication : MonoBehaviour
                 displayedDocument = Instantiate(gameplayDocumentTemplate, transform);
             }
 
-            displayedDocument.GetComponent<GameplayDocument>().UpdateTextForEncounterData(documentToOpen.GetComponent<GameplayDocument>().respectiveEncounter);
+            if (displayedDocument.GetComponent<GameplayDocument>().respectiveEncounter != null)
+            {
+                displayedDocument.GetComponent<GameplayDocument>().UpdateTextForEncounterData(documentToOpen.GetComponent<GameplayDocument>().respectiveEncounter);
+            }
         }
         if (documentToOpen.name.Contains(domeConstructionInformationNewspaper.name))
         {

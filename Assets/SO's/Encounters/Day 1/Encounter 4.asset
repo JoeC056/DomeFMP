@@ -28,7 +28,7 @@ MonoBehaviour:
   timeWeightChecked: 
   timeHeightChecked: 
   alcoholIntoxication: 0
-  rash: 0
+  rash: 1
   backAcne: 0
   chestDiscolouration: 0
   patterenedChestDiscolouration: 0

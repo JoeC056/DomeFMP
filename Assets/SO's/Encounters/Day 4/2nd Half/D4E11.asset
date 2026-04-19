@@ -31,7 +31,7 @@ MonoBehaviour:
   rash: 1
   backAcne: 1
   chestDiscolouration: 1
-  patterenedChestDiscolouration: 1
+  patterenedChestDiscolouration: 0
   render: {fileID: 705019260719457316, guid: 793926dedb769de43808fdbc888301d2, type: 3}
   documents:
   - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
