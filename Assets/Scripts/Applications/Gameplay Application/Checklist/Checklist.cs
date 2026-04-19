@@ -11,6 +11,7 @@ public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private GameObject textParent;
     [SerializeField] private GameObject checkboxesParent;
     [SerializeField] private GameObject allowEntryCheckbox;
+    [SerializeField] private IncorrectAnswersNotice incorrectAnswersNotice;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject textPrefab;
@@ -81,32 +82,52 @@ public class Checklist : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
     //////////////////////////////////////////////////////////////////////////////
-    public float CalculateScoreToAddBasedOnAnswers(List<bool> correctAnswers, bool entryShouldBeAllowed)
+    public float CalculateScoreToAddBasedOnAnswers(List<string> thingsToCheck, List<bool> correctAnswers, bool entryShouldBeAllowed)
     {
         float scoreToAdd = 0;
+        bool correctEntryAllowance = false;
+        List<string> elementsMissed = new List<string>();
+        List<string> elementsIncorrectlyLabeled = new List<string>();
 
         //Gain points if entry allowance correct, lose if incorrect
         if (entryShouldBeAllowed == allowEntryCheckbox.GetComponent<ChecklistCheckbox>().ticked)
         {
             scoreToAdd += GameManager.instance.scoreForCorrectEntryAllowance;
+            correctEntryAllowance = true;
         }
         else
         {
             scoreToAdd -= GameManager.instance.penaltyForIncorrectEntryAllowance;
+            correctEntryAllowance = false;
         }
         //Checks all reasons given against all correct reasons and assigns values respectively 
         for (int i = 0; i < aspectsToCheck.Count; i++)
         {
             if (checkboxesParent.transform.GetChild(i).GetComponent<ChecklistCheckbox>().ticked == correctAnswers[i])
-            {
+            {             
                 scoreToAdd += GameManager.instance.scoreForCorrectReasonAllowance;
             }
             else
             {
-                scoreToAdd -= GameManager.instance.penaltyForIncorrectReasonAllowance;
+                if (correctAnswers[i] == true)
+                {
+                    elementsMissed.Add(aspectsToCheck[i]);
+                }
+                else
+                {
+                    elementsIncorrectlyLabeled.Add(aspectsToCheck[i]);
+                }
             }
         }
 
+        if (elementsMissed.Count > 0 || elementsIncorrectlyLabeled.Count > 0 || !correctEntryAllowance)
+        {
+            incorrectAnswersNotice.DisplayNotice(elementsMissed, elementsIncorrectlyLabeled, correctEntryAllowance, entryShouldBeAllowed);
+        }
+        else
+        {
+            incorrectAnswersNotice.HideNotice();
+        }
         return scoreToAdd;
     }
 

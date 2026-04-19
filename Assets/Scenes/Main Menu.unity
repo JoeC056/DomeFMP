@@ -12039,6 +12039,10 @@ PrefabInstance:
       propertyPath: messagingApplication
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1011590672302314861, guid: dc694325986f383449726311c02354be, type: 3}
+      propertyPath: EventOnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1417930878602623613, guid: dc694325986f383449726311c02354be, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2539185
@@ -12095,7 +12099,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Computer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 58600931644626701, guid: dc694325986f383449726311c02354be, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

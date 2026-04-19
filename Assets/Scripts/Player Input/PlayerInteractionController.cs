@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,12 +8,22 @@ public class PlayerInteractionController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private TextMeshProUGUI textOnInteractHover;
+    [SerializeField] private GameObject interactionTutorialisationText;
 
     [Header("Parameters")]
     [SerializeField] private float interactionRange;
+    [SerializeField] private float tutorialisationTextDuration;
 
     //Reference to hit object when checking for interactable object
     private RaycastHit hit;
+
+    public bool firstInteractionDone;
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        interactionTutorialisationText.SetActive(false);
+    }
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
@@ -62,15 +73,32 @@ public class PlayerInteractionController : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Interact()
     {
+        if (!firstInteractionDone && hit.transform.GetComponent<OpenableDoor>() == null)
+        {
+            firstInteractionDone = true;
+            if (hit.transform.GetComponent<ComputerInteractable>() == null)
+            {
+                StartCoroutine(DisplayInteractionTutorialisation());
+            }
+        }
+
         //Halts player movement
         GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
         //Calls interact function of object being interacted with 
         hit.transform.GetComponent<InteractableObject>().OnInteract();
+    
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    private IEnumerator DisplayInteractionTutorialisation()
+    {
+        interactionTutorialisationText.SetActive(true);
+        yield return new WaitForSeconds(tutorialisationTextDuration);
+        interactionTutorialisationText.SetActive(false);
+    }
 
+    //////////////////////////////////////////////////////////////////////////////
 }
 
 //////////////////////////////////////////////////////////////////////////////

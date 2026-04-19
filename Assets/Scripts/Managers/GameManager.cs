@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Notes notes;
     [SerializeField] private TextMeshProUGUI endOfDayRatingText;
+    [SerializeField] private ComputerInteractable computerInteractable;
+    [SerializeField] private IncorrectAnswersNotice incorrectAnswersNotice;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
@@ -204,7 +206,7 @@ public class GameManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void AddScore()
     {
-        score += checklistScript.CalculateScoreToAddBasedOnAnswers(currentEncounter.correctAnswers, currentEncounter.entryShouldBeAllowed);
+        score += checklistScript.CalculateScoreToAddBasedOnAnswers(todaysAspectsToCheck,currentEncounter.correctAnswers, currentEncounter.entryShouldBeAllowed);
         maxScoreForDay += scoreForCorrectEntryAllowance + (scoreForCorrectReasonAllowance * todaysAspectsToCheck.Count);
         endOfDayRatingText.text = ((score / maxScoreForDay)*100) + "%";
     }
@@ -227,9 +229,11 @@ public class GameManager : MonoBehaviour
         Notes.instance.ResetSubNotes();
         messagingApplication.ClearAvailableConversations();
         AssignSpawnPointForDay();
+        computerInteractable.TurnOffComputer();
 
         score = 0;
         maxScoreForDay = 0;
+        incorrectAnswersNotice.HideNotice();
 
         //Progesses through first event of given day 
         switch (dayNo)
@@ -463,6 +467,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBetweenEncounters);
 
+        incorrectAnswersNotice.HideNotice();
         checklistScript.ClearList();
         checklistScript.AssignNewChecklistValues(todaysAspectsToCheck);
 
