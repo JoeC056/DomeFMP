@@ -63,6 +63,9 @@ public class SettingsManager : MonoBehaviour
     }
     public WindowModes windowMode;
 
+    public bool computerCRTFilter;
+    public bool computerCRTLines;
+
 
     //Instance of SettingsManager
     public static SettingsManager instance { get; private set; }
