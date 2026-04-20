@@ -60057,7 +60057,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasksParent: {fileID: 1364728648249478504}
   homeButtonDividingLine: {fileID: 900089389}
-  displacementFromRightmostTaskbarAppIcon: 0.125
+  defaultDisplacement: 0.03125
+  displacementPerTask: 0.09375
 --- !u!114 &1144419647
 MonoBehaviour:
   m_ObjectHideFlags: 0
