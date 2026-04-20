@@ -31,7 +31,7 @@ public class ScrollbarHandle : MonoBehaviour
         //leftBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
         //rightBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
 
-        //pixelSize *= 100;
+        ////pixelSize *= 100;
 
         //rightBorderSecondLayer.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
@@ -43,8 +43,7 @@ public class ScrollbarHandle : MonoBehaviour
 
         //rightBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //bottomBorder.transform.GetComponent<RectTransform>().position =
-        //    GetComponent<RectTransform>().position;
+        //bottomBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

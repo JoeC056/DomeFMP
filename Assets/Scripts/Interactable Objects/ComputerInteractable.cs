@@ -15,6 +15,9 @@ public class ComputerInteractable : MonoBehaviour
     [SerializeField] private float delayBetweenPartsOfOpeningAnimation;
     [SerializeField] private float computerCantBeLeftMessageDuration;
 
+    [Header("Prefabs")]
+    [SerializeField] private Texture2D stylizedCursor;
+
     private bool playerUsingComputer;
     private bool firstUseOfComputer;
     [HideInInspector] public bool firstOpenOfDay;
@@ -33,6 +36,7 @@ public class ComputerInteractable : MonoBehaviour
     private void Update()
     {
         GetInput();
+        CheckCursorToDisplay();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -149,6 +153,19 @@ public class ComputerInteractable : MonoBehaviour
         cantLeaveComputerNowMessage.SetActive(true);
         yield return new WaitForSeconds(computerCantBeLeftMessageDuration);
         cantLeaveComputerNowMessage.SetActive(false);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void CheckCursorToDisplay()
+    {
+        if (playerUsingComputer && SettingsManager.instance.stylizedCursorEnabled)
+        {
+            Cursor.SetCursor(stylizedCursor, Vector2.zero, CursorMode.Auto);
+        }
+        else
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////

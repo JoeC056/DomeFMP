@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class WebBrowser : MonoBehaviour
     [SerializeField] private TextMeshProUGUI urlText;
     [SerializeField] private GameObject websiteContentParent;
     [SerializeField] private GameObject linkButtonsParent;
+    [SerializeField] private GameObject rectMask;
     [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private TextMeshProUGUI appNameText;
 
@@ -21,6 +23,8 @@ public class WebBrowser : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float scrollbarSizeScalerValue;
+    [SerializeField] private int noOfStepsToLoadPage;
+    [SerializeField] private float delayBetweenSteps;
     public Vector2 defaultPageSize;
     public float defaultPageYDisplacement;
 
@@ -44,6 +48,9 @@ public class WebBrowser : MonoBehaviour
 
     private List<onFirstLoadEvent> onFirstLoadEvents;
 
+    private bool loadingWebsite;
+    private bool waiting;
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -56,6 +63,29 @@ public class WebBrowser : MonoBehaviour
         appNameText.text = "Web Browser (Home Page)";
     }
 
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        scrollbar.enabled = !loadingWebsite;
+
+        if (loadingWebsite && !waiting) 
+        {
+            rectMask.GetComponent<RectTransform>().anchoredPosition -= new Vector2(rectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f / noOfStepsToLoadPage);
+            websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2) - rectMask.GetComponent<RectTransform>().anchoredPosition.y);
+
+            if (rectMask.GetComponent<RectTransform>().anchoredPosition.y <= 0)
+            {
+                rectMask.GetComponent<RectTransform>().anchoredPosition -= new Vector2(rectMask.GetComponent<RectTransform>().anchoredPosition.x, 0);
+                websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2));
+                loadingWebsite = false;
+            }
+            else
+            {
+                StartCoroutine(Wait());
+            }
+        }
+    }
+    
     //////////////////////////////////////////////////////////////////////////////////
     public void CreateSingleton()
     {
@@ -125,7 +155,6 @@ public class WebBrowser : MonoBehaviour
 
         if (GetRespectiveEventForWebsiteLoad(websiteToLoad) != null)
         {
-            Debug.Log("Event loaded");
             GetRespectiveEventForWebsiteLoad(websiteToLoad).Invoke();
 
             onFirstLoadEvent loadEventToRemove = new onFirstLoadEvent();
@@ -140,6 +169,8 @@ public class WebBrowser : MonoBehaviour
 
             onFirstLoadEvents.Remove(loadEventToRemove);
         }
+
+        Refresh();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +249,25 @@ public class WebBrowser : MonoBehaviour
             }
         }
         return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator Wait()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(delayBetweenSteps);
+        waiting = false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void Refresh()
+    {
+        loadingWebsite = true;
+        rectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(rectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f);
+        websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2) - rectMask.GetComponent<RectTransform>().anchoredPosition.y);
+        StopAllCoroutines();
+        waiting = false;
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////

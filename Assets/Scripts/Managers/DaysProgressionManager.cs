@@ -141,7 +141,7 @@ public class DaysProgressionManager : MonoBehaviour
                 List<string> messagesToDisplay = new List<string>();
                 messagesToDisplay.Add("Time to head out to work");
 
-                Subtitles.instance.DisplaySubtitles(messagesToDisplay, 3);
+                Subtitles.instance.DisplaySubtitles(messagesToDisplay, 2);
                 break;
             case 1:
                 radioScript.AddNewTransmission(day1RadioTransmission);

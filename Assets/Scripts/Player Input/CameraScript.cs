@@ -28,7 +28,7 @@ public class CameraScript : MonoBehaviour
     private void UpdateCameraLocation()
     {
         //Follows player if exploring level, focuses on computer during its use
-        if (GameManager.instance.stateOfGame == GameManager.States.InGame || GameManager.instance.stateOfGame == GameManager.States.InteractingWithObject)
+        if (GameManager.instance.stateOfGame == GameManager.States.InGame || GameManager.instance.stateOfGame == GameManager.States.InteractingWithObject || GameManager.instance.stateOfGame == GameManager.States.InDaysStartAnimation)
         {
             transform.position = Vector3.Lerp(transform.position, player.transform.position + displacementFromPlayer, Time.deltaTime * 15);
         }

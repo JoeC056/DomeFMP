@@ -8,18 +8,28 @@ public class TaskbarAppsDividingLine : MonoBehaviour
     [SerializeField] private GameObject homeButtonDividingLine;
 
     [Header("Parameters")]
-    [SerializeField] private Vector3 displacementFromRightmostTaskbarAppIcon;
+    [SerializeField] private float displacementFromRightmostTaskbarAppIcon;
 
+    private RectTransform rectTransform;
+    private float defaultXPosition;
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        defaultXPosition = GetComponent<RectTransform>().anchoredPosition.x;
+    }
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
         if (tasksParent.transform.childCount > 0)
         {
-            transform.position = tasksParent.transform.GetChild(tasksParent.transform.childCount -1).transform.position + displacementFromRightmostTaskbarAppIcon;
+            rectTransform.anchoredPosition = new Vector2(defaultXPosition + displacementFromRightmostTaskbarAppIcon, 0);
         }
         else
         {
-            transform.position = homeButtonDividingLine.transform.position;
+            rectTransform.anchoredPosition = new Vector2(defaultXPosition + displacementFromRightmostTaskbarAppIcon, 0);
         }
     }
 

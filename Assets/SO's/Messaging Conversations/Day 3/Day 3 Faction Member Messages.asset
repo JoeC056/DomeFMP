@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Day 3 Faction Member Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: fffd5ca6d861ad44982ff43836da8b39, type: 2}
-  delayBetweenMessages: 1
   lines:
   - "You\u2019ve been good to us so far, so I\u2019ve got a more important one for
     you. "

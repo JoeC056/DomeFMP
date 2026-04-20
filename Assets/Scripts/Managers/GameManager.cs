@@ -21,9 +21,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endOfDayRatingText;
     [SerializeField] private ComputerInteractable computerInteractable;
     [SerializeField] private IncorrectAnswersNotice incorrectAnswersNotice;
+    [SerializeField] private GameObject daysStartUI;
+    [SerializeField] private Subtitles subtitles;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
+    [SerializeField] private float dayStartAnimationDelayBeforeFadeIn;
+    [SerializeField] private float dayStartAnimationTextFadeInOutSpeed;
+    [SerializeField] private float dayStartAnimationTextDuration;
     public float scoreForCorrectEntryAllowance;
     public float penaltyForIncorrectEntryAllowance;
     public float scoreForCorrectReasonAllowance;
@@ -88,7 +93,8 @@ public class GameManager : MonoBehaviour
         UsingComputer,
         InteractingWithObject,
         InteractingWithCalendar,
-        WatchingEndingSequence
+        WatchingEndingSequence,
+        InDaysStartAnimation
     }
     [HideInInspector] public States stateOfGame;
     [HideInInspector] public bool gameplayInProgress;
@@ -115,6 +121,11 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public bool secondHalfStarted;
 
+    private bool inDaysStartAnimation;
+    private bool waitedDurationOfText;
+    private bool waitingDurationOfText;
+
+
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -128,6 +139,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         notes.CreateSingleton();
+        StartCoroutine(StartDaysStartAnimation());
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -146,6 +158,46 @@ public class GameManager : MonoBehaviour
             UpdateTimer();
         }
 
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private void FixedUpdate()
+    {
+        if (inDaysStartAnimation)
+        {
+            //waitedDurationOfText
+            if (!waitedDurationOfText)
+            {
+                if (!waitingDurationOfText)
+                {
+                    if (daysStartUI.transform.GetChild(0).GetComponent<CanvasGroup>().alpha == 1)
+                    {
+                        StartCoroutine(WaitDurationOfText());  
+                    }
+                    else
+                    {
+                        daysStartUI.transform.GetChild(0).GetComponent<CanvasGroup>().alpha += dayStartAnimationTextFadeInOutSpeed;
+                    }
+                }
+            }
+            else
+            {
+                if (daysStartUI.transform.GetComponent<CanvasGroup>().alpha <= 0)
+                {
+                    daysStartUI.SetActive(false);
+                    inDaysStartAnimation = false;
+                    stateOfGame = States.InGame;
+                }
+                else
+                {
+                    daysStartUI.transform.GetChild(0).GetComponent<CanvasGroup>().alpha -= dayStartAnimationTextFadeInOutSpeed;
+                    if (daysStartUI.transform.GetChild(0).GetComponent<CanvasGroup>().alpha <= 0.5)
+                    {
+                        daysStartUI.transform.GetComponent<CanvasGroup>().alpha -= dayStartAnimationTextFadeInOutSpeed;
+                    }
+                }
+            }
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -234,6 +286,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         maxScoreForDay = 0;
         incorrectAnswersNotice.HideNotice();
+        subtitles.ClearSubtitles();
 
         //Progesses through first event of given day 
         switch (dayNo)
@@ -254,6 +307,8 @@ public class GameManager : MonoBehaviour
                 DaysProgressionManager.instance.ProgressDay5();
                 break;
         }
+
+        StartCoroutine(StartDaysStartAnimation());
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -571,6 +626,28 @@ public class GameManager : MonoBehaviour
     public void AssignEventOnDaysGameplayCompletion(UnityEvent eventOnCompletion)
     {
         eventOnDaysCompletion = eventOnCompletion;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private IEnumerator StartDaysStartAnimation()
+    {
+        stateOfGame = States.InDaysStartAnimation;
+        daysStartUI.SetActive(true);
+        daysStartUI.GetComponent<CanvasGroup>().alpha = 1;
+        daysStartUI.transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 0;
+        daysStartUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Day " + dayNo;
+        waitedDurationOfText = false;
+        waitingDurationOfText = false;
+        yield return new WaitForSeconds(dayStartAnimationDelayBeforeFadeIn);
+        inDaysStartAnimation = true;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    private IEnumerator WaitDurationOfText()
+    {
+        waitingDurationOfText = true;
+        yield return new WaitForSeconds(dayStartAnimationTextDuration);
+        waitedDurationOfText = true;
     }
 
     //////////////////////////////////////////////////////////////////////////////
