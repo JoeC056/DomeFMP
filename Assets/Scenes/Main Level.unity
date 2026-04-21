@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4368770}
   - component: {fileID: 4368769}
   m_Layer: 6
-  m_Name: Test Canvas
+  m_Name: CRT Filter Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -874,6 +874,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18915949}
   m_CullTransparentMesh: 1
+--- !u!1 &19403038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19403039}
+  - component: {fileID: 19403040}
+  m_Layer: 0
+  m_Name: Cursor Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19403039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19403038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1964006805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &19403040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19403038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ce345e43b437c41a2e8177bc951fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorManager
+  computerInteractable: {fileID: 1001672841}
+  computerCanvas: {fileID: 428902435045215592}
+  stylizedCursor: {fileID: 2800000, guid: 64d309c8029290043baf9e207f68b29d, type: 3}
+  stylizedHandCursor: {fileID: 2800000, guid: 672a4bccd73d0114fab1544258598c1f, type: 3}
 --- !u!1 &19962976
 GameObject:
   m_ObjectHideFlags: 0
@@ -13387,7 +13435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -17224,11 +17272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20657,6 +20705,9 @@ MonoBehaviour:
   desktopIconsParent: {fileID: 3777010202384257801}
   docViewingApp: {fileID: 8778851014207873809}
   webBrowserApp: {fileID: 3195306895488649869}
+  cursorLoadingWheel: {fileID: 0}
+  computerCanvas: {fileID: 428902435045215592}
+  timeToOpenWindow: 1
   emptyTaskbarIconPrefab: {fileID: 4746688838517381916, guid: 9ae24453bf051644f871a0eaaf9c12d7, type: 3}
   openApplications: []
 --- !u!1 &378027863
@@ -28620,7 +28671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -64261,11 +64312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -80818,6 +80869,10 @@ PrefabInstance:
       propertyPath: websiteLinkedTo
       value: 
       objectReference: {fileID: 11400000, guid: 82ca0567c4604244cbb380edbc93cf0f, type: 2}
+    - target: {fileID: 392056649488766928, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1315685708899283453, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_Name
       value: About Dome
@@ -80848,11 +80903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706978899618924708, guid: 757dba56bbebbc94f9dd307b86fbd91f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -84414,7 +84469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
   crosshairEnabled: 0
-  stylizedCursorEnabled: 0
+  stylizedCursorEnabled: 1
   sensitivity: 1
   masterVolume: 0
   gameVolume: 0
@@ -87629,7 +87684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -100772,6 +100827,7 @@ Transform:
   - {fileID: 2068248805}
   - {fileID: 390914605}
   - {fileID: 1635826776}
+  - {fileID: 19403039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964507300

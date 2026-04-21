@@ -8,6 +8,7 @@ public class DesktopIcon : MonoBehaviour
     [Header("Respective Application")]
     [SerializeField] private ApplicationSO application;
 
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
