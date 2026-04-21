@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float dayStartAnimationDelayBeforeFadeIn;
     [SerializeField] private float dayStartAnimationTextFadeInOutSpeed;
     [SerializeField] private float dayStartAnimationTextDuration;
+    public float messageGrowthSpeed;
     public float scoreForCorrectEntryAllowance;
     public float penaltyForIncorrectEntryAllowance;
     public float scoreForCorrectReasonAllowance;

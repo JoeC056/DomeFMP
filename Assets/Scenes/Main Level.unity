@@ -83902,8 +83902,9 @@ MonoBehaviour:
   subtitles: {fileID: 887698677}
   delayBetweenEncounters: 3
   dayStartAnimationDelayBeforeFadeIn: 1
-  dayStartAnimationTextFadeInOutSpeed: 0.02
+  dayStartAnimationTextFadeInOutSpeed: 0.125
   dayStartAnimationTextDuration: 2
+  messageGrowthSpeed: 0.05
   scoreForCorrectEntryAllowance: 2
   penaltyForIncorrectEntryAllowance: 1
   scoreForCorrectReasonAllowance: 1
@@ -113394,7 +113395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.388}
+  m_AnchoredPosition: {x: 0.004, y: -0.392}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5016369277309912465
