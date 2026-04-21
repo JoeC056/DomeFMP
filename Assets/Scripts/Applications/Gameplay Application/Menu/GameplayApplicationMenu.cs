@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class GameplayApplicationMenu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject gameplayUI;
+    [SerializeField] private GameObject gameplayUIRectMask;
     [SerializeField] private GameObject postGameplayUI;
     [SerializeField] private GameObject minimizeButton;
     [SerializeField] private GameObject closeButton;
@@ -20,9 +22,17 @@ public class GameplayApplicationMenu : MonoBehaviour
     [SerializeField] private GameObject day3WhatToCheckInfo;
     [SerializeField] private GameObject day4WhatToCheckInfo;
 
+    [Header("Parameters")]
+    [SerializeField] private int noOfStepsToLoadPage;
+    [SerializeField] private float delayBetweenSteps;
+
     private bool tutorialComplete;
     private bool viewingTutorial;
     private bool viewingWhatToCheck;
+
+    private bool loadingGameplay;
+    private bool gameplayStarted;
+    private bool waiting;
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -33,14 +43,46 @@ public class GameplayApplicationMenu : MonoBehaviour
     private void Update()
     {
         CheckUIToDisplay();
+        if (loadingGameplay && !waiting)
+        {
+            //Once half done begin games gameplay
+            gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition.y - (237.5f / noOfStepsToLoadPage));
+            gameplayUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition.y);
+
+            if (!gameplayStarted && gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition.y <= (237.5f/2))
+            {
+                StartGameplay();
+                gameplayStarted = true;
+            }
+            else if (gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition.y <= 0)
+            {
+                gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                gameplayUI.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                loadingGameplay = false;
+            }
+            else
+            {
+                StartCoroutine(Wait());
+            }
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void LoadGameplay()
+    {
+        gameplayUI.SetActive(true);
+        minimizeButton.SetActive(false);
+        closeButton.SetActive(false);
+        loadingGameplay = true;
+        gameplayStarted = false;
+        gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 237.5f);
+        gameplayUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -gameplayUIRectMask.GetComponent<RectTransform>().anchoredPosition.y);
+        waiting = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     public void StartGameplay()
     {
-        gameplayUI.SetActive(true);
-        minimizeButton.SetActive(false);
-        closeButton.SetActive(false);
         GameManager.instance.StartDaysGameplay();
     }
 
@@ -63,7 +105,7 @@ public class GameplayApplicationMenu : MonoBehaviour
             startAndSymptomsButtons.SetActive(false);
             whatToCheckInfoParent.SetActive(false);
         }
-        else if (GameManager.instance.gameplayInProgress || GameManager.instance.daysGameplayCompleted || !GameManager.instance.daysGameplayAvailable)
+        else if (GameManager.instance.gameplayInProgress || loadingGameplay || GameManager.instance.daysGameplayCompleted || !GameManager.instance.daysGameplayAvailable)
         {
             startAndSymptomsButtons.SetActive(false);
             menuText.SetActive(false);
@@ -135,6 +177,14 @@ public class GameplayApplicationMenu : MonoBehaviour
     public void WhatToCheckBackButton()
     {
         viewingWhatToCheck = false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator Wait()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(delayBetweenSteps);
+        waiting = false;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

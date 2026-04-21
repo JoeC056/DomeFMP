@@ -36845,6 +36845,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1229558706105532367, guid: a5b98c73e7660aa4fa51072078982eeb, type: 3}
   m_PrefabInstance: {fileID: 685703779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685780615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685780616}
+  - component: {fileID: 685780617}
+  m_Layer: 5
+  m_Name: Gameplay UI Rect Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &685780616
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685780615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6605840341657781647}
+  m_Father: {fileID: 8144294066136952911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 289.0625}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &685780617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685780615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &686648241
 GameObject:
   m_ObjectHideFlags: 0
@@ -112607,6 +112658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayUI: {fileID: 7723644655963581887}
+  gameplayUIRectMask: {fileID: 685780615}
   postGameplayUI: {fileID: 417751795}
   minimizeButton: {fileID: 98855398}
   closeButton: {fileID: 571852932}
@@ -112620,6 +112672,8 @@ MonoBehaviour:
   day2WhatToCheckInfo: {fileID: 30260913}
   day3WhatToCheckInfo: {fileID: 221857358}
   day4WhatToCheckInfo: {fileID: 563647552}
+  noOfStepsToLoadPage: 9
+  delayBetweenSteps: 0.1
 --- !u!224 &3856072757894273484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114078,7 +114132,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7723644655963581887}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -114090,7 +114144,7 @@ RectTransform:
   - {fileID: 86253475}
   - {fileID: 7268865671634409164}
   - {fileID: 374030332}
-  m_Father: {fileID: 8144294066136952911}
+  m_Father: {fileID: 685780616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -114512,7 +114566,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3853214936802486449}
         m_TargetAssemblyTypeName: GameplayApplicationMenu, Assembly-CSharp
-        m_MethodName: StartGameplay
+        m_MethodName: LoadGameplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -114895,7 +114949,7 @@ RectTransform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6605840341657781647}
+  - {fileID: 685780616}
   - {fileID: 854413187}
   - {fileID: 98855397}
   - {fileID: 571852931}
