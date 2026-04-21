@@ -161,6 +161,12 @@ public class ComputerManager : MonoBehaviour
         openApplications.Add(application);
         openWindowsStack.AddFirst(application);
         UpdateTaskbar();
+
+        //Returns to home page of respective applications on close where applicable 
+        if (application.applicationName == "Web Browser")
+        {
+            WebBrowser.instance.HomeButton();
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////

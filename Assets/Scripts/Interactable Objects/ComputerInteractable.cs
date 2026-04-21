@@ -83,7 +83,6 @@ public class ComputerInteractable : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private IEnumerator DisplayFirstBootOpeningAnimation()
     {
-        int index = 1;
         inOpeningAnimation = true;
         firstOpenOfDay = false;
         firstUseOfComputer = false;
@@ -108,7 +107,6 @@ public class ComputerInteractable : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private IEnumerator DisplayOpeningAnimation()
     {
-        int index = 1;
         inOpeningAnimation = true;
         firstOpenOfDay = false;
 

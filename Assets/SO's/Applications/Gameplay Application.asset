@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gameplay Application
   m_EditorClassIdentifier: 
   applicationName: Gameplay Application
-  desktopIconImage: {fileID: 21300000, guid: e4d4256dd7e15014592952f7d5ee7341, type: 3}
-  TaskbarIconImage: {fileID: 21300000, guid: e4d4256dd7e15014592952f7d5ee7341, type: 3}
+  desktopIconImage: {fileID: 21300000, guid: c8be37eadfb9a5640a8d85a8edd73461, type: 3}
+  TaskbarIconImage: {fileID: 21300000, guid: c8be37eadfb9a5640a8d85a8edd73461, type: 3}
