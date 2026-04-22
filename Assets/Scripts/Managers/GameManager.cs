@@ -143,6 +143,9 @@ public class GameManager : MonoBehaviour
         }
         notes.CreateSingleton();
         StartCoroutine(StartDaysStartAnimation());
+
+        characterRenderNAText.SetActive(false);
+        documentsNAText.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////
