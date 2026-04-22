@@ -13,18 +13,16 @@ MonoBehaviour:
   m_Name: Day 1 Daughter Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 08a894b9b170bd4408c3738b6b563b07, type: 2}
-  delayBetweenMessages: 1
   lines:
-  - "I assume you\u2019ve heard the radio broadcast already, but I wanted to let
+  - "I assume you\u2019ve heard the radio broadcast already, but just wanted to let
     you know that I\u2019m having to stay down here until my evac."
-  - "It looks like I\u2019m quite low priority on the list so I\u2019ll be still
-    be here for quite a few days at least"
-  - Oh and I did hear from one of wives of your coworkers at the orphanage about
+  - "It looks like I\u2019m quite low priority on the list so I\u2019ll still be
+    here for quite a few days at least."
+  - Oh, and I did hear from one of wives of your coworkers at the orphanage about
     the whole evacuation helping thing.
-  - Good luck with it! It sounds stressful, but  helping everyone stay safe from
-    this whole thing must be a good motivator!
-  - "It\u2019s good to see the government handling this in a way that\u2019s best
-    for keeping everyone as safe and confident as possible."
+  - Good luck with it! It sounds stressful, but helping everyone stay safe from this
+    whole thing must be a good motivator!
+  - Glad to see the government handling this all so well.
   - "I don\u2019t have much time to talk anymore unfortunately, but do your best,
     and I look forward to seeing you when this is all over!!"
   bridgeAfterMessages: 0

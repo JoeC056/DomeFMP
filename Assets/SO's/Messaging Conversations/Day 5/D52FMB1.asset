@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: D52FMB1
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: fffd5ca6d861ad44982ff43836da8b39, type: 2}
-  delayBetweenMessages: 0
   lines:
   - "\u2026"
-  - "Are you serious\u2026 ARE YOU FUCKING SERIOUS?"
-  - "Our families\u2026. our lives\u2026 ROBBED, TAKEN, BY SOME DUMBASS CULT!?!?
-    FOR WHAT???"
+  - This, ENTIRE time.
+  - Our families, our lives, gone, LOST, TAKEN, FOR SOME FUCKING CULT!?!?!?
+  - ALL THE WHILE NOBODY EVER LISTENED TO ME.
+  - "I KNEW THEY COULDN\u2019T BE FUCKING TRUSTED."
   - "\u2026"
-  - "I\u2019ve just got word. The spy\u2026 his country, their bringing an army. "
-  - "Raiding the dome, ridding those cultists fucks of their miserable existence,
-    saving us\u2026"
-  - "He\u2019ll be in contact shortly, and get us somewhere safe whilst they carry
-    it out."
+  - "I got word from the spy, there\u2019s an operation underway, they\u2019re stopping
+    these inhuman freaks."
+  - Bringing them justice, for what they took from us.
+  - "The justice I\u2019ve been waiting my entire fucking life for."
+  - "He\u2019ll be in contact, get us somewhere safe whilst they get the job done."
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 

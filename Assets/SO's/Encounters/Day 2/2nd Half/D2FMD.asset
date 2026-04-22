@@ -14,24 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueHidesSubmit: 1
   lines:
-  - "\u2026\u2026."
-  - "Heard from the other guy earlier that you\u2019re in."
-  - "Just so you know, I can\u2019t stand people like you, only thing you care about
-    is your little \u201Cfamily\u201D  and all the adjacent bullshit."
+  - Got word already from my guy you spoke to earlier.
+  - "But just so you know, I can\u2019t stand people like you, only thing you care
+    about is your little \u201Cfamily\u201D  and all the adjacent bullshit."
   - "Everyone in this fucking town is obsessed with it, you wanna go out or do anything
-    ? It\u2019s always meeting people, seeing friends, finding a partner."
+    ? It\u2019s always meeting people, seeing friends, finding a partner, making
+    a family."
   - Someone like me? Government gives nothing, no place, no purpose, no anything.
   - "But whatever, you\u2019re willing to cooperate so you\u2019re better than most
-    at least"
+    at least/"
   - 'You: Oh, thank you. I hope I can be of good help.'
-  - Yeah, sure, great.
-  - "Anyways, to get you up to speed, I imagine you\u2019ve heard those rumours going
-    around, about the hiding of symptoms? "
-  - "Yeah, we\u2019ve got no hard proof yet, but I\u2019ll tell you one thing, it\u2019s
-    way worse than you think. "
+  - Sure, yeah.
+  - "Anyways, I\u2019ll get you up to speed, y\u2019know those symptom hiding rumours?"
+  - "Yeah, we\u2019ve got no hard proof yet, but I\u2019ll tell you one thing, there\u2019s
+    more to it than just that."
   - "All these bullshit decisions and announcements that they\u2019re making are
-    part of their greater plan, and it\u2019s not one that\u2019s benefitting anyone
-    living in this dome. They\u2019re hiding much more about all this than just symptoms."
+    part of their plan, and they\u2019ve got more hidden than you can even imagine."
   - "That\u2019s all, expect messages later, we\u2019ll have things for you to do."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0

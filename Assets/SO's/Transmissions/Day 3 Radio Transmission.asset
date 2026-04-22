@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d54e6da169902b4db8e974e80a3fe1a, type: 3}
   m_Name: Day 3 Radio Transmission
   m_EditorClassIdentifier: 
-  delayBetweenCharacters: 0.1
-  delayBetweenLines: 2
+  mandatory: 0
   lines:
   - AN UPDATE ON THE VIRUS
-  - 'Just this morning, we have confirmed a third symptom that may appear as a result
-    of the virus. '
+  - We have been able to confirm a third symptom of the virus.
   - Infected individuals experience discolouration of the chest alongside previously
-    mentioned symptoms.
-  - However, if the discolouration of the chest is seen at the same time as a rash
-    on the arm, then neither of these symptoms are to be considered when determining
+    disclosed symptoms.
+  - However, if the discolouration of the chest is seen at the same time as acne
+    on the back, then neither of these symptoms are to be considered when determining
     if an individual is infected.
-  - Any citizens who experience any symptoms that suggest that may be infected must
-    contact us via their computer messaging application immediately.
+  - Please continue to be monitor yourself and those around you, and contact us regarding
+    anyone you believe to be infected.

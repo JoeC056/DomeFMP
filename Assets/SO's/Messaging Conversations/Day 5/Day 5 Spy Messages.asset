@@ -13,21 +13,19 @@ MonoBehaviour:
   m_Name: Day 5 Spy Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 3a6d4684b84495b4194f2e590137ad0c, type: 2}
-  delayBetweenMessages: 0
   lines:
-  - Already aware of the earlier findings from your peer, and that you understand
-    the plan.
+  - Already got the full of what you know from Nikolai.
   - I have further information for you.
-  - 'We infiltrated your coworkers home, he appeared to have been absent some days
-    now. '
-  - 'Having his web browser enabled allowed us to access the full government website. '
+  - "We infiltrated your coworker\u2019s home, he appeared to have been absent for
+    a few days now. "
+  - Having his web browser enabled allowed us to access the full government website.
   - "The cultists are planning a ritual with the dome\u2019s citizens, cultivated
     ever since the days of the massacre."
-  - And the lie of the virus was the perfect way to shepherd them all into it.
+  - 'And the lie of the virus was the perfect way to shepherd them all into it. '
   - (Website Available In Your Web Browser)
   - Take a look for yourself if you wish.
-  - 'Regarding the attack we have planned, expect a knock on your door within the
-    next short while. '
+  - Regarding the attack we have planned, expect a knock on your door within the
+    next short while.
   - "We\u2019ll have someone that escorts you to a safe location so that we can carry
     it out."
   bridgeAfterMessages: 0

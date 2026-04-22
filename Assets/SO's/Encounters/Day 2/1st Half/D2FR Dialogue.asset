@@ -14,32 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueHidesSubmit: 1
   lines:
-  - You are Aleksandar yes?
-  - 'You: Hmm? Oh umm, yes.'
-  - "Good to meet you. I\u2019m a member of a faction of people who believe there
-    is a greater identity to the government than what is presented to us. I believe
-    you should\u2019ve encountered our leader yesterday."
-  - "We are all people of similar age, what we believe as the only people old enough
-    to somewhat recall life before and the day of when we were \u201Csaved\u201D
-    by this government."
-  - "But it doesn\u2019t truly feel like we were \u201Csaved\u201D does it? There
-    was more to that day than they may describe, you have that feeling too, don\u2019t
-    you?"
-  - "You: : I\u2026.. Yes, I think I do. But, they\u2019ve never done any wrong to
-    any of us so is there really a need to conspire like this?"
-  - "If you know they are not to be trusted then it should be quite believable that
-    they may have a greater plan to this \u201Cevacuation\u201D ongoing. "
-  - Here, please look this over.
-  - "We were taught this dome was built to protect us from \u201Cother governments\u201D
-    no? It is clear there is much place that the government wishes to hide from us."
-  - Whatever this plan is, it is almost certain it would greatly impact not just
-    you, but also your daughter.
-  - And we need your help. All of us have lost access to our internet functionality,
-    being left only for you and your coworkers, you being the only one suitable to
-    work alongside us. Would you be willing?
-  - "You: Yes\u2026 I\u2019ll help you so long as it does not put my daughter in
-    any danger."
-  - Thank you, we will ensure that is the case. We will be in touch later.
+  - You Aleks?
+  - 'You: Huh? Uh, yeah, why?'
+  - "Perfect. I\u2019m a member of a faction of guys that don\u2019t buy into the
+    lies of this here government, believe you met our top guy yesterday."
+  - "We\u2019re all the same age, old enough to remember our life before that day
+    we were \u201Csaved\u201D."
+  - "Doesn\u2019t quite feel like we were \u201Csaved\u201D though, does it? You\u2019re
+    our age too, so you should remember enough to think there was more to that day,
+    right?"
+  - "You: I\u2026.. I believe I do. But they\u2019ve never done us any wrong, so
+    why conspire?"
+  - "In that case, shouldn\u2019t be surprising that we\u2019re thinking they have
+    a bigger plan to this whole evacuation thing."
+  - 'Give this a look. '
+  - "\u201CWe built it to protect you all from outsiders\u201D, nothing about that
+    on it is there? They\u2019ve clearly been hiding info from us, and who knows
+    what else."
+  - "This plan of theres, it\u2019s certain to effect not just you, but your family
+    too."
+  - "We need your help, our internet access we need for investigating is gone, only
+    you border control lot still have it up, and you\u2019re our only suitable candidate
+    to help us."
+  - Will you?
+  - "You: \u2026. If it puts my daughter in no danger, I\u2019ll do it"
+  - "I\u2019ll make sure of it. We\u2019ll be in touch later, keep an eye out."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

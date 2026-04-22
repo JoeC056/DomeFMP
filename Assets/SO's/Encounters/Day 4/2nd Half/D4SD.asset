@@ -16,21 +16,20 @@ MonoBehaviour:
   lines:
   - "Sure! Oh, one second please. I seem to have misplaced my document\u2026 it\u2019ll
     be here somewhere\u2026."
-  - 'You: Sorry, are you the spy?'
-  - "Huh? I\u2019m sorry, what exactly do you mean abou-"
-  - Oh yeah, FACTION?
-  - ...
+  - "You: \u2026.. "
+  - 'You: FACTION? '
+  - "\u2026"
   - "Let\u2019s get through this quick."
   - "No hard evidence but I\u2019ve got information for you. "
-  - "The virus they\u2019ve been using to shepherd and control the population for
-    their plan is fake"
+  - "This virus they\u2019ve been using to shepherd and manipulate the population
+    for their plan is doesn\u2019t exist."
   - "All the \u201Cinfected\u201D are government pawns disguised, acting to perpetuate
-    the belief to the citizens. "
+    the belief to all of you. "
   - "We\u2019ve done another investigation you can check out, regarding the same
-    event as the previous investigation. Appears the events of that day was stage
+    event as the previous investigation. Appears the events of that day were stage
     1 of their plan."
   - "We\u2019ll keep investigating and keep you up to date. Expect contact through
-    messaging soon."
+    messaging soon. "
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

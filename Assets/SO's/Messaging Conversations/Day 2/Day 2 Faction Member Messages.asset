@@ -13,14 +13,11 @@ MonoBehaviour:
   m_Name: Day 2 Faction Member Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: fffd5ca6d861ad44982ff43836da8b39, type: 2}
-  delayBetweenMessages: 0
   lines:
   - "Got something you can look at, we\u2019ve had access to it before this whole
     virus shit started so I don\u2019t need any reports back."
   - Believe my guy from earlier showed you a document from it aswell.
   - (Website Available In Your Web Browser)
-  - "Differs from what they fed us in school doesn\u2019t it? Wonder if anything
-    we learnt there had an ounce of truth at this point."
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 

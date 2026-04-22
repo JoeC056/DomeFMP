@@ -15,21 +15,23 @@ MonoBehaviour:
   dialogueHidesSubmit: 1
   lines:
   - "Hey\u2026 You"
-  - "You\u2019re the father of that town favourite \u201Coh so beloved\u201D daughter,
-    aren\u2019t you?"
-  - "You\u2019re the same as me, yet you\u2019re sit here diligently carrying out
-    every last bidding of those government fucks like some pathetic, clueless pawn."
-  - "You: I-I\u2019m sorry I don\u2019t quite understand what you\u2019re say-"
-  - "Yeah, fancy that isn\u2019t it? You would never say shit about them, would you? 
-    After all, what have they ever done to you?"
-  - "We\u2019re the same age\u2026 you remember that day\u2026. maybe not fully,
-    but well enough. "
-  - "That day where they \u201Csaved us from the other government who kidnapped our
-    parents\u201D, you remember life before it, don\u2019t you? YOU KNOW THAT ISN\u2019T
-    THE FULL TRUTH, DON\u2019T YOU? SOMETHING ELSE HAPPENED, DIDN\u2019T IT?"
-  - "DEEP DOWN, YOU DON\u2019T TRUST THEM EITHER, DO YOU!?!?"
+  - "You\u2019re the dad of the towns \u201Coh soooo beloved\u201D daughter, aren\u2019t
+    you?"
+  - "And you\u2019re sitting here slaving away for those government fucks, what an
+    embarrassment."
+  - "You: \u2026I\u2019m sorry, I don\u2019t quite understand what you\u2019re saying?"
+  - "Oh, whoever could have guessed? The pawn doesn\u2019t understand why someone
+    would dislike the amazing government, they\u2019ve never done him wrong have
+    they?"
+  - "Ignorant fucks like you piss me off. We\u2019re the same age\u2026 you remember
+    that day\u2026. maybe not fully, but well enough. "
+  - "That day they \u201Csaved us\u201D from the government that \u201Ckidnapped
+    our parents\u201D. There\u2019s more to that truth, is there not? YOU KNOW SOMETHING
+    ELSE HAPPENED THAT DAY, DON\u2019T YOU?"
+  - "YOU DON\u2019T TRULY TRUST THEM EITHER, DO YOU!?!?"
   - 'You: ...'
-  - "\u2026. Fuck it, pointless trying to get through to one of you brainwashed slaves."
+  - "Would you look at that, another one that\u2019s too afraid to admit it"
+  - "Don\u2019t know why I bother, some idiots are beyond saving."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0
   bridgeResponse1: 

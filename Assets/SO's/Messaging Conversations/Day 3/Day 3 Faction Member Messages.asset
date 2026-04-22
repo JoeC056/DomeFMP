@@ -17,12 +17,11 @@ MonoBehaviour:
   - "You\u2019ve been good to us so far, so I\u2019ve got a more important one for
     you. "
   - (Website Available In Your Web Browser)
-  - "We have connections to some spies from the outside government ours claimed to
-    have \u201Csaved\u201D us from."
-  - They've been investigating this place for a while now
+  - We have connections to some spies from an outside government.
+  - They've been investigating this place for a while now.
   - "They\u2019ve just sent us this website, but our access to the internet is still
-    bricked. "
-  - "Give it a look through, I\u2019ll come for a report on what you find tommorow."
+    bricked."
+  - "Give it a look through, I\u2019ll come for a report on what you find tomorrow."
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 

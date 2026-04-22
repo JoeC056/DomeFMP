@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9eea5dcc87b426468754b6e0958619d, type: 3}
   m_Name: JobSite
   m_EditorClassIdentifier: 
-  websiteName: Virus Info
-  websiteUrl: Govsite.com/Virus
-  websiteContent: {fileID: 8399591597048759888, guid: 9e7db3d6bb120894781f0130047d4700, type: 3}
+  websiteName: Job Search
+  websiteUrl: Govsite.com/Jobs
+  websiteContent: {fileID: 8399591597048759888, guid: c036cb3a39082c941a435d99e2febaf8, type: 3}
