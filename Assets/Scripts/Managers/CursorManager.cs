@@ -21,6 +21,10 @@ public class CursorManager : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        if (computerInteractable.playerUsingComputer)
+        {
+            GetRectPositionOfMouse();
+        }
         if (computerInteractable.playerUsingComputer && SettingsManager.instance.stylizedCursorEnabled)
         {
             if (GetMouseHoveringOverButton())
@@ -45,13 +49,11 @@ public class CursorManager : MonoBehaviour
         PointerEventData currentMousePosition = new PointerEventData(EventSystem.current)
         {
             position = Input.mousePosition
-        };
-
+        }
+        ;
         List<RaycastResult> listOfCurrentHover = new List<RaycastResult>();
 
-
         computerCanvas.GetComponent<GraphicRaycaster>().Raycast(currentMousePosition, listOfCurrentHover);
-
 
         foreach (var thingHoveredOver in listOfCurrentHover)
         {
@@ -65,6 +67,13 @@ public class CursorManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    private Vector2 GetRectPositionOfMouse()
+    {
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        return Vector2.zero;
     }
 
     //////////////////////////////////////////////////////////////////////////////

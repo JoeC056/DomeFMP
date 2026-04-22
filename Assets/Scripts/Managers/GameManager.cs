@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private IncorrectAnswersNotice incorrectAnswersNotice;
     [SerializeField] private GameObject daysStartUI;
     [SerializeField] private Subtitles subtitles;
+    [SerializeField] private GameObject characterRenderNAText;
+    [SerializeField] private GameObject documentsNAText;
 
     [Header("Parameters")]
     [SerializeField] private float delayBetweenEncounters;
@@ -350,6 +352,8 @@ public class GameManager : MonoBehaviour
         {
             transcriptScript.AssignNewTranscriptDialogue(encounter.dialogue);
         }
+        
+
         if (encounter.documents.Count > 0)
         {
             List<GameObject> documents = new List<GameObject>();
@@ -359,6 +363,9 @@ public class GameManager : MonoBehaviour
             }
             documentsScript.AddNewDocumentsToDisplay(documents, encounter);
         }
+
+        characterRenderNAText.SetActive(encounter.render == null);
+        documentsNAText.SetActive(encounter.documents.Count <= 0);
 
         checklistScript.ResetList();
 
