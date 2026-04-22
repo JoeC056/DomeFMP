@@ -1116,12 +1116,12 @@ MonoBehaviour:
     they are evacuated.
 
     A number of citizens will be evacuated each day and
-    will be tested inspected at border control for symptoms to be allowed through.
+    will be tested, and then inspected at border control for symptoms to be allowed
+    through.
 
 
-    Additional
-    protective forces are surrounding the dome to ensure external governments cannot
-    make use of this situation to their advantage.'
+    Additional protective forces are surrounding the dome to ensure
+    external governments cannot make use of this situation to their advantage.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}

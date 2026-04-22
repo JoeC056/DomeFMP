@@ -488,9 +488,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Monthly Pay: 200
+  m_text: 'Monthly Pay: 600
 
-    For Single Person: 120
+    If No Partner: 360
 
     May be increased through
     overtime work'
@@ -1261,8 +1261,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Join a team of passionate individuals, devoted to raising and bringing
-    new joy and opportunities to young children that will change their lives for
+  m_text: 'Join a team of passionate individuals, devoted to raising and bring happiness
+    and greater opportunities to young children that will change their lives for
     the better.
 
     Help them realize the joys of your world as you aid in their
