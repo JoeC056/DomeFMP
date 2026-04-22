@@ -53,7 +53,7 @@ public class WebBrowser : MonoBehaviour
     private List<onFirstLoadEvent> onFirstLoadEvents;
 
     private bool loadingHomePage;
-    private bool loadingWebsite;
+    public bool loadingWebsite;
     private bool openingWebsite;
     private WebsiteSO websiteOpening;
     private bool waiting;

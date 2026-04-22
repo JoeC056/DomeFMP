@@ -6,6 +6,7 @@ public class ScrollbarScript : MonoBehaviour
 {
     [Header("Parameters")]
     [SerializeField] private float mouseScrollSpeed;
+    [SerializeField] private WebBrowser webBrowser;
 
     private Scrollbar scrollbar;
 
@@ -24,9 +25,19 @@ public class ScrollbarScript : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void CheckToScroll()
     {
+        bool canScroll = true;
+
+        if (webBrowser != null)
+        {
+            if (webBrowser.loadingWebsite)
+            {
+                canScroll = false;
+            }
+        }
+
         float input = Input.GetAxis("Mouse ScrollWheel");
 
-        if (input != 0)
+        if (input != 0 && canScroll)
         {
             scrollbar.value += -input * mouseScrollSpeed;
             scrollbar.value = Mathf.Clamp(scrollbar.value, 0, 1);

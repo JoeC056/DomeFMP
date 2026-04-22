@@ -154,7 +154,10 @@ public class ComputerManager : MonoBehaviour
     private IEnumerator LoadApplication(ApplicationSO application)
     {
         windowsCurrentlyOpening.Add(application);
-        yield return new WaitForSeconds(timeToOpenWindow);
+        if(application.applicationName != "Document Viewing Application")
+        {
+            yield return new WaitForSeconds(timeToOpenWindow);
+        }
         windowsCurrentlyOpening.Remove(application);
 
         //Opens app and focuses it

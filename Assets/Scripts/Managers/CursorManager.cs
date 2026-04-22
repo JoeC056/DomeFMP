@@ -11,6 +11,9 @@ public class CursorManager : MonoBehaviour
     [SerializeField] private ComputerInteractable computerInteractable;
     [SerializeField] private Canvas computerCanvas;
 
+    [Header("Parameters")]
+    [SerializeField] private Vector2 stylizedHandCursorHotspot;
+
     [Header("Prefabs")]
     [SerializeField] private Texture2D stylizedCursor;
     [SerializeField] private Texture2D stylizedHandCursor;
@@ -22,7 +25,7 @@ public class CursorManager : MonoBehaviour
         {
             if (GetMouseHoveringOverButton())
             {
-                Cursor.SetCursor(stylizedHandCursor, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(stylizedHandCursor,stylizedHandCursorHotspot, CursorMode.Auto);
             }
             else
             {
