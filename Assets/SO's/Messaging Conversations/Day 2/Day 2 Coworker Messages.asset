@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
   lines:
-  - "Sounds a bit fishy but, even if true, I trust they have good reason for it.
-    They\u2019ve never given me any real reason to doubt them."
+  - Hey, you remember those rumours I mentioned yesterday?
   - 'I got shown something interesting to do with it, I''ll send you a scan. '
   bridgeAfterMessages: 0
   bridgeResponse1: 

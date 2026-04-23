@@ -8,6 +8,7 @@ public class DefaultMessageHistory : MonoBehaviour
     [SerializeField] private GameObject conversationsParent;
     [SerializeField] private MessagingRecipientSO daughter;
     [SerializeField] private MessagingRecipientSO government;
+    private MessagingApplication messagingApplication;
 
     [Header("Parameters")]
     [SerializeField] private List<GameObject> daughterMessageTypes;

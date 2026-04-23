@@ -85,15 +85,24 @@ public class MessagingApplication : MonoBehaviour
 
     private GameObject currentTypingIcon;
 
+    public List<AvailableConversation> mostRecentlyAccessedConversations;
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
         remainingDialogueMessages = new List<string>();
         dialogueCompletionEvents = new List<dialogueCompletionEvent>();
+        mostRecentlyAccessedConversations = new List<AvailableConversation>();
 
         //Sets menu as default view
         UpdateMenuDisplay();
+
+        foreach (Transform child in availableConversationsParent.transform)
+        {
+            AddToRecentlyAccessedList(child.GetComponent<AvailableConversation>());
+        }
+
         ReturnToMenu();
         ToggleVisibility();
 
@@ -112,6 +121,7 @@ public class MessagingApplication : MonoBehaviour
         }
 
         UpdateConversationScrollPosition();
+        AssignOrderOfConversations();
     }
 
 
@@ -205,12 +215,20 @@ public class MessagingApplication : MonoBehaviour
                 GameObject message = Instantiate(receivingMessagePrefab, messagesParent.transform);
                 message.GetComponent<Message>().SetText(remainingDialogueMessages[0]);
                 tempMessageHistory.Add(message);
-                StartCoroutine(Wait(delayBetweenMessages));
                 remainingDialogueMessages.Remove(remainingDialogueMessages[0]);
 
-                if (remainingDialogueMessages.Count > 0)
+                if (remainingDialogueMessages.Count > 0 || currentDialogue.documentAfterMessages)
                 {
+                    StartCoroutine(Wait(delayBetweenMessages));
                     currentTypingIcon = Instantiate(typingIconPrefab, messagesParent.transform);
+                }
+                else if (currentDialogue.bridgeAfterMessages)
+                {
+                    StartCoroutine(Wait(delayBetweenMessages / 5));
+                }
+                else
+                {
+                    StartCoroutine(Wait(delayBetweenMessages));
                 }
             }
         }
@@ -240,6 +258,7 @@ public class MessagingApplication : MonoBehaviour
                     option2.GetComponentInChildren<Button>().onClick.AddListener(() => SelectResponse(2));
                 }
             }
+
         }
         //Displays the document to be sent after completing all messages if applicable
         else if (!waiting && remainingDialogueMessages.Count <= 0 && currentDialogue.documentAfterMessages && !documentAlreadyDisplayed)
@@ -278,6 +297,9 @@ public class MessagingApplication : MonoBehaviour
             }
 
             BridgeDialogue(currentDialogue.continuedDialogue);
+            StartCoroutine(Wait(delayBetweenMessages));
+            currentTypingIcon = Instantiate(typingIconPrefab, messagesParent.transform);
+
         }
         //Ends dialogue if dialogue complete branching not present 
         else if (!currentDialogue.bridgeAfterMessages && ((currentDialogue.documentAfterMessages && documentAlreadyDisplayed) || (!currentDialogue.documentAfterMessages)))
@@ -389,7 +411,6 @@ public class MessagingApplication : MonoBehaviour
         for (int i = 0; i < messageTypes.Count; i++)
         {
             GameObject previousMessage = null;
-            Debug.Log(messageTypes[i] + " " + receivedDocumentMessagePrefab.name);
 
             if (messageTypes[i].Contains(receivingMessagePrefab.name))
             {
@@ -467,6 +488,7 @@ public class MessagingApplication : MonoBehaviour
             if (child.GetComponent<AvailableConversation>().respectiveRecipient == messagingRecipient)
             {
                 respectiveAvailableConversation = child.GetComponent<AvailableConversation>();
+                AddToRecentlyAccessedList(respectiveAvailableConversation);
             }
         }
         menuUI.SetActive(false);
@@ -515,6 +537,9 @@ public class MessagingApplication : MonoBehaviour
             tempMessageHistory.Add(message);
             BridgeDialogue(currentDialogue.bridgedDialogue2);
         }
+
+        StartCoroutine(Wait(delayBetweenMessages));
+        currentTypingIcon = Instantiate(typingIconPrefab, messagesParent.transform);
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -761,6 +786,14 @@ public class MessagingApplication : MonoBehaviour
     {
         availableMessagingRecipients.Add(newRecipient);
         UpdateMenuDisplay();
+
+        foreach (Transform child in availableConversationsParent.transform)
+        {
+            if (child.GetComponent<AvailableConversation>().respectiveRecipient == newRecipient)
+            {
+                AddToRecentlyAccessedList(child.GetComponent<AvailableConversation>());
+            }
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -810,6 +843,50 @@ public class MessagingApplication : MonoBehaviour
         notificationText.SetActive(true);
         yield return new WaitForSeconds(notificationTextDuration);
         notificationText.SetActive(false);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void AssignOrderOfConversations()
+    {
+        List <AvailableConversation> fullList = new List<AvailableConversation>();
+        List<AvailableConversation> mandatoryConvos = new List<AvailableConversation>();
+        List<AvailableConversation> convos = new List<AvailableConversation>();
+        List<AvailableConversation> noConvos = new List<AvailableConversation>();
+
+        foreach (AvailableConversation convo in mostRecentlyAccessedConversations)
+        {
+            if (convo.mandatoryConversationPresent)
+            {
+                mandatoryConvos.Add(convo);
+            }
+            else if (convo.convoPresent)
+            {
+                convos.Add(convo);
+            }
+            else
+            {
+                noConvos.Add(convo);
+            }
+        }
+        fullList.AddRange(mandatoryConvos);
+        fullList.AddRange(convos);
+        fullList.AddRange(noConvos);
+
+        foreach (Transform child in availableConversationsParent.transform)
+        {
+            child.SetSiblingIndex(fullList.IndexOf(child.GetComponent<AvailableConversation>()));
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void AddToRecentlyAccessedList(AvailableConversation conversationToAdd)
+    {
+        if (mostRecentlyAccessedConversations.Contains(conversationToAdd))
+        {
+            mostRecentlyAccessedConversations.Remove(conversationToAdd);
+        }
+
+        mostRecentlyAccessedConversations.Insert(0,conversationToAdd);
     }
 
     //////////////////////////////////////////////////////////////////////////////////

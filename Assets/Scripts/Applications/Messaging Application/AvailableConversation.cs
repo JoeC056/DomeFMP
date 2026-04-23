@@ -26,6 +26,9 @@ public class AvailableConversation : MonoBehaviour
     private bool goingToGreen;
     private float currentIndex;
 
+    public bool convoPresent;
+    public bool mandatoryConversationPresent;
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -86,10 +89,11 @@ public class AvailableConversation : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////s
     private void CheckToDisplayNotificationIcon()
     {
+        mandatoryConversationPresent = false;
+        convoPresent = false;
+
         if (messagingApplication.availableConversations.Count > 0)
         {
-            bool mandatoryConversationPresent = false;
-            bool convoPresent = false;
 
             foreach (MessagingDialogueSO conversation in messagingApplication.availableConversations)
             {
