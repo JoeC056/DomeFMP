@@ -25,6 +25,8 @@ public class DocumentViewingApplication : MonoBehaviour
     [SerializeField] private GameObject groupPlanDocument2;
     [SerializeField] private GameObject symptomInformationDocument1;
     [SerializeField] private GameObject symptomInformationDocument2;
+    [SerializeField] private GameObject paycheckDocument;
+    [SerializeField] private GameObject daughterUniversityBill;
 
 
     //Instance of DocumentViewingApplication
@@ -110,6 +112,14 @@ public class DocumentViewingApplication : MonoBehaviour
         else if (documentToOpen.name.Contains(symptomInformationDocument2.name))
         {
             displayedDocument = Instantiate(symptomInformationDocument2, transform);
+        }
+        else if (documentToOpen.name.Contains(paycheckDocument.name))
+        {
+            displayedDocument = Instantiate(paycheckDocument, transform);
+        }
+        else if (documentToOpen.name.Contains(daughterUniversityBill.name))
+        {
+            displayedDocument = Instantiate(daughterUniversityBill, transform);
         }
         else if (displayedDocument == null)
         {

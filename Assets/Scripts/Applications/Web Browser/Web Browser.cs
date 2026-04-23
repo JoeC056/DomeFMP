@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class WebBrowser : MonoBehaviour
     [SerializeField] private TextMeshProUGUI urlText;
     [SerializeField] private GameObject websiteContentParent;
     [SerializeField] private GameObject linkButtonsParent;
+    [SerializeField] private GameObject homePage;
+    [SerializeField] private GameObject homePageRectMask;
+    [SerializeField] private GameObject webPageRectMask;
     [SerializeField] private Scrollbar scrollbar;
     [SerializeField] private TextMeshProUGUI appNameText;
 
@@ -20,7 +24,11 @@ public class WebBrowser : MonoBehaviour
     [SerializeField] private GameObject linkButton;
 
     [Header("Parameters")]
+    [SerializeField] private float delayBeforeWebsiteOpen;
     [SerializeField] private float scrollbarSizeScalerValue;
+    [SerializeField] private int noOfStepsToLoadPage;
+    [SerializeField] private float delayBetweenSteps;
+    [SerializeField] private float homePageDefaultYPosition;
     public Vector2 defaultPageSize;
     public float defaultPageYDisplacement;
 
@@ -44,6 +52,13 @@ public class WebBrowser : MonoBehaviour
 
     private List<onFirstLoadEvent> onFirstLoadEvents;
 
+    private bool loadingHomePage;
+    public bool loadingWebsite;
+    private bool openingWebsite;
+    private WebsiteSO websiteOpening;
+    private bool waiting;
+
+
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -56,6 +71,46 @@ public class WebBrowser : MonoBehaviour
         appNameText.text = "Web Browser (Home Page)";
     }
 
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        scrollbar.enabled = !loadingWebsite;
+
+        if (loadingHomePage && !waiting)
+        {
+            homePageRectMask.GetComponent<RectTransform>().anchoredPosition -= new Vector2(webPageRectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f / noOfStepsToLoadPage);
+            homePage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -homePageRectMask.GetComponent<RectTransform>().anchoredPosition.y + homePageDefaultYPosition);
+
+            if (homePageRectMask.GetComponent<RectTransform>().anchoredPosition.y <= homePageDefaultYPosition)
+            {
+                homePageRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(homePageRectMask.GetComponent<RectTransform>().anchoredPosition.x, homePageDefaultYPosition);
+                homePage.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                loadingHomePage = false;
+            }
+            else
+            {
+                StartCoroutine(Wait());
+            }
+        }
+
+        if (loadingWebsite && !waiting) 
+        {
+            webPageRectMask.GetComponent<RectTransform>().anchoredPosition -= new Vector2(webPageRectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f / noOfStepsToLoadPage);
+            websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2) - webPageRectMask.GetComponent<RectTransform>().anchoredPosition.y);
+
+            if (webPageRectMask.GetComponent<RectTransform>().anchoredPosition.y <= 0)
+            {
+                webPageRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(webPageRectMask.GetComponent<RectTransform>().anchoredPosition.x, 0);
+                websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2));
+                loadingWebsite = false;
+            }
+            else
+            {
+                StartCoroutine(Wait());
+            }
+        }
+    }
+    
     //////////////////////////////////////////////////////////////////////////////////
     public void CreateSingleton()
     {
@@ -103,6 +158,25 @@ public class WebBrowser : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     public void LoadWebsite(WebsiteSO websiteToLoad)
     {
+        if (websiteToLoad != websiteOpening)
+        {
+            if (openingWebsite)
+            {
+                StopAllCoroutines();
+            }
+            StartCoroutine(DisplayWebsite(websiteToLoad));
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator DisplayWebsite(WebsiteSO websiteToLoad)
+    {
+        websiteOpening = websiteToLoad;
+        openingWebsite = true;
+        yield return new WaitForSeconds(delayBeforeWebsiteOpen);
+        openingWebsite = false;
+        websiteOpening = null;
+
         //First removes previous websites
         if (websiteContentParent.transform.childCount > 0)
         {
@@ -125,7 +199,6 @@ public class WebBrowser : MonoBehaviour
 
         if (GetRespectiveEventForWebsiteLoad(websiteToLoad) != null)
         {
-            Debug.Log("Event loaded");
             GetRespectiveEventForWebsiteLoad(websiteToLoad).Invoke();
 
             onFirstLoadEvent loadEventToRemove = new onFirstLoadEvent();
@@ -140,7 +213,10 @@ public class WebBrowser : MonoBehaviour
 
             onFirstLoadEvents.Remove(loadEventToRemove);
         }
+
+        Refresh();
     }
+
 
     //////////////////////////////////////////////////////////////////////////////////
     public void HomeButton()
@@ -150,6 +226,7 @@ public class WebBrowser : MonoBehaviour
         webPageUI.SetActive(false);
         urlText.text = "";
         appNameText.text = "Web Browser (Home Page)";
+        Refresh();
     }
 
 
@@ -218,6 +295,37 @@ public class WebBrowser : MonoBehaviour
             }
         }
         return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator Wait()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(delayBetweenSteps);
+        waiting = false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    public void Refresh()
+    {
+        if (!openingWebsite)
+        {
+            if (homePageUI.activeSelf)
+            {
+                loadingHomePage = true;
+                homePageRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(homePageRectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f + homePageDefaultYPosition);
+                homePage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -homePageRectMask.GetComponent<RectTransform>().anchoredPosition.y + homePageDefaultYPosition);
+            }
+            else if (webPageUI.activeSelf)
+            {
+                loadingWebsite = true;
+                webPageRectMask.GetComponent<RectTransform>().anchoredPosition = new Vector2(webPageRectMask.GetComponent<RectTransform>().anchoredPosition.x, 258.5938f);
+                websiteContentParent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -((websiteSize - defaultPageSize.y) / 2) - webPageRectMask.GetComponent<RectTransform>().anchoredPosition.y);
+            }
+
+            StopAllCoroutines();
+            waiting = false;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////

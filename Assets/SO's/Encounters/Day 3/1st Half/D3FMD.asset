@@ -14,23 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueHidesSubmit: 1
   lines:
-  - 'You remember those rumours I was talking about? '
-  - The whole shit about the illness being part of some plan, I got some dirt on
-    the whole thing.
+  - Got some dirt for you about the virus being part of their plan shit I mentioned
+    before.
   - "Managed to brute force onto a government website through some exploit on the
-    messages, couldn\u2019t get to the home page to view the rest of the site though."
-  - "We\u2019re thinking this entire town and way of life they\u2019ve created is
-    another part of their plan, built up under the noses of every clueless fool living
-    here."
-  - "Pretty good chance they never even bothered looking for our \u201Ckidnapped
-    parents\u201D, and it\u2019s real fucking rich of them to constantly go on about
-    \u201Ccreating our own family\u201D, shaming anyone who doesn\u2019t have one
-    when they won\u2019t even bring back the ones we deserved, and lost."
-  - 'You: I see. But, do you want your own family? One you created by yourself?'
-  - "I\u2019m not trying to look like another fucking slave to all that shit they
-    feed you, there\u2019s plenty of those lining the streets already. Even if I
-    did, not a chance you\u2019d find anyone in here who\u2019d want to be a part
-    of that family,  just a whole waste of time to even consider."
+    messages, couldn\u2019t get to the home page to view the rest of the site though. "
+  - "We\u2019re thinking this whole town and everything in it is part of it aswell,
+    no chance just this virus is the start and end of it all."
+  - "All the while they probably barely made any fucking effort to look for the parents
+    we lost, the family we lost, shaming anyone here who doesn\u2019t want to replace
+    it by \u201Cmaking their own\u201D."
+  - 'You: I see. Do you, want your own family though?'
+  - "What and be another of the government\u2019s perfect little examples? Enough
+    of those slaves lining the streets."
+  - "Regardless , not a chance you\u2019d find anyone in here who\u2019d want to
+    be a part of that family, just a waste of a thought."
   - "Anyways, that\u2019s all I\u2019ve got for now, I\u2019ll get back to you later."
   bridgeAfterDialogue: 0
   clearTranscriptUponBridging: 0

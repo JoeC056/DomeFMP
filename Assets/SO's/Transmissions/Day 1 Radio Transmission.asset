@@ -15,17 +15,16 @@ MonoBehaviour:
   mandatory: 1
   lines:
   - ALERT TO ALL CITIZENS
-  - As of a few moments ago, we have confirmed the arrival of an otherworldly presence
-    enveloping the surroundings of the dome.
-  - "We are yet to understand it\u2019s full capabilities, but have identified it
-    contains a virus exposed individuals may be affected by."
-  - The only currently known complication of this virus is a rash on either arm.
-    Citizens who experience this complication must contact us via their computer
-    messaging application immediately.
-  - As of this moment, efforts are in progress to evacuate all citizens to a temporary
-    safe location until this issue is resolved, alongside precautions in place to
-    prevent exterior interference from governing figures of greater territories.
-  - Information regarding such can be found on your computer messages.
+  - Just now, we have confirmed the existence of an otherworldly presence enveloping
+    the surroundings of the dome.
+  - "We are yet to understand it\u2019s full capabilities, but have identified that
+    individuals exposed to it may be afflicted with a virus, the only currently known
+    complication of which is a rash on either arm."
+  - To protect citizens whilst we mitigate this problem, an evacuation is in progress
+    that will be handled over the course of the following days. Information regarding
+    this can be found on your computer messages.
+  - Measures are also in place to prevent external forces and governing figures from
+    interfering with or making use of this situation.
   - To fulfil the evacuation, all citizens are instructed to not leave their home
-    without proper authorization.
+    without proper authorization, and to contact us if they believe they may be infected.
   - I REPEAT, CITIZENS MAY NOT LEAVE THEIR HOME WITHOUT PROPER AUTHORIZATION.

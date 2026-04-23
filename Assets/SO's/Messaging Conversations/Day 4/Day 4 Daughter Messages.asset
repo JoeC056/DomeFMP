@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Day 4 Daughter Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 08a894b9b170bd4408c3738b6b563b07, type: 2}
-  delayBetweenMessages: 0
   lines:
   - "Hi Dad, seems I\u2019m scheduled to be evacuated today!"
   - "But it doesn\u2019t seem I\u2019ll be going through the booth your stationed
-    at, unfortunately :("
-  - "Oh, and some of the kids I\u2019ve been helping out are going through aswell
+    at, unfortunately. :("
+  - "Oh, but some of the kids I\u2019ve been helping out are going through aswell
     today."
-  - If you see Yulian or Susana, you should be good to let them through right away.
-  - "Hopefully you get sent through soon, I can\u2019t wait to see you! "
+  - "If you see Yulian or Susana, they\u2019ll be all clean, and you can let them
+    through right away."
+  - "Hopefully you get sent through soon, I can\u2019t wait to see you!"
   - And have a great shift today!
   bridgeAfterMessages: 0
   bridgeResponse1: 
@@ -33,3 +33,5 @@ MonoBehaviour:
   document: {fileID: 0}
   continueAfterDocument: 0
   continuedDialogue: {fileID: 0}
+  mandatory: 0
+  gameplayUpdate: 0

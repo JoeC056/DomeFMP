@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: Day 1 Government Message
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: b2bdc4a268c1abc4386e1f154d6bd7e5, type: 2}
-  delayBetweenMessages: 1
   lines:
   - Due to experience working as a border control agent, you have been appointed
     with remotely handling citizen evacuations.
   - You are to inspect citizens for known symptoms of the virus and determine whether
     to send them in for further screening.
-  - Your performance is monitored, and pay adjusted accordingly, to ensure the evacuation
-    of citizens is done safely by all workers.
-  - Once all citizens are evacuated, you will be given a notice of when you and other
-    border control agents are to be aswell
+  - "Border control agents\u2019 evacuation will be handled individually after all
+    other citizens."
   - On your computer you may find an application that will be used for this remote
     border control task.
   - Please read all information present within it and begin your shift as soon as

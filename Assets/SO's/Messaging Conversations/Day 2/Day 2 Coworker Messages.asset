@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Day 2 Coworker Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
-  delayBetweenMessages: 1
   lines:
   - Hey, you remember those rumours I mentioned yesterday?
-  - I got shown something interesting to do with it,m I'll send you a scan.
+  - 'I got shown something interesting to do with it, I''ll send you a scan. '
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 
@@ -27,3 +26,5 @@ MonoBehaviour:
   document: {fileID: 8399591597048759888, guid: a9cbca1d2f07b9f40b619774fdb9c60b, type: 3}
   continueAfterDocument: 1
   continuedDialogue: {fileID: 11400000, guid: 2c54d28e427bcbe4d96a14186041eb69, type: 2}
+  mandatory: 0
+  gameplayUpdate: 0

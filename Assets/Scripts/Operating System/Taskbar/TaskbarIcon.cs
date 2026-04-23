@@ -37,9 +37,12 @@ public class TaskbarIcon : MonoBehaviour
 
         if (application.applicationName == "Document Viewing Application")
         {
-            if (Transcript.instance.waitingToStopLookingAtDocument)
+            if (Transcript.instance != null)
             {
-                Transcript.instance.waitingToStopLookingAtDocument = false;
+                if (Transcript.instance.waitingToStopLookingAtDocument)
+                {
+                    Transcript.instance.waitingToStopLookingAtDocument = false;
+                }
             }
         }
     }

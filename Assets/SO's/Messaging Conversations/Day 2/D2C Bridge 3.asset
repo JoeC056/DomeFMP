@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: D2C Bridge 3
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
-  delayBetweenMessages: 1
   lines:
   - "Ah, that\u2019s a shame, I just had my wife and daughter go through this morning."
-  - "Had me worried sick, it was the only thing on my mind lately, but it\u2019s
+  - "Had me worried sick only thing that\u2019s been on my mind lately, but it\u2019s
     been pushing me through work at the very least."
   - Well, have a good shift, and catch you later.
   bridgeAfterMessages: 0

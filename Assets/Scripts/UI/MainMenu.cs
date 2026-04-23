@@ -33,6 +33,15 @@ public class MainMenu : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && creditsUI.activeSelf)
+        {
+            CreditsBackButton();
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
     private void FixedUpdate()
     {
         if (playingOpeningAnimation)

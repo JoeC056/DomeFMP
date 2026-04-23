@@ -10,9 +10,9 @@ public class Day0NarrationGuidanceTrigger : MonoBehaviour
     [SerializeField] private float lifetime;
 
     //////////////////////////////////////////////////////////////////////////////////
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && GameManager.instance.stateOfGame == GameManager.States.InGame)
         {
             List<string> message = new List<string>();
             message.Add(dialogueText);

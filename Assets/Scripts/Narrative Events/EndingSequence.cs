@@ -10,10 +10,10 @@ public class EndingSequence : MonoBehaviour
     [SerializeField] private GameObject mainMenuButton;
 
     [Header("Parameters")]
-     private string contents;
     [SerializeField] private float delayBetweenCharacters;
 
     private bool waiting;
+    private string contents;
 
     //////////////////////////////////////////////////////////////////////////////
     private void Awake()

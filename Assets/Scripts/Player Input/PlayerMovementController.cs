@@ -41,7 +41,6 @@ public class PlayerMovementController : MonoBehaviour
         {
             GetInput();
             RotateCameraAndPlayer();
-            LimitMoveSpeed();
         }
     }
 
@@ -51,6 +50,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         //Moves player
         MovePlayer();
+        LimitMoveSpeed();
     }
 
     //////////////////////////////////////////////////////////////////////////////

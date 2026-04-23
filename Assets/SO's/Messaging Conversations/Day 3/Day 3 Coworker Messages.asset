@@ -15,14 +15,14 @@ MonoBehaviour:
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
   lines:
   - "Hey there, sorry I couldn\u2019t talk last night, I was spending it chatting
-    to the boss over messages. "
+    to the boss over messages."
   - "It\u2019s not often I get time to talk with friends nowadays, very little reason
     for me to do so with the family and all!"
   - But anyways, main thing I came to say, that same boss put me on to some crazy
     evidence about those rumours the other day.
   - Websites, documents the lot
-  - "I\u2019ve got one that seems immediately relevant for today, so I\u2019ll send
-    that over now"
+  - "It\u2019s not often I get time to talk with friends nowadays, very little reason
+    for me to do so with the family and all!"
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 

@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Day 5 Faction Member Messages
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: fffd5ca6d861ad44982ff43836da8b39, type: 2}
-  delayBetweenMessages: 0
   lines:
-  - Heard you got that site from the spy, got a follow up one from him for you.
-  - "No need the info from the last night, just give me the full of the both of them
-    once you\u2019re done "
-  - "From what he says it\u2019s a big one, but even he can\u2019t view it whilst
-    in here."
+  - Heard about the site you got from the spy, got a follow up one from him for you.
+  - "Don\u2019t want the shit from the last one yet, just give me the full of the
+    both of them once you\u2019re done ."
+  - "Some big stuff apparently, but even he can\u2019t view it whilst in here. "
   - (Website Available In Your Web Browser)
   bridgeAfterMessages: 0
   bridgeResponse1: 

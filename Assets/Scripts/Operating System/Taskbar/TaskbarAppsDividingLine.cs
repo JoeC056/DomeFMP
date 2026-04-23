@@ -1,3 +1,4 @@
+using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -8,22 +9,37 @@ public class TaskbarAppsDividingLine : MonoBehaviour
     [SerializeField] private GameObject homeButtonDividingLine;
 
     [Header("Parameters")]
-    [SerializeField] private Vector3 displacementFromRightmostTaskbarAppIcon;
+    [SerializeField] private float defaultDisplacement;
+    [SerializeField] private float displacementPerTask;
 
+    private RectTransform rectTransform;
+    private float defaultXPosition;
+
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        defaultXPosition = rectTransform.anchoredPosition.x;
+    }
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        if (tasksParent.transform.childCount > 0)
+        if (defaultXPosition != 0)
         {
-            transform.position = tasksParent.transform.GetChild(tasksParent.transform.childCount -1).transform.position + displacementFromRightmostTaskbarAppIcon;
+            if (tasksParent.transform.childCount > 0)
+            {
+                rectTransform.anchoredPosition = new Vector2(defaultXPosition + defaultDisplacement + (displacementPerTask * tasksParent.transform.childCount), 0);
+            }
+            else
+            {
+                rectTransform.anchoredPosition = new Vector2(defaultXPosition, 0);
+            }
+
         }
-        else
-        {
-            transform.position = homeButtonDividingLine.transform.position;
-        }
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////
 }
-
 //////////////////////////////////////////////////////////////////////////////////

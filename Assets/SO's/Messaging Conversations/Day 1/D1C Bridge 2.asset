@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: D1C Bridge 2
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
-  delayBetweenMessages: 1
   lines:
-  - "All good man, nice to have someone to talk to in these times. Its spooky but
-    the government\u2019s been doing a good job sorting it out."
+  - "All good, nice to have someone to talk to in these times. Its spooky, but the
+    way it\u2019s being handled is reassuring at least."
   - "Although, I\u2019ve been hearing some weird rumours."
   bridgeAfterMessages: 1
   bridgeResponse1: Rumours?

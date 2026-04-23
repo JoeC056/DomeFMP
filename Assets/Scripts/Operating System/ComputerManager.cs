@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 //////////////////////////////////////////////////////////////////////////////////
 public class ComputerManager : MonoBehaviour
@@ -11,6 +14,11 @@ public class ComputerManager : MonoBehaviour
     [SerializeField] private GameObject desktopIconsParent;
     [SerializeField] private DocumentViewingApplication docViewingApp;
     [SerializeField] private WebBrowser webBrowserApp;
+    [SerializeField] private GameObject cursorLoadingWheel;
+    [SerializeField] private Canvas computerCanvas;
+
+    [Header("Parameters")]
+    [SerializeField] private float timeToOpenWindow;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject emptyTaskbarIconPrefab;
@@ -22,6 +30,7 @@ public class ComputerManager : MonoBehaviour
     //Lists of open apps and apps with open windows
     [HideInInspector] public List<ApplicationSO> openApplications;
     [HideInInspector] public LinkedList<ApplicationSO> openWindowsStack;
+    [HideInInspector] private List<ApplicationSO> windowsCurrentlyOpening;
 
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +53,7 @@ public class ComputerManager : MonoBehaviour
         webBrowserApp.CreateSingleton();
 
         openWindowsStack = new LinkedList<ApplicationSO>();
+        windowsCurrentlyOpening = new List<ApplicationSO>();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +67,14 @@ public class ComputerManager : MonoBehaviour
     {
         UpdateDisplayedWindows();
         ReorderWindowHierarchy();
+
+        //cursorLoadingWheel.SetActive(windowsCurrentlyOpening.Count > 0);
+        //if (cursorLoadingWheel.activeSelf)
+        //{
+        //    cursorLoadingWheel.GetComponent<RectTransform>().anchoredPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //}
     }
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void UpdateDisplayedWindows()
@@ -127,9 +144,32 @@ public class ComputerManager : MonoBehaviour
     public void OpenApplication(ApplicationSO application)
     {
         //Opens app and focuses it
+        if (!windowsCurrentlyOpening.Contains(application))
+        {
+            StartCoroutine(LoadApplication(application));
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private IEnumerator LoadApplication(ApplicationSO application)
+    {
+        windowsCurrentlyOpening.Add(application);
+        if(application.applicationName != "Document Viewing Application")
+        {
+            yield return new WaitForSeconds(timeToOpenWindow);
+        }
+        windowsCurrentlyOpening.Remove(application);
+
+        //Opens app and focuses it
         openApplications.Add(application);
         openWindowsStack.AddFirst(application);
         UpdateTaskbar();
+
+        //Returns to home page of respective applications on close where applicable 
+        if (application.applicationName == "Web Browser")
+        {
+            WebBrowser.instance.HomeButton();
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -179,6 +219,7 @@ public class ComputerManager : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
+
 
     //////////////////////////////////////////////////////////////////////////////////
 }

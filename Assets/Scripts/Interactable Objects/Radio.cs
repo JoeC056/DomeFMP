@@ -9,6 +9,7 @@ public class Radio : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject radioUI;
+    [SerializeField] private GameObject uiRadio;
     [SerializeField] private TextMeshProUGUI textSpace;
 
     [Header("Parameters")]
@@ -43,6 +44,7 @@ public class Radio : MonoBehaviour
     private InteractableObject interactableObjectScript;
 
     private AudioSource audioSource;
+
 
 
     //////////////////////////////////////////////////////////////////////////////
@@ -85,6 +87,7 @@ public class Radio : MonoBehaviour
         }
 
         CheckSoundToPlay(shouldPlayStatic);
+        CheckToDisplay();
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -250,6 +253,13 @@ public class Radio : MonoBehaviour
             }
         }
         return null;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void CheckToDisplay()
+    {
+        GetComponent<MeshRenderer>().enabled = !usingRadio;
+        uiRadio.SetActive(usingRadio);
     }
 
     //////////////////////////////////////////////////////////////////////////////////

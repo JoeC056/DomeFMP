@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: D3CB1
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: 41f6666ec8adc1846b1cc0f2bf100762, type: 2}
-  delayBetweenMessages: 0
   lines:
   - "There\u2019s a lot to go through, so I\u2019ll give the rest a look through
-    and talk to you more about it later"
-  - Saves you some time looking through it all yourself
+    and talk to you more about it later."
+  - Saves you some time looking through it all yourself.
   bridgeAfterMessages: 0
   bridgeResponse1: 
   bridgeResponse2: 

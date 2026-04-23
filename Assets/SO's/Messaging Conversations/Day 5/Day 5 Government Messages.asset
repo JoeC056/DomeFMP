@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personSpokenTo: {fileID: 11400000, guid: b2bdc4a268c1abc4386e1f154d6bd7e5, type: 2}
   lines:
-  - We are aware of how much you know
+  - We are aware of how much you know.
   - We have taken your daughter, and with it her life is in our hands.
-  - If you wish to see her once more, hand us the information on what the spies have
-    planned.
-  - Do so and you and her both will be safely escorted away and your lifes spared.
+  - If you wish to see her once more, hand us the information on what they have planned.
+  - Do so and you and her both will be safely escorted away, and your lives spared.
   - Her fate is in your hands now, do not make the wrong choice.
   bridgeAfterMessages: 0
   bridgeResponse1: 

@@ -15,7 +15,10 @@ public class ComputerInteractable : MonoBehaviour
     [SerializeField] private float delayBetweenPartsOfOpeningAnimation;
     [SerializeField] private float computerCantBeLeftMessageDuration;
 
-    private bool playerUsingComputer;
+    [Header("Prefabs")]
+    [SerializeField] private Texture2D stylizedCursor;
+
+    [HideInInspector] public bool playerUsingComputer;
     private bool firstUseOfComputer;
     [HideInInspector] public bool firstOpenOfDay;
 
@@ -80,7 +83,6 @@ public class ComputerInteractable : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private IEnumerator DisplayFirstBootOpeningAnimation()
     {
-        int index = 1;
         inOpeningAnimation = true;
         firstOpenOfDay = false;
         firstUseOfComputer = false;
@@ -105,7 +107,6 @@ public class ComputerInteractable : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private IEnumerator DisplayOpeningAnimation()
     {
-        int index = 1;
         inOpeningAnimation = true;
         firstOpenOfDay = false;
 

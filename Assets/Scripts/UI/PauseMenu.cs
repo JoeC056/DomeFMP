@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject homeUI;
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject playerHUD;
+    [SerializeField] private Subtitles subtitles;
 
     public bool paused;
 
@@ -43,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         paused = !paused;
         pauseUI.SetActive(paused);
         playerHUD.SetActive(!paused);
+        StartCoroutine(UpdateSubtitles());
 
         //Checks whether to freeze time based on paused or not
         if (paused)
@@ -66,6 +69,13 @@ public class PauseMenu : MonoBehaviour
     {
         homeUI.SetActive(false);
         settingsUI.SetActive(true);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////
+    private IEnumerator UpdateSubtitles()
+    {
+        yield return new WaitForSeconds(0.05f);
+        subtitles.CheckHowLongToWait();
     }
 
     ///////////////////////////////////////////////////////////////////////////////

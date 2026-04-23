@@ -12,11 +12,25 @@ public class ScrollbarHandle : MonoBehaviour
     [SerializeField] private GameObject rightBorder;
     [SerializeField] private GameObject bottomBorder;
     [SerializeField] private Scrollbar scrollbar;
+    private RectTransform slidingAreaRectTransform;
 
     [Header("Parameters")]
     [SerializeField] private float pixelSize;
     [SerializeField] private float scrollbarWidth;
 
+
+    //////////////////////////////////////////////////////////////////////////////////
+    private void Awake()
+    {
+        //foreach (Transform child in scrollbar.transform)
+        //{
+        //    if (child.gameObject.name.Contains("Sliding Area"))
+        //    {
+        //        slidingAreaRectTransform = child.gameObject.GetComponent<RectTransform>();
+        //    }
+        //}
+
+    }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
@@ -27,9 +41,16 @@ public class ScrollbarHandle : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////
     private void UpdateBordersOfHandle()
     {
-        //rightBorderSecondLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
-        //leftBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
-        //rightBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, scrollbar.size);
+        rightBorder.SetActive(false);
+        leftBorder.SetActive(false);
+        topBorder.SetActive(false);
+        bottomBorder.SetActive(false);
+        rightBorderSecondLayer.SetActive(false);
+        bottomBorderSecondLayer.SetActive(false);
+
+        //rightBorderSecondLayer.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize,slidingAreaRectTransform.sizeDelta.x * scrollbar.size);
+        //leftBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, slidingAreaRectTransform.sizeDelta.x * scrollbar.size);
+        //rightBorder.GetComponent<RectTransform>().sizeDelta = new Vector2(pixelSize, slidingAreaRectTransform.sizeDelta.x * scrollbar.size);
 
         //pixelSize *= 100;
 
@@ -43,8 +64,7 @@ public class ScrollbarHandle : MonoBehaviour
 
         //rightBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
 
-        //bottomBorder.transform.GetComponent<RectTransform>().position =
-        //    GetComponent<RectTransform>().position;
+        //bottomBorder.transform.GetComponent<RectTransform>().position = GetComponent<RectTransform>().position;
     }
 
     //////////////////////////////////////////////////////////////////////////////////

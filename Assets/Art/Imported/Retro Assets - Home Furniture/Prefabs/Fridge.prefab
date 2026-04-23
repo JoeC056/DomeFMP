@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4493846426594663149}
   - component: {fileID: 4848266847091801161}
   - component: {fileID: 5327898193099544268}
+  - component: {fileID: 8903640091317042433}
   m_Layer: 0
   m_Name: Lower Door
   m_TagString: Untagged
@@ -90,6 +91,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8903640091317042433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636976239387747876}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.144413, y: 0.63817316, z: 1.3645859}
+  m_Center: {x: -0.02183342, y: 0.31908658, z: 0}
 --- !u!1 &1793299870686393370
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +123,7 @@ GameObject:
   - component: {fileID: 7081680757230143250}
   - component: {fileID: 6569227971109309843}
   - component: {fileID: 712350271393305717}
+  - component: {fileID: 7073643414695750863}
   m_Layer: 0
   m_Name: Upper Door
   m_TagString: Untagged
@@ -180,6 +203,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7073643414695750863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793299870686393370}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.14441681, y: 2.062809, z: 1.3645859}
+  m_Center: {x: -0.021835327, y: 1.0314045, z: 0}
 --- !u!1 &3179385692091596399
 GameObject:
   m_ObjectHideFlags: 0
