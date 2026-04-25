@@ -44,7 +44,6 @@ public class EndingSequence : MonoBehaviour
     private IEnumerator Wait()
     {
         waiting = true;
-        Debug.Log(delayBetweenCharacters);
         yield return new WaitForSeconds(delayBetweenCharacters);
         waiting = false;
     }

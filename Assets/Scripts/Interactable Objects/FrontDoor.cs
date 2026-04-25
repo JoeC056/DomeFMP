@@ -7,6 +7,7 @@ public class FrontDoor : MonoBehaviour
     [Header("References")]
     [SerializeField] private PauseMenu pauseMenuScript;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject hud;
     [SerializeField] private GameObject endingChoiceSelectUI;
 
 
@@ -33,7 +34,9 @@ public class FrontDoor : MonoBehaviour
     public void InteractWithDoor()
     {
         pauseMenuScript.TogglePause();
+        GameManager.instance.stateOfGame = GameManager.States.WatchingEndingSequence;
         pauseMenuUI.SetActive(false);
+        hud.SetActive(true);
         endingChoiceSelectUI.SetActive(true);
     }
 

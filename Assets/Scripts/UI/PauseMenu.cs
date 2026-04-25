@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject playerHUD;
     [SerializeField] private Subtitles subtitles;
+    [SerializeField] private GameObject endingChoiceSelectUI;
 
     public bool paused;
 
@@ -33,7 +34,7 @@ public class PauseMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void GetInput()
     {
-        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence) && !settingsMenu.inSubMenu && !settingsUI.activeSelf)
+        if (Input.GetKeyDown(InputManager.instance.pauseKey) && !(GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence && !endingChoiceSelectUI.activeSelf) && !settingsMenu.inSubMenu && !settingsUI.activeSelf)
         {
             TogglePause();
         }
@@ -42,6 +43,10 @@ public class PauseMenu : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     public void TogglePause()
     {
+        if (GameManager.instance.stateOfGame == GameManager.States.WatchingEndingSequence)
+        {
+            GameManager.instance.stateOfGame = GameManager.States.InGame;
+        }
         paused = !paused;
         pauseUI.SetActive(paused);
         playerHUD.SetActive(!paused);

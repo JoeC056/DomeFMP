@@ -14,13 +14,13 @@ public class EndingChoiceSelectUI : MonoBehaviour
         if (endingIndex == 1)
         {
             ending1UI.SetActive(true);
-            GameManager.instance.stateOfGame = GameManager.States.WatchingEndingSequence; 
+            //GameManager.instance.stateOfGame = GameManager.States.WatchingEndingSequence; 
             this.gameObject.SetActive(false);
         }
         if (endingIndex == 2)
         {
             ending2UI.SetActive(true);
-            GameManager.instance.stateOfGame = GameManager.States.WatchingEndingSequence;
+            //GameManager.instance.stateOfGame = GameManager.States.WatchingEndingSequence;
             this.gameObject.SetActive(false);
         }
 

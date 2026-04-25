@@ -40102,6 +40102,10 @@ PrefabInstance:
       value: Front Door
       objectReference: {fileID: 0}
     - target: {fileID: 5581314344070529946, guid: 3b31551e1ffd61344b1bf10a0ec9d636, type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 5765422923405039669}
+    - target: {fileID: 5581314344070529946, guid: 3b31551e1ffd61344b1bf10a0ec9d636, type: 3}
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 2481160278957161517}
@@ -84248,7 +84252,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c899dbc7f15aa9b4cb6b421080dde47e, type: 2}
   - {fileID: 11400000, guid: ca55f2bef35fc814e91b5a73601b6285, type: 2}
   - {fileID: 11400000, guid: dbd3a4811db69654ca5fa9e489f49634, type: 2}
-  day4GameplaySegmentDurationMinutes: 0
+  day4GameplaySegmentDurationMinutes: 8.5
   day4AspectsToCheck:
   - Rash
   - Acne
@@ -86808,7 +86812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1669482781
 Transform:
   m_ObjectHideFlags: 0
@@ -97605,7 +97609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1886548610
 Transform:
   m_ObjectHideFlags: 0
@@ -111385,6 +111389,7 @@ MonoBehaviour:
   settingsUI: {fileID: 99271630}
   playerHUD: {fileID: 5765422923405039669}
   subtitles: {fileID: 887698677}
+  endingChoiceSelectUI: {fileID: 221870956}
   paused: 0
 --- !u!223 &428902435045215592
 Canvas:

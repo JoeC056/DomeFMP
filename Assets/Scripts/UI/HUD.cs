@@ -19,7 +19,7 @@ public class HUD : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        //HUD only enable when exploring the level
+        //HUD only enable when exploring the level or in ending sequence
         hud.SetActive(GameManager.instance.stateOfGame == GameManager.States.InGame);
 
         if (hud.activeSelf)

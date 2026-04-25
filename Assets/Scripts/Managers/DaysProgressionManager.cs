@@ -314,6 +314,7 @@ public class DaysProgressionManager : MonoBehaviour
             case 0:
                 messagingApplicationScript.AddNewAvailableConversation(day5MessagesWithFactionMember);
                 messagingApplicationScript.AddEventOnDialogueCompletion(day5MessagesWithFactionMember, respectiveEvent);
+                radioScript.currentRadioTransmission = null;
                 break;
             case 1:
                 webBrowserScript.UnlockNewWebsite(spyInvestigationWebsite3);
