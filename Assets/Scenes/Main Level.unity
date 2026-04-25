@@ -84265,6 +84265,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 02d1b0e3c1948544ca72718472e5872c, type: 2}
   - {fileID: 11400000, guid: 9d9916fa2f757594c8bdce5027f08d07, type: 2}
   - {fileID: 11400000, guid: 0541599662e441d43a4070a84ff4d97b, type: 2}
+  - {fileID: 11400000, guid: c3bb8049ff92f5641aade19a87cf1d46, type: 2}
   day4SecondHalfAspectsToCheck:
   - Rash
   - Acne

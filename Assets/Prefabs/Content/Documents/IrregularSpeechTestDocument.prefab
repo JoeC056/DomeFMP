@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '14/03/1980 (19yo.)
+  m_text: '30/11/1981 (18yo.)
 
-    Male'
+    Female'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Present
+  m_text: 'Not Found
 
 
     NotFound
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pavel Simov
+  m_text: Lora Pashova
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Potential Etiologies               Presence
+  m_text: "Tourette syndrome\n \nHereditary Stutter"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -1563,7 +1563,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  respectiveEncounter: {fileID: 11400000, guid: 02d1b0e3c1948544ca72718472e5872c, type: 2}
+  respectiveEncounter: {fileID: 11400000, guid: 34290da5cb52ff44088d9392e0e8e49b, type: 2}
 --- !u!114 &814551464684916341
 MonoBehaviour:
   m_ObjectHideFlags: 0

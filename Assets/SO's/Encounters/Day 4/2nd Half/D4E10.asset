@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 8399591597048759888, guid: a321540e3d032f047963b0c3d519f3f1, type: 3}
   - {fileID: 8399591597048759888, guid: d3ae64bfe837e344eb7745a57e887085, type: 3}
   - {fileID: 8399591597048759888, guid: 85af6e1b0c94edd479f4797347d840de, type: 3}
-  dialogue: {fileID: 11400000, guid: 529a65cb67ef00a4c93a8e832347ad21, type: 2}
+  dialogue: {fileID: 11400000, guid: 43a78e55dc135804c87676d732c39f08, type: 2}
   correctAnswers: 000000000000
   entryShouldBeAllowed: 1
   mandatory: 0

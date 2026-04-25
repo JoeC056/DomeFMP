@@ -37,5 +37,5 @@ MonoBehaviour:
   dialogue: {fileID: 11400000, guid: daa0fd321ba6c604a82d72e05db3af5b, type: 2}
   correctAnswers: 
   entryShouldBeAllowed: 0
-  mandatory: 0
-  minEncountersBeforeAppearance: 0
+  mandatory: 1
+  minEncountersBeforeAppearance: 3
