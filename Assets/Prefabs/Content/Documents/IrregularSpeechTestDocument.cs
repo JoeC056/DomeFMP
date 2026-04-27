@@ -5,7 +5,7 @@ public class IrregularSpeechTestDocument : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI thingsCheckedForTitles;
-    [SerializeField] private TextMeshProUGUI testPerformedDetails;
+    [SerializeField] private TextMeshProUGUI testResults;
     [SerializeField] private GameObject childText;
 
     //////////////////////////////////////////////////////////////////////////////
@@ -16,19 +16,21 @@ public class IrregularSpeechTestDocument : MonoBehaviour
         {
             childText.SetActive(true);
             thingsCheckedForTitles.text = "Tourette syndrome\n \nHereditary Stutter";
-            testPerformedDetails.text = "Not Found\n\nNotFound";
+            testResults.text = "Not Found\n\nNot Found";
         }
         else
         {
             childText.SetActive(false);
 
+            thingsCheckedForTitles.text = "Alcohol Intoxication\n \nTourette syndrome\n \nHereditary Stutter";
+
             if (encounter.alcoholIntoxication)
             {
-                testPerformedDetails.text = "Present\n\nNotFound\n\nNotFound";
+                testResults.text = "Present\n\nNot Found\n\nNot Found";
             }
             else
             {
-                testPerformedDetails.text = "Not Found\n\nNotFound\n\nNotFound";
+                testResults.text = "Not Found\n\nNot Found\n\nNot Found";
             }
         }
     }

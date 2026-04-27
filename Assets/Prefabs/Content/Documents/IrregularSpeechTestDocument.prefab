@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '30/11/1981 (18yo.)
+  m_text: '<D.O.B>
 
-    Female'
+    <Sex>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -385,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.032714844}
+  m_AnchoredPosition: {x: 0.0021, y: 0.0327}
   m_SizeDelta: {x: 0.2725, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5171814439407935515
@@ -416,13 +416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Not Found
-
-
-    NotFound
-
-
-    NotFound'
+  m_text: Alcohol Intoxication\n \nTourette syndrome\n \nHereditary Stutter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -524,7 +518,7 @@ RectTransform:
   m_Children:
   - {fileID: 6855805484692152479}
   - {fileID: 445807209815093304}
-  - {fileID: 8802611611177810953}
+  - {fileID: 2163072010290564673}
   - {fileID: 6837080442616810038}
   - {fileID: 7863823614592109134}
   - {fileID: 1497114565279921610}
@@ -1007,7 +1001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.032714844}
+  m_AnchoredPosition: {x: 0, y: 0.0327}
   m_SizeDelta: {x: 0.2725, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2240710608007188733
@@ -1175,7 +1169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lora Pashova
+  m_text: <Name>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -1247,7 +1241,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &7758861922781219686
+--- !u!1 &7120729717508802412
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1255,23 +1249,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8802611611177810953}
-  - component: {fileID: 4669032980894951750}
-  - component: {fileID: 2129377798984187231}
+  - component: {fileID: 2163072010290564673}
+  - component: {fileID: 109894390155742822}
+  - component: {fileID: 2306453690753826478}
   m_Layer: 5
-  m_Name: Things Checked For Titles
+  m_Name: Test Info Titles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &8802611611177810953
+--- !u!224 &2163072010290564673
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7758861922781219686}
+  m_GameObject: {fileID: 7120729717508802412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -1284,21 +1278,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.15270996}
   m_SizeDelta: {x: 0.2725, y: 0.02}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4669032980894951750
+--- !u!222 &109894390155742822
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7758861922781219686}
+  m_GameObject: {fileID: 7120729717508802412}
   m_CullTransparentMesh: 1
---- !u!114 &2129377798984187231
+--- !u!114 &2306453690753826478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7758861922781219686}
+  m_GameObject: {fileID: 7120729717508802412}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -1312,7 +1306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tourette syndrome\n \nHereditary Stutter"
+  m_text: Test Performed                       Result
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
   m_sharedMaterial: {fileID: -3145510262073210163, guid: ab72a9c75c8230a4b9c3ea02b05222c8, type: 2}
@@ -1563,7 +1557,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  respectiveEncounter: {fileID: 11400000, guid: 34290da5cb52ff44088d9392e0e8e49b, type: 2}
+  respectiveEncounter: {fileID: 11400000, guid: 0541599662e441d43a4070a84ff4d97b, type: 2}
 --- !u!114 &814551464684916341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,8 +1570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ec92c9fda183944ad54274ff3738e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thingsCheckedForTitles: {fileID: 2129377798984187231}
-  testPerformedDetails: {fileID: 471656402324205986}
+  thingsCheckedForTitles: {fileID: 471656402324205986}
+  testResults: {fileID: 8663550071708613776}
   childText: {fileID: 749862884608754556}
 --- !u!1 &9171536214148351225
 GameObject:
