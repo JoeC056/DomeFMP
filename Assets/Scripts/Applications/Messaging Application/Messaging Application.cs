@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -20,8 +22,9 @@ public class MessagingApplication : MonoBehaviour
     [SerializeField] private GameObject gameplayUpdateMessageIcon;
     [SerializeField] private GameObject notificationIcon;
     [SerializeField] private GameObject mandatoryIcon;
-    [SerializeField] private GameObject notificationText;
     [SerializeField] private TextMeshProUGUI contactNameText;
+    [SerializeField] private AudioSource computerAudioSource;
+    [SerializeField] private AudioClip notificationSound;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject availableConversationPrefab;
@@ -87,6 +90,8 @@ public class MessagingApplication : MonoBehaviour
 
     public List<AvailableConversation> mostRecentlyAccessedConversations;
 
+    private float defaultVolume;
+
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Awake()
@@ -105,14 +110,13 @@ public class MessagingApplication : MonoBehaviour
 
         ReturnToMenu();
         ToggleVisibility();
-
-        notificationText.SetActive(false);
-
+        defaultVolume = computerAudioSource.volume;
     }
 
     //////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        computerAudioSource.volume = defaultVolume * SettingsManager.instance.MasterVolume * SettingsManager.instance.GameVolume;
         CheckNotificationIconsToDisplay();
 
         if (currentDialogue != null)
@@ -805,7 +809,7 @@ public class MessagingApplication : MonoBehaviour
         }
         availableConversations.Add(newConversation);
 
-        StartCoroutine(PlayNotificationSound());
+        PlayNotificationSound();
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -838,11 +842,10 @@ public class MessagingApplication : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////////////////////////////////
-    private IEnumerator PlayNotificationSound()
+    private void PlayNotificationSound()
     {
-        notificationText.SetActive(true);
-        yield return new WaitForSeconds(notificationTextDuration);
-        notificationText.SetActive(false);
+        computerAudioSource.clip = notificationSound;
+        computerAudioSource.Play();
     }
 
     //////////////////////////////////////////////////////////////////////////////////

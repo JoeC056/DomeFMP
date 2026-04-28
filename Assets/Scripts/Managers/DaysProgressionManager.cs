@@ -13,7 +13,6 @@ public class DaysProgressionManager : MonoBehaviour
     [SerializeField] private FrontDoor frontDoorScript;
     [SerializeField] private GameObject virusInfoWebsite;
     [SerializeField] private GameObject gameplayApplicationIcon;
-    [SerializeField] private GameObject sirenSoundText;
 
 
     [Header("Day 0 Content")]
@@ -92,7 +91,6 @@ public class DaysProgressionManager : MonoBehaviour
 
         virusInfoWebsite.SetActive(false);
         gameplayApplicationIcon.SetActive(false);
-        sirenSoundText.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -136,7 +134,6 @@ public class DaysProgressionManager : MonoBehaviour
             case 0:
                 GameObject sirenEvent = Instantiate(sirenTrigger, sirenTriggerPosition, Quaternion.Euler(Vector3.zero));
                 sirenEvent.GetComponent<SirenEvent>().EventOnCollision.AddListener(ProgressDay1);
-                sirenEvent.GetComponent<SirenEvent>().sirenSoundText = sirenSoundText;
 
                 List<string> messagesToDisplay = new List<string>();
                 messagesToDisplay.Add("Time to head out to work");

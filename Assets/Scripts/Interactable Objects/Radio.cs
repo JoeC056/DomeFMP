@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 //////////////////////////////////////////////////////////////////////////////
 public class Radio : MonoBehaviour
@@ -44,7 +45,7 @@ public class Radio : MonoBehaviour
     private InteractableObject interactableObjectScript;
 
     private AudioSource audioSource;
-
+    private float defaultVolume;
 
 
     //////////////////////////////////////////////////////////////////////////////
@@ -56,11 +57,13 @@ public class Radio : MonoBehaviour
         radioUI.SetActive(false);
         remainingTransmissionDialogue = new List<string>();
         transmissionCompletionEvents = new List<transmissionCompletionEvent>();
+        defaultVolume = audioSource.volume;
     }
 
     //////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
+        audioSource.volume = defaultVolume * SettingsManager.instance.MasterVolume * SettingsManager.instance.GameVolume;
         GetInput();
         interactableObjectScript.interactable = (currentRadioTransmission != null);
 

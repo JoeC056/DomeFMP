@@ -39,6 +39,9 @@ public class MainMenu : MonoBehaviour
         {
             CreditsBackButton();
         }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     //////////////////////////////////////////////////////////////////////////////
